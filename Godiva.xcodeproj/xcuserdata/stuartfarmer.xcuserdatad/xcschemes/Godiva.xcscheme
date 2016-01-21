@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5E6C197E1C5139460018301A"
+               BuildableName = "GodivaTests.xctest"
+               BlueprintName = "GodivaTests"
+               ReferencedContainer = "container:Godiva.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5E6C198C1C5139690018301A"
+               BuildableName = "GodivaUITests.xctest"
+               BlueprintName = "GodivaUITests"
+               ReferencedContainer = "container:Godiva.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

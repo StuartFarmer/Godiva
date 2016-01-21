@@ -13,6 +13,8 @@
 		5E3D7A751C39CCB00054BCEF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3D7A721C39CCB00054BCEF /* libc++.tbd */; };
 		5E3D7A761C39CCB00054BCEF /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3D7A731C39CCB00054BCEF /* libc++abi.tbd */; };
 		5E3D7A7A1C39CD590054BCEF /* ProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3D7A791C39CD590054BCEF /* ProductTableViewCell.m */; };
+		5E6C19821C5139460018301A /* GodivaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C19811C5139460018301A /* GodivaTests.m */; };
+		5E6C19901C5139690018301A /* GodivaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C198F1C5139690018301A /* GodivaUITests.m */; };
 		B65DA8EF1C16154D000D72AA /* accessories.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8CE1C16154D000D72AA /* accessories.jpg */; };
 		B65DA8F01C16154D000D72AA /* accessories@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */; };
 		B65DA8F11C16154D000D72AA /* accessories@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8D01C16154D000D72AA /* accessories@3x.jpg */; };
@@ -72,6 +74,23 @@
 		E478BDD01C18D20E00BEBACD /* pinIt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E478BDCD1C18D20E00BEBACD /* pinIt@3x.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5E6C19841C5139460018301A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6B094F91C0BB4B300C1DEC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B6B095001C0BB4B300C1DEC9;
+			remoteInfo = Godiva;
+		};
+		5E6C19921C5139690018301A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6B094F91C0BB4B300C1DEC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B6B095001C0BB4B300C1DEC9;
+			remoteInfo = Godiva;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		35C7E775BF720FE23A979DE8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		442CF2F1A6E5AF0CDFB00C90 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +102,12 @@
 		5E3D7A781C39CD590054BCEF /* ProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableViewCell.h; sourceTree = "<group>"; };
 		5E3D7A791C39CD590054BCEF /* ProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewCell.m; sourceTree = "<group>"; };
 		5E5C4D551C39D8C30073CDC7 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Godiva/3rd Party Libraries/Realm.framework"; sourceTree = "<group>"; };
+		5E6C197F1C5139460018301A /* GodivaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GodivaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E6C19811C5139460018301A /* GodivaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GodivaTests.m; sourceTree = "<group>"; };
+		5E6C19831C5139460018301A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E6C198D1C5139690018301A /* GodivaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GodivaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E6C198F1C5139690018301A /* GodivaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GodivaUITests.m; sourceTree = "<group>"; };
+		5E6C19911C5139690018301A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B65DA8CE1C16154D000D72AA /* accessories.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = accessories.jpg; path = "Image Assets/accessories.jpg"; sourceTree = "<group>"; };
 		B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "accessories@2x.jpg"; path = "Image Assets/accessories@2x.jpg"; sourceTree = "<group>"; };
 		B65DA8D01C16154D000D72AA /* accessories@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "accessories@3x.jpg"; path = "Image Assets/accessories@3x.jpg"; sourceTree = "<group>"; };
@@ -157,6 +182,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5E6C197C1C5139460018301A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E6C198A1C5139690018301A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B6B094FE1C0BB4B300C1DEC9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -171,6 +210,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E6C19801C5139460018301A /* GodivaTests */ = {
+			isa = PBXGroup;
+			children = (
+				5E6C19811C5139460018301A /* GodivaTests.m */,
+				5E6C19831C5139460018301A /* Info.plist */,
+			);
+			path = GodivaTests;
+			sourceTree = "<group>";
+		};
+		5E6C198E1C5139690018301A /* GodivaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5E6C198F1C5139690018301A /* GodivaUITests.m */,
+				5E6C19911C5139690018301A /* Info.plist */,
+			);
+			path = GodivaUITests;
+			sourceTree = "<group>";
+		};
 		B15509AC6AA68632275FBD7A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +245,8 @@
 				5E3D7A731C39CCB00054BCEF /* libc++abi.tbd */,
 				5E5C4D551C39D8C30073CDC7 /* Realm.framework */,
 				B6B095031C0BB4B300C1DEC9 /* Godiva */,
+				5E6C19801C5139460018301A /* GodivaTests */,
+				5E6C198E1C5139690018301A /* GodivaUITests */,
 				B6B095021C0BB4B300C1DEC9 /* Products */,
 				B15509AC6AA68632275FBD7A /* Pods */,
 				E1DCD060FF1567A7ADB1F374 /* Frameworks */,
@@ -198,6 +257,8 @@
 			isa = PBXGroup;
 			children = (
 				B6B095011C0BB4B300C1DEC9 /* Godiva.app */,
+				5E6C197F1C5139460018301A /* GodivaTests.xctest */,
+				5E6C198D1C5139690018301A /* GodivaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -357,6 +418,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5E6C197E1C5139460018301A /* GodivaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E6C19881C5139460018301A /* Build configuration list for PBXNativeTarget "GodivaTests" */;
+			buildPhases = (
+				5E6C197B1C5139460018301A /* Sources */,
+				5E6C197C1C5139460018301A /* Frameworks */,
+				5E6C197D1C5139460018301A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5E6C19851C5139460018301A /* PBXTargetDependency */,
+			);
+			name = GodivaTests;
+			productName = GodivaTests;
+			productReference = 5E6C197F1C5139460018301A /* GodivaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5E6C198C1C5139690018301A /* GodivaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E6C19941C5139690018301A /* Build configuration list for PBXNativeTarget "GodivaUITests" */;
+			buildPhases = (
+				5E6C19891C5139690018301A /* Sources */,
+				5E6C198A1C5139690018301A /* Frameworks */,
+				5E6C198B1C5139690018301A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5E6C19931C5139690018301A /* PBXTargetDependency */,
+			);
+			name = GodivaUITests;
+			productName = GodivaUITests;
+			productReference = 5E6C198D1C5139690018301A /* GodivaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		B6B095001C0BB4B300C1DEC9 /* Godiva */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6B0951B1C0BB4B400C1DEC9 /* Build configuration list for PBXNativeTarget "Godiva" */;
@@ -386,6 +483,14 @@
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = app.kitchen;
 				TargetAttributes = {
+					5E6C197E1C5139460018301A = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = B6B095001C0BB4B300C1DEC9;
+					};
+					5E6C198C1C5139690018301A = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = B6B095001C0BB4B300C1DEC9;
+					};
 					B6B095001C0BB4B300C1DEC9 = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = 966MLVXTL7;
@@ -406,11 +511,27 @@
 			projectRoot = "";
 			targets = (
 				B6B095001C0BB4B300C1DEC9 /* Godiva */,
+				5E6C197E1C5139460018301A /* GodivaTests */,
+				5E6C198C1C5139690018301A /* GodivaUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5E6C197D1C5139460018301A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E6C198B1C5139690018301A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B6B094FF1C0BB4B300C1DEC9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -514,6 +635,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5E6C197B1C5139460018301A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E6C19821C5139460018301A /* GodivaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E6C19891C5139690018301A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E6C19901C5139690018301A /* GodivaUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B6B094FD1C0BB4B300C1DEC9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -537,6 +674,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5E6C19851C5139460018301A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B6B095001C0BB4B300C1DEC9 /* Godiva */;
+			targetProxy = 5E6C19841C5139460018301A /* PBXContainerItemProxy */;
+		};
+		5E6C19931C5139690018301A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B6B095001C0BB4B300C1DEC9 /* Godiva */;
+			targetProxy = 5E6C19921C5139690018301A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		B6B0950D1C0BB4B300C1DEC9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -557,6 +707,58 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5E6C19861C5139460018301A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GodivaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = app.kitchen.GodivaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Godiva.app/Godiva";
+			};
+			name = Debug;
+		};
+		5E6C19871C5139460018301A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GodivaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = app.kitchen.GodivaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Godiva.app/Godiva";
+			};
+			name = Release;
+		};
+		5E6C19951C5139690018301A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GodivaUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = app.kitchen.GodivaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Godiva;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		5E6C19961C5139690018301A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GodivaUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = app.kitchen.GodivaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Godiva;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 		B6B095191C0BB4B400C1DEC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -672,6 +874,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5E6C19881C5139460018301A /* Build configuration list for PBXNativeTarget "GodivaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E6C19861C5139460018301A /* Debug */,
+				5E6C19871C5139460018301A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5E6C19941C5139690018301A /* Build configuration list for PBXNativeTarget "GodivaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E6C19951C5139690018301A /* Debug */,
+				5E6C19961C5139690018301A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		B6B094FC1C0BB4B300C1DEC9 /* Build configuration list for PBXProject "Godiva" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

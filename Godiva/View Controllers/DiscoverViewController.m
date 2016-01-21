@@ -22,7 +22,8 @@
     CGPoint startingPoint;
     CGPoint firstPoint;
     CGPoint currentPoint;
-    CGPoint upVector;
+    CGPoint rightVector;
+    CGPoint leftVector;
     float totalDistance;
     
     NSNotificationCenter *notificationCenter;
@@ -35,15 +36,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Set upVector for comparing angles against
-    upVector.x = -1;
-    upVector.y = 0;
+    // Set rightVector and leftVector for comparing angles against
+    rightVector.x = -1;
+    rightVector.y = 0;
+    
+    leftVector.x = 1;
+    leftVector.y = 0;
     
     // Setup swipe view
     swipeView = self.cardView;
     
     // Start notifications & defaults
     notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(discoverCardReset:) name:@"discoverCardReset" object:nil];
+    
     userDefaults = [NSUserDefaults standardUserDefaults];
 }
 
@@ -75,8 +81,19 @@
     // Color UI elements if view is within valid zone
     if ([self viewIsWithinValidZone:swipeView]) {
         [notificationCenter postNotificationName:@"viewIsWithinValidZone" object:nil];
+        [UIView animateWithDuration:0.2 animations:^{
+            self.view.backgroundColor = [UIColor colorWithRed:178.0f/255.0f green:198.0f/255.0f blue:186.0f/255.0f alpha:1];
+        }];
+        
+    } else if ([self viewIsWithinInValidZone:swipeView]) {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.view.backgroundColor = [UIColor colorWithRed:197.0f/255.0f green:179.0f/255.0f blue:177.0f/255.0f alpha:1];
+        }];
     } else {
         [notificationCenter postNotificationName:@"viewIsNotWithinValidZone" object:nil];
+        [UIView animateWithDuration:0.2 animations:^{
+            self.view.backgroundColor = [UIColor colorWithRed:239.0f/255.0f green:239.0f/255.0f blue:244.0f/255.0f alpha:1];
+        }];
     }
     
     // Set current point to new point
@@ -101,7 +118,7 @@
             break;
     }
     
-    if ([self viewStateInValidZone:swipeView] == 0 || [self viewStateInValidZone:swipeView] == 2) {
+    if ([self viewIsWithinValidZone:swipeView] || [self viewIsWithinInValidZone:swipeView]) {
         // Animate view away if it needs to
         [UIView animateWithDuration:0.3 animations:^{
             CGPoint difference = CGPointSubtract(swipeView.center, startingPoint);
@@ -113,17 +130,27 @@
         } completion:^(BOOL finished) {
             // Reset the view
             swipeView.center = startingPoint;
-            swipeView.alpha = 1;
             swipeView.backgroundColor = [UIColor whiteColor];
+            
             [notificationCenter postNotificationName:@"resetCard" object:nil];
         }];
+    } else {
+        [UIView animateWithDuration:0.2 animations:^{
+            swipeView.center = startingPoint;
+            swipeView.backgroundColor = [UIColor whiteColor];
+        }];
     }
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        swipeView.alpha = 1;
+        self.view.backgroundColor = [UIColor colorWithRed:239.0f/255.0f green:239.0f/255.0f blue:244.0f/255.0f alpha:1];
+    }];
 }
 
 -(int)viewStateInValidZone:(UIView *)view {
     // Calculate the current angle
     CGPoint distanceFromStartingPoint = CGPointSubtract(startingPoint, view.center);
-    CGFloat angle = CGPointGetAngleBetween(distanceFromStartingPoint, upVector) * (180 / M_PI);
+    CGFloat angle = CGPointGetAngleBetween(distanceFromStartingPoint, rightVector) * (180 / M_PI);
     
     // card is in proper angle and proper distance
     if (angle < ANGLETHRESHOLD && CGPointGetDistance(startingPoint, view.center) > DISTANCETHRESHOLD) return 2;
@@ -138,12 +165,25 @@
 -(BOOL)viewIsWithinValidZone:(UIView *)view {
     // Calculate the current angle
     CGPoint distanceFromStartingPoint = CGPointSubtract(startingPoint, view.center);
-    CGFloat angle = CGPointGetAngleBetween(distanceFromStartingPoint, upVector) * (180 / M_PI);
+    CGFloat angle = CGPointGetAngleBetween(distanceFromStartingPoint, rightVector) * (180 / M_PI);
     
     // Color view appropriately if it is within the 'good' zone
     if (angle < ANGLETHRESHOLD && CGPointGetDistance(startingPoint, view.center) > DISTANCETHRESHOLD) return true;
     else return false;
 }
 
+-(BOOL)viewIsWithinInValidZone:(UIView *)view {
+    // Calculate the current angle
+    CGPoint distanceFromStartingPoint = CGPointSubtract(startingPoint, view.center);
+    CGFloat angle = CGPointGetAngleBetween(distanceFromStartingPoint, leftVector) * (180 / M_PI);
+    
+    // Color view appropriately if it is within the 'good' zone
+    if (angle < ANGLETHRESHOLD && CGPointGetDistance(startingPoint, view.center) > DISTANCETHRESHOLD) return true;
+    else return false;
+}
+
+- (void)discoverCardReset:(NSNotification *)notification {
+    
+}
 
 @end

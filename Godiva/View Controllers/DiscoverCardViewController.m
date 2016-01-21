@@ -46,17 +46,11 @@
 }
 
 - (void)viewIsWithinValidZone:(NSNotification *)notification {
-    //self.view.backgroundColor = [UIColor greenColor];
-    self.view.alpha = 1.0f;
-    self.view.layer.borderWidth = 5;
-    self.view.layer.borderColor = [[UIColor greenColor] CGColor];
+
 }
 
 - (void)viewIsNotWithinValidZone:(NSNotification *)notification {
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.view.alpha = 0.5f;
-    self.view.layer.borderWidth = 0;
-    self.view.layer.borderColor = [[UIColor whiteColor] CGColor];
+
 }
 
 - (void)viewDroppedWithinValidZone:(NSNotification *)notification {
@@ -68,7 +62,6 @@
 }
 
 - (void)resetCard:(NSNotification *)notification {
-    // load a new card
     self.view.backgroundColor = [UIColor whiteColor];
     self.view.alpha = 1.0f;
     self.view.layer.borderWidth = 0;

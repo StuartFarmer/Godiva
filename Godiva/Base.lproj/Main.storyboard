@@ -24,20 +24,20 @@
                                     <navigationItem title="Discover" id="Tu4-nk-zY2"/>
                                 </items>
                             </navigationBar>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0M5-o7-ao5">
-                                <rect key="frame" x="10" y="54" width="355" height="484"/>
-                                <connections>
-                                    <segue destination="DwK-Gz-QGr" kind="embed" id="kwl-lr-9s1"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cU3-Le-E8n">
                                 <rect key="frame" x="10" y="546" width="355" height="64"/>
                                 <connections>
                                     <segue destination="4WO-IR-YGe" kind="embed" id="gh8-AW-mbN"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0M5-o7-ao5">
+                                <rect key="frame" x="10" y="54" width="355" height="484"/>
+                                <connections>
+                                    <segue destination="DwK-Gz-QGr" kind="embed" id="kwl-lr-9s1"/>
+                                </connections>
+                            </containerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.92334980870000005" green="0.92334980870000005" blue="0.92334980870000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="cU3-Le-E8n" firstAttribute="top" secondItem="0M5-o7-ao5" secondAttribute="bottom" constant="8" symbolic="YES" id="6c3-zm-OzB"/>
                             <constraint firstItem="cU3-Le-E8n" firstAttribute="leading" secondItem="0M5-o7-ao5" secondAttribute="leading" id="8ba-I8-zY8"/>
@@ -90,7 +90,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dcE-Gy-Rp0" id="9N7-Iw-dsL">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6L9-RF-bEJ">
@@ -211,10 +211,10 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="mmI-AA-KKX" customClass="ClothingTypeCollectionViewCell">
-                                        <rect key="frame" x="96.5" y="10" width="182.5" height="200"/>
+                                        <rect key="frame" x="96" y="10" width="183" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="182.5" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="183" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="vel-eN-0Yp">
