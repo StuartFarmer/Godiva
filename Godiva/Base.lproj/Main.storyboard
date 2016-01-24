@@ -90,15 +90,9 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dcE-Gy-Rp0" id="9N7-Iw-dsL">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6L9-RF-bEJ">
-                                                    <rect key="frame" x="8" y="8" width="159" height="184"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="159" id="uQc-fB-uMD"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wf2-A2-k0J">
                                                     <rect key="frame" x="175" y="74" width="192" height="21"/>
                                                     <constraints>
@@ -132,6 +126,12 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6L9-RF-bEJ">
+                                                    <rect key="frame" x="8" y="8" width="159" height="184"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="159" id="uQc-fB-uMD"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="2Sm-7A-DOS" firstAttribute="top" secondItem="7xQ-82-AXF" secondAttribute="bottom" constant="8" symbolic="YES" id="7vg-S1-LpZ"/>
@@ -211,10 +211,10 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="mmI-AA-KKX" customClass="ClothingTypeCollectionViewCell">
-                                        <rect key="frame" x="96" y="10" width="183" height="200"/>
+                                        <rect key="frame" x="96.5" y="10" width="182.5" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="183" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="182.5" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="vel-eN-0Yp">

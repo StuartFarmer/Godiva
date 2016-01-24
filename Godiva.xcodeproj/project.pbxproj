@@ -15,6 +15,7 @@
 		5E3D7A7A1C39CD590054BCEF /* ProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3D7A791C39CD590054BCEF /* ProductTableViewCell.m */; };
 		5E6C19821C5139460018301A /* GodivaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C19811C5139460018301A /* GodivaTests.m */; };
 		5E6C19901C5139690018301A /* GodivaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C198F1C5139690018301A /* GodivaUITests.m */; };
+		5EB7916A1C5577B30024F4EF /* GodivaProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB791691C5577B30024F4EF /* GodivaProductManager.m */; };
 		B65DA8EF1C16154D000D72AA /* accessories.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8CE1C16154D000D72AA /* accessories.jpg */; };
 		B65DA8F01C16154D000D72AA /* accessories@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */; };
 		B65DA8F11C16154D000D72AA /* accessories@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8D01C16154D000D72AA /* accessories@3x.jpg */; };
@@ -108,6 +109,8 @@
 		5E6C198D1C5139690018301A /* GodivaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GodivaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E6C198F1C5139690018301A /* GodivaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GodivaUITests.m; sourceTree = "<group>"; };
 		5E6C19911C5139690018301A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EB791681C5577B30024F4EF /* GodivaProductManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GodivaProductManager.h; sourceTree = "<group>"; };
+		5EB791691C5577B30024F4EF /* GodivaProductManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GodivaProductManager.m; sourceTree = "<group>"; };
 		B65DA8CE1C16154D000D72AA /* accessories.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = accessories.jpg; path = "Image Assets/accessories.jpg"; sourceTree = "<group>"; };
 		B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "accessories@2x.jpg"; path = "Image Assets/accessories@2x.jpg"; sourceTree = "<group>"; };
 		B65DA8D01C16154D000D72AA /* accessories@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "accessories@3x.jpg"; path = "Image Assets/accessories@3x.jpg"; sourceTree = "<group>"; };
@@ -228,6 +231,17 @@
 			path = GodivaUITests;
 			sourceTree = "<group>";
 		};
+		5EB7916B1C5587A70024F4EF /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5EB791681C5577B30024F4EF /* GodivaProductManager.h */,
+				5EB791691C5577B30024F4EF /* GodivaProductManager.m */,
+				5E3D7A6A1C39CA990054BCEF /* Product.h */,
+				5E3D7A6B1C39CA990054BCEF /* Product.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		B15509AC6AA68632275FBD7A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				B6D092271C17BB11009281AD /* 3rd Party Libraries */,
+				5EB7916B1C5587A70024F4EF /* Classes */,
 				B6B0951E1C0BB7FE00C1DEC9 /* View Controllers */,
 				B6B095071C0BB4B300C1DEC9 /* AppDelegate.h */,
 				B6B095081C0BB4B300C1DEC9 /* AppDelegate.m */,
@@ -330,8 +345,6 @@
 			children = (
 				B6B095281C0BB85A00C1DEC9 /* WishlistViewController.h */,
 				B6B095291C0BB85A00C1DEC9 /* WishlistViewController.m */,
-				5E3D7A6A1C39CA990054BCEF /* Product.h */,
-				5E3D7A6B1C39CA990054BCEF /* Product.m */,
 				5E3D7A781C39CD590054BCEF /* ProductTableViewCell.h */,
 				5E3D7A791C39CD590054BCEF /* ProductTableViewCell.m */,
 			);
@@ -668,6 +681,7 @@
 				B6B0952A1C0BB85A00C1DEC9 /* WishlistViewController.m in Sources */,
 				B6B095211C0BB82200C1DEC9 /* BrowseViewController.m in Sources */,
 				B68016291C1B8F6200B372B2 /* CGPoint+Vector.m in Sources */,
+				5EB7916A1C5577B30024F4EF /* GodivaProductManager.m in Sources */,
 				B6B095061C0BB4B300C1DEC9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -881,6 +895,7 @@
 				5E6C19871C5139460018301A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5E6C19941C5139690018301A /* Build configuration list for PBXNativeTarget "GodivaUITests" */ = {
 			isa = XCConfigurationList;
@@ -889,6 +904,7 @@
 				5E6C19961C5139690018301A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B6B094FC1C0BB4B300C1DEC9 /* Build configuration list for PBXProject "Godiva" */ = {
 			isa = XCConfigurationList;

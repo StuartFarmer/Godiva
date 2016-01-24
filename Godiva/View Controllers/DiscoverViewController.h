@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GodivaProductManager.h"
 
 @interface DiscoverViewController : UIViewController
 

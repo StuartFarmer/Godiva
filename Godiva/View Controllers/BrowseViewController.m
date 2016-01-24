@@ -7,6 +7,7 @@
 //
 
 #import "BrowseViewController.h"
+#import "GodivaProductManager.h"
 
 #define M_PHI 1.61803398874989484820
 #define M_RATIO 1.3
@@ -14,6 +15,7 @@
 @interface BrowseViewController () {
     NSArray *collectionViewCells;
     NSUserDefaults *userDefaults;
+    GodivaProductManager *productManager;
 }
 
 @end
@@ -31,6 +33,9 @@
     
     // set up user defaults
     userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    // set up product manager
+    productManager = [GodivaProductManager sharedInstance];
 }
 
 - (void)didReceiveMemoryWarning {

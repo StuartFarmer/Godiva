@@ -28,6 +28,8 @@
     
     NSNotificationCenter *notificationCenter;
     NSUserDefaults *userDefaults;
+    
+    GodivaProductManager *productManager;
 }
 
 @end
@@ -51,6 +53,8 @@
     [notificationCenter addObserver:self selector:@selector(discoverCardReset:) name:@"discoverCardReset" object:nil];
     
     userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    productManager = [GodivaProductManager sharedInstance];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,7 +73,6 @@
     totalDistance = 0;
     [userDefaults setFloat:startingPoint.x forKey:@"startingPointX"];
     [userDefaults setFloat:startingPoint.y forKey:@"startingPointY"];
-
 }
 
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -120,6 +123,7 @@
     
     if ([self viewIsWithinValidZone:swipeView] || [self viewIsWithinInValidZone:swipeView]) {
         // Animate view away if it needs to
+        [self.view setUserInteractionEnabled:NO];
         [UIView animateWithDuration:0.3 animations:^{
             CGPoint difference = CGPointSubtract(swipeView.center, startingPoint);
             CGPoint multiple = CGPointMultiply(difference, 10);
@@ -133,11 +137,16 @@
             swipeView.backgroundColor = [UIColor whiteColor];
             
             [notificationCenter postNotificationName:@"resetCard" object:nil];
+            
+            [self.view setUserInteractionEnabled:YES];
         }];
     } else {
+        [self.view setUserInteractionEnabled:NO];
         [UIView animateWithDuration:0.2 animations:^{
             swipeView.center = startingPoint;
             swipeView.backgroundColor = [UIColor whiteColor];
+        } completion:^(BOOL finished) {
+            [self.view setUserInteractionEnabled:YES];
         }];
     }
     
