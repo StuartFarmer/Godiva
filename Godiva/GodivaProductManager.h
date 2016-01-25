@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Realm/Realm.h>
+#import <AFNetworking/AFNetworking.h>
 #import "Product.h"
 
 @interface GodivaProductManager : NSObject

@@ -16,6 +16,11 @@
 		5E6C19821C5139460018301A /* GodivaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C19811C5139460018301A /* GodivaTests.m */; };
 		5E6C19901C5139690018301A /* GodivaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C198F1C5139690018301A /* GodivaUITests.m */; };
 		5EB7916A1C5577B30024F4EF /* GodivaProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB791691C5577B30024F4EF /* GodivaProductManager.m */; };
+		5EB7916F1C5598E50024F4EF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7916E1C5598E50024F4EF /* LoginViewController.m */; };
+		5EB791731C559C340024F4EF /* login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EB791701C559C340024F4EF /* login.jpg */; };
+		5EB791741C559C340024F4EF /* login@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EB791711C559C340024F4EF /* login@2x.jpg */; };
+		5EB791751C559C340024F4EF /* login@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EB791721C559C340024F4EF /* login@3x.jpg */; };
+		5EB791781C55A0E70024F4EF /* LoginComponentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB791771C55A0E70024F4EF /* LoginComponentsViewController.m */; };
 		B65DA8EF1C16154D000D72AA /* accessories.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8CE1C16154D000D72AA /* accessories.jpg */; };
 		B65DA8F01C16154D000D72AA /* accessories@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */; };
 		B65DA8F11C16154D000D72AA /* accessories@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8D01C16154D000D72AA /* accessories@3x.jpg */; };
@@ -102,7 +107,6 @@
 		5E3D7A731C39CCB00054BCEF /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
 		5E3D7A781C39CD590054BCEF /* ProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableViewCell.h; sourceTree = "<group>"; };
 		5E3D7A791C39CD590054BCEF /* ProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewCell.m; sourceTree = "<group>"; };
-		5E5C4D551C39D8C30073CDC7 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Godiva/3rd Party Libraries/Realm.framework"; sourceTree = "<group>"; };
 		5E6C197F1C5139460018301A /* GodivaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GodivaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E6C19811C5139460018301A /* GodivaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GodivaTests.m; sourceTree = "<group>"; };
 		5E6C19831C5139460018301A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +115,13 @@
 		5E6C19911C5139690018301A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EB791681C5577B30024F4EF /* GodivaProductManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GodivaProductManager.h; sourceTree = "<group>"; };
 		5EB791691C5577B30024F4EF /* GodivaProductManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GodivaProductManager.m; sourceTree = "<group>"; };
+		5EB7916D1C5598E50024F4EF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		5EB7916E1C5598E50024F4EF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		5EB791701C559C340024F4EF /* login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = login.jpg; path = "Image Assets/login.jpg"; sourceTree = "<group>"; };
+		5EB791711C559C340024F4EF /* login@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "login@2x.jpg"; path = "Image Assets/login@2x.jpg"; sourceTree = "<group>"; };
+		5EB791721C559C340024F4EF /* login@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "login@3x.jpg"; path = "Image Assets/login@3x.jpg"; sourceTree = "<group>"; };
+		5EB791761C55A0E70024F4EF /* LoginComponentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginComponentsViewController.h; sourceTree = "<group>"; };
+		5EB791771C55A0E70024F4EF /* LoginComponentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginComponentsViewController.m; sourceTree = "<group>"; };
 		B65DA8CE1C16154D000D72AA /* accessories.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = accessories.jpg; path = "Image Assets/accessories.jpg"; sourceTree = "<group>"; };
 		B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "accessories@2x.jpg"; path = "Image Assets/accessories@2x.jpg"; sourceTree = "<group>"; };
 		B65DA8D01C16154D000D72AA /* accessories@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "accessories@3x.jpg"; path = "Image Assets/accessories@3x.jpg"; sourceTree = "<group>"; };
@@ -242,6 +253,17 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		5EB7916C1C5598A30024F4EF /* Login / Signup */ = {
+			isa = PBXGroup;
+			children = (
+				5EB7916D1C5598E50024F4EF /* LoginViewController.h */,
+				5EB7916E1C5598E50024F4EF /* LoginViewController.m */,
+				5EB791761C55A0E70024F4EF /* LoginComponentsViewController.h */,
+				5EB791771C55A0E70024F4EF /* LoginComponentsViewController.m */,
+			);
+			name = "Login / Signup";
+			sourceTree = "<group>";
+		};
 		B15509AC6AA68632275FBD7A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,7 +279,6 @@
 				5E3D7A711C39CCB00054BCEF /* libc++.1.tbd */,
 				5E3D7A721C39CCB00054BCEF /* libc++.tbd */,
 				5E3D7A731C39CCB00054BCEF /* libc++abi.tbd */,
-				5E5C4D551C39D8C30073CDC7 /* Realm.framework */,
 				B6B095031C0BB4B300C1DEC9 /* Godiva */,
 				5E6C19801C5139460018301A /* GodivaTests */,
 				5E6C198E1C5139690018301A /* GodivaUITests */,
@@ -306,6 +327,7 @@
 		B6B0951E1C0BB7FE00C1DEC9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5EB7916C1C5598A30024F4EF /* Login / Signup */,
 				B6B095221C0BB82900C1DEC9 /* Browse */,
 				B6B095231C0BB83700C1DEC9 /* Discover */,
 				B6B095271C0BB84A00C1DEC9 /* Wishlist */,
@@ -363,6 +385,9 @@
 		B6B095351C0BCDC200C1DEC9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5EB791701C559C340024F4EF /* login.jpg */,
+				5EB791711C559C340024F4EF /* login@2x.jpg */,
+				5EB791721C559C340024F4EF /* login@3x.jpg */,
 				B65DA8CE1C16154D000D72AA /* accessories.jpg */,
 				B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */,
 				B65DA8D01C16154D000D72AA /* accessories@3x.jpg */,
@@ -570,6 +595,7 @@
 				B65DA9051C16154D000D72AA /* shoes@2x.jpg in Resources */,
 				B6B095141C0BB4B400C1DEC9 /* Assets.xcassets in Resources */,
 				B65DA9141C161730000D72AA /* dresses@2x.jpg in Resources */,
+				5EB791731C559C340024F4EF /* login.jpg in Resources */,
 				B65DA9021C16154D000D72AA /* pants@2x.jpg in Resources */,
 				E478BDD01C18D20E00BEBACD /* pinIt@3x.png in Resources */,
 				B65DA8EF1C16154D000D72AA /* accessories.jpg in Resources */,
@@ -579,6 +605,7 @@
 				B65DA91C1C161810000D72AA /* sportswear.jpg in Resources */,
 				B65DA9211C161810000D72AA /* sweaters@3x.jpg in Resources */,
 				B65DA90C1C16154D000D72AA /* test@3x.jpg in Resources */,
+				5EB791751C559C340024F4EF /* login@3x.jpg in Resources */,
 				B65DA90A1C16154D000D72AA /* test.jpg in Resources */,
 				B65DA91D1C161810000D72AA /* sportswear@2x.jpg in Resources */,
 				B65DA8FA1C16154D000D72AA /* intimates@3x.jpg in Resources */,
@@ -593,6 +620,7 @@
 				B65DA8FD1C16154D000D72AA /* jewelry@3x.jpg in Resources */,
 				B65DA9011C16154D000D72AA /* pants.jpg in Resources */,
 				B65DA8F81C16154D000D72AA /* intimates.jpg in Resources */,
+				5EB791741C559C340024F4EF /* login@2x.jpg in Resources */,
 				B65DA9041C16154D000D72AA /* shoes.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -676,6 +704,7 @@
 				B68016321C1B8FCF00B372B2 /* DiscoverCardViewController.m in Sources */,
 				B6D0922A1C17BB11009281AD /* PSCustomViewFromXib.m in Sources */,
 				5E3D7A6C1C39CA990054BCEF /* Product.m in Sources */,
+				5EB7916F1C5598E50024F4EF /* LoginViewController.m in Sources */,
 				5E3D7A7A1C39CD590054BCEF /* ProductTableViewCell.m in Sources */,
 				B6B095091C0BB4B300C1DEC9 /* AppDelegate.m in Sources */,
 				B6B0952A1C0BB85A00C1DEC9 /* WishlistViewController.m in Sources */,
@@ -683,6 +712,7 @@
 				B68016291C1B8F6200B372B2 /* CGPoint+Vector.m in Sources */,
 				5EB7916A1C5577B30024F4EF /* GodivaProductManager.m in Sources */,
 				B6B095061C0BB4B300C1DEC9 /* main.m in Sources */,
+				5EB791781C55A0E70024F4EF /* LoginComponentsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
