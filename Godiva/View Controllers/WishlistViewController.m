@@ -8,6 +8,7 @@
 
 #import "WishlistViewController.h"
 #import "ProductTableViewCell.h"
+#import "InitialTableViewCell.h"
 #import "Product.h"
 
 @interface WishlistViewController () {
@@ -56,25 +57,38 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return products.count;
+    NSInteger *count = products.count ? 1 : products.count;
+    return *count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ProductTableViewCell *cell = (ProductTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ProductTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
+    if (products.count > 0) {
+        // load wishlist cells
+        ProductTableViewCell *cell = (ProductTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        if (cell == nil) {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ProductTableViewCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        
+        Product *product = [products objectAtIndex:indexPath.row];
+        
+        // Load cell assets
+        cell.productLabel.text = product.productName;
+        cell.brandLabel.text = product.brandName;
+        cell.priceLabel.text = [NSString stringWithFormat:@"%0.2f", product.price];
+        cell.imageView.image = [UIImage imageWithData:product.image];
+        
+        return cell;
+        
+    } else {
+        // load initial cell
+        InitialTableViewCell *cell = (InitialTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"initialCell"];
+        if (cell == nil) {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"InitialTableViewCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        return cell;
     }
-    
-    Product *product = [products objectAtIndex:indexPath.row];
-    
-    // Load cell assets
-    cell.productLabel.text = product.productName;
-    cell.brandLabel.text = product.brandName;
-    cell.priceLabel.text = [NSString stringWithFormat:@"%0.2f", product.price];
-    cell.imageView.image = [UIImage imageWithData:product.image];
-    
-    return cell;
 }
 
 /*

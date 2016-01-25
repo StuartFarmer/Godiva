@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DF4831FBBBF4E3614BE409E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 442CF2F1A6E5AF0CDFB00C90 /* libPods.a */; };
+		5E0EBB4D1C5694E100390AEC /* InitialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0EBB4C1C5694E100390AEC /* InitialTableViewCell.m */; };
 		5E3D7A6C1C39CA990054BCEF /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3D7A6B1C39CA990054BCEF /* Product.m */; };
 		5E3D7A741C39CCB00054BCEF /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3D7A711C39CCB00054BCEF /* libc++.1.tbd */; };
 		5E3D7A751C39CCB00054BCEF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3D7A721C39CCB00054BCEF /* libc++.tbd */; };
@@ -20,7 +21,6 @@
 		5EB791731C559C340024F4EF /* login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EB791701C559C340024F4EF /* login.jpg */; };
 		5EB791741C559C340024F4EF /* login@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EB791711C559C340024F4EF /* login@2x.jpg */; };
 		5EB791751C559C340024F4EF /* login@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EB791721C559C340024F4EF /* login@3x.jpg */; };
-		5EB791781C55A0E70024F4EF /* LoginComponentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB791771C55A0E70024F4EF /* LoginComponentsViewController.m */; };
 		B65DA8EF1C16154D000D72AA /* accessories.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8CE1C16154D000D72AA /* accessories.jpg */; };
 		B65DA8F01C16154D000D72AA /* accessories@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */; };
 		B65DA8F11C16154D000D72AA /* accessories@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8D01C16154D000D72AA /* accessories@3x.jpg */; };
@@ -100,6 +100,8 @@
 /* Begin PBXFileReference section */
 		35C7E775BF720FE23A979DE8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		442CF2F1A6E5AF0CDFB00C90 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E0EBB4B1C5694E100390AEC /* InitialTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialTableViewCell.h; sourceTree = "<group>"; };
+		5E0EBB4C1C5694E100390AEC /* InitialTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialTableViewCell.m; sourceTree = "<group>"; };
 		5E3D7A6A1C39CA990054BCEF /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = Realm/Product.h; sourceTree = "<group>"; };
 		5E3D7A6B1C39CA990054BCEF /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = Realm/Product.m; sourceTree = "<group>"; };
 		5E3D7A711C39CCB00054BCEF /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
@@ -120,8 +122,6 @@
 		5EB791701C559C340024F4EF /* login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = login.jpg; path = "Image Assets/login.jpg"; sourceTree = "<group>"; };
 		5EB791711C559C340024F4EF /* login@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "login@2x.jpg"; path = "Image Assets/login@2x.jpg"; sourceTree = "<group>"; };
 		5EB791721C559C340024F4EF /* login@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "login@3x.jpg"; path = "Image Assets/login@3x.jpg"; sourceTree = "<group>"; };
-		5EB791761C55A0E70024F4EF /* LoginComponentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginComponentsViewController.h; sourceTree = "<group>"; };
-		5EB791771C55A0E70024F4EF /* LoginComponentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginComponentsViewController.m; sourceTree = "<group>"; };
 		B65DA8CE1C16154D000D72AA /* accessories.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = accessories.jpg; path = "Image Assets/accessories.jpg"; sourceTree = "<group>"; };
 		B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "accessories@2x.jpg"; path = "Image Assets/accessories@2x.jpg"; sourceTree = "<group>"; };
 		B65DA8D01C16154D000D72AA /* accessories@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "accessories@3x.jpg"; path = "Image Assets/accessories@3x.jpg"; sourceTree = "<group>"; };
@@ -258,8 +258,6 @@
 			children = (
 				5EB7916D1C5598E50024F4EF /* LoginViewController.h */,
 				5EB7916E1C5598E50024F4EF /* LoginViewController.m */,
-				5EB791761C55A0E70024F4EF /* LoginComponentsViewController.h */,
-				5EB791771C55A0E70024F4EF /* LoginComponentsViewController.m */,
 			);
 			name = "Login / Signup";
 			sourceTree = "<group>";
@@ -369,6 +367,8 @@
 				B6B095291C0BB85A00C1DEC9 /* WishlistViewController.m */,
 				5E3D7A781C39CD590054BCEF /* ProductTableViewCell.h */,
 				5E3D7A791C39CD590054BCEF /* ProductTableViewCell.m */,
+				5E0EBB4B1C5694E100390AEC /* InitialTableViewCell.h */,
+				5E0EBB4C1C5694E100390AEC /* InitialTableViewCell.m */,
 			);
 			name = Wishlist;
 			sourceTree = "<group>";
@@ -708,11 +708,11 @@
 				5E3D7A7A1C39CD590054BCEF /* ProductTableViewCell.m in Sources */,
 				B6B095091C0BB4B300C1DEC9 /* AppDelegate.m in Sources */,
 				B6B0952A1C0BB85A00C1DEC9 /* WishlistViewController.m in Sources */,
+				5E0EBB4D1C5694E100390AEC /* InitialTableViewCell.m in Sources */,
 				B6B095211C0BB82200C1DEC9 /* BrowseViewController.m in Sources */,
 				B68016291C1B8F6200B372B2 /* CGPoint+Vector.m in Sources */,
 				5EB7916A1C5577B30024F4EF /* GodivaProductManager.m in Sources */,
 				B6B095061C0BB4B300C1DEC9 /* main.m in Sources */,
-				5EB791781C55A0E70024F4EF /* LoginComponentsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
