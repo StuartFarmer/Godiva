@@ -67,7 +67,7 @@
 }
 
 - (IBAction)signInPressed:(id)sender {
-    NSURL *url = [NSURL URLWithString:@"http://godiva.logiclabs.systems/api/v1/"];
+    NSURL *url = [NSURL URLWithString:@"http://godiva.logiclabs.systems/api/v1/accounts/"];
     NSDictionary *params = @{@"data" : @{
                                      @"type" : @"account",
                                      @"attributes" : @{
@@ -94,6 +94,15 @@
     [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[jsonData length]] forHTTPHeaderField:@"Content-Length"];
     [request setHTTPBody: jsonData];
     
+    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSLog(@"Success!");
+        NSLog(@"%@", responseObject);
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+    }];
+    [op start];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
