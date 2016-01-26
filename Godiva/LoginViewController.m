@@ -33,6 +33,11 @@
     self.passwordTextField.delegate = self;
     self.passwordTextField.keyboardType = UIKeyboardTypeDefault;
     self.passwordTextField.secureTextEntry = YES;
+    
+    //self.signInButton.layer.borderColor = [UIColor blackColor].CGColor;
+    //self.signInButton.layer.borderWidth = 1.0f;
+    self.signInButton.layer.cornerRadius = 4.0f;
+    //self.signInButton.backgroundColor = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,6 +72,7 @@
 }
 
 - (IBAction)signInPressed:(id)sender {
+    // send a post request
     NSURL *url = [NSURL URLWithString:@"http://godiva.logiclabs.systems/api/v1/accounts/"];
     NSDictionary *params = @{@"data" : @{
                                      @"type" : @"account",
@@ -97,8 +103,10 @@
     AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     op.responseSerializer = [AFJSONResponseSerializer serializer];
     [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        // set the authentication token to keep the user logged in and save the user email
         NSLog(@"Success!");
-        NSLog(@"%@", responseObject);
+        NSString *authKey = responseObject[@"data"][@"attributes"][@"authentication_token"];
+        [userDefaults setObject:authKey forKey:@"authenticationToken"];
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         NSLog(@"%@", error);
     }];

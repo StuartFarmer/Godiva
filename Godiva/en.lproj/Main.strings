@@ -1,0 +1,63 @@
+
+/* Class = "UIButton"; normalTitle = "Sign Up / Log in"; ObjectID = "08m-9w-LPJ"; */
+"08m-9w-LPJ.normalTitle" = "Sign Up / Log in";
+
+/* Class = "UILabel"; text = "Tap to expand"; ObjectID = "2Sm-7A-DOS"; */
+"2Sm-7A-DOS.text" = "Tap to expand";
+
+/* Class = "UILabel"; text = "Label Label Label Label Label Label Label Label Label Label"; ObjectID = "50x-Nh-kJD"; */
+"50x-Nh-kJD.text" = "Label Label Label Label Label Label Label Label Label Label";
+
+/* Class = "UIButton"; normalTitle = "More Info"; ObjectID = "6Xd-hl-eK9"; */
+"6Xd-hl-eK9.normalTitle" = "More Info";
+
+/* Class = "UILabel"; text = "Some price"; ObjectID = "7xQ-82-AXF"; */
+"7xQ-82-AXF.text" = "Some price";
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "Pm5-iF-26c"; */
+"Pm5-iF-26c.placeholder" = "password";
+
+/* Class = "UILabel"; text = "My Wishlist"; ObjectID = "Sex-CC-D2c"; */
+"Sex-CC-D2c.text" = "My Wishlist";
+
+/* Class = "UINavigationItem"; title = "Discover"; ObjectID = "Tu4-nk-zY2"; */
+"Tu4-nk-zY2.title" = "Discover";
+
+/* Class = "UITabBarItem"; title = "Item 2"; ObjectID = "VnB-s5-2Me"; */
+"VnB-s5-2Me.title" = "Item 2";
+
+/* Class = "UILabel"; text = "Some brand"; ObjectID = "Wf2-A2-k0J"; */
+"Wf2-A2-k0J.text" = "Some brand";
+
+/* Class = "UITabBarItem"; title = "Item 1"; ObjectID = "eQs-fM-IWH"; */
+"eQs-fM-IWH.title" = "Item 1";
+
+/* Class = "UITextField"; placeholder = "email address"; ObjectID = "hYz-eF-Pzs"; */
+"hYz-eF-Pzs.placeholder" = "email address";
+
+/* Class = "UILabel"; text = "Clothing"; ObjectID = "ieg-sc-1va"; */
+"ieg-sc-1va.text" = "Clothing";
+
+/* Class = "UILabel"; text = "Shop clothing styles that learn from you."; ObjectID = "o5K-qo-HOE"; */
+"o5K-qo-HOE.text" = "Shop clothing styles that learn from you.";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "pGv-Y9-gKv"; */
+"pGv-Y9-gKv.title" = "Item";
+
+/* Class = "UINavigationItem"; title = "Wishlist"; ObjectID = "sS2-38-Hkx"; */
+"sS2-38-Hkx.title" = "Wishlist";
+
+/* Class = "UILabel"; text = "™"; ObjectID = "tuM-rs-Vcw"; */
+"tuM-rs-Vcw.text" = "™";
+
+/* Class = "UILabel"; text = "Godiva"; ObjectID = "u8V-Zd-HBb"; */
+"u8V-Zd-HBb.text" = "Godiva";
+
+/* Class = "UILabel"; text = "Swipe right on products in the Discovery tab to save to your wishlist. View saved items here and tap on them to view more information."; ObjectID = "vbx-1C-jxs"; */
+"vbx-1C-jxs.text" = "Swipe right on products in the Discovery tab to save to your wishlist. View saved items here and tap on them to view more information.";
+
+/* Class = "UINavigationItem"; title = "Browse"; ObjectID = "wQT-yi-cPw"; */
+"wQT-yi-cPw.title" = "Browse";
+
+/* Class = "UILabel"; text = "H & M Super Duper Black Scarf"; ObjectID = "zAG-VC-NV7"; */
+"zAG-VC-NV7.text" = "H & M Super Duper Black Scarf";

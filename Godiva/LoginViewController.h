@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AFNetworking/AFNetworking.h>
+@import QuartzCore;
 
 @interface LoginViewController : UIViewController
 

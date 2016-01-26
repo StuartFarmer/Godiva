@@ -40,14 +40,11 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        if (![userDefaults stringForKey:@"authenticationToken"]) {
-            // Log in
-            LoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-            [self presentViewController:loginViewController animated:YES completion:nil];
-        }
-    });
+    if (![userDefaults stringForKey:@"authenticationToken"]) {
+        // Log in
+        LoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        [self presentViewController:loginViewController animated:YES completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

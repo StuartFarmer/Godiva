@@ -57,8 +57,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger *count = products.count ? 1 : products.count;
-    return *count;
+    return products.count ? products.count : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -82,7 +81,9 @@
         
     } else {
         // load initial cell
-        InitialTableViewCell *cell = (InitialTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"initialCell"];
+        [tableView registerClass:[InitialTableViewCell class] forCellReuseIdentifier:@"initialCell"];
+
+        InitialTableViewCell *cell = (InitialTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"initialCell" forIndexPath:indexPath];
         if (cell == nil) {
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"InitialTableViewCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];

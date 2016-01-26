@@ -20,16 +20,19 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - JSONAPI (1.0.6)
   - Realm (0.97.0):
     - Realm/Headers (= 0.97.0)
   - Realm/Headers (0.97.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - JSONAPI (~> 1.0.6)
   - Realm
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  JSONAPI: 9b32b11cb196ede8bf22489879fb4003c3e5e8f3
   Realm: b498a6fb9d288b171ff98d0e2d4384c295be8990
 
 COCOAPODS: 0.39.0
