@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -90,7 +92,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dcE-Gy-Rp0" id="9N7-Iw-dsL">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wf2-A2-k0J">
@@ -163,7 +165,7 @@
                                         <rect key="frame" x="0.0" y="228" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MNK-90-0Nv" id="2QE-jE-cSR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbx-1C-jxs">
@@ -287,13 +289,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08m-9w-LPJ">
-                                <rect key="frame" x="20" y="494" width="335" height="30"/>
+                                <rect key="frame" x="20" y="494" width="166" height="40"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="N1v-el-Hkm"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="20"/>
-                                <state key="normal" title="sign up - log in">
+                                <state key="normal" title="log in">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" red="0.75686274509803919" green="0.75686274509803919" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -301,34 +300,67 @@
                                     <action selector="signInPressed:" destination="ebb-d8-YfJ" eventType="touchUpInside" id="PoD-pF-fbw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syB-JW-WYR">
+                                <rect key="frame" x="194" y="494" width="161" height="40"/>
+                                <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="161" id="AaX-1a-lpX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="20"/>
+                                <state key="normal" title="sign up">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="AaX-1a-lpX"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="signUpPressed:" destination="ebb-d8-YfJ" eventType="touchUpInside" id="Ip8-6E-weI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.98691799496644295" green="0.99011640100671139" blue="0.98191065436241609" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="o5K-qo-HOE" firstAttribute="leading" secondItem="hYz-eF-Pzs" secondAttribute="leading" id="3QY-Di-d0E"/>
+                            <constraint firstItem="syB-JW-WYR" firstAttribute="leading" secondItem="08m-9w-LPJ" secondAttribute="trailing" constant="8" symbolic="YES" id="86n-CY-sOE"/>
+                            <constraint firstItem="syB-JW-WYR" firstAttribute="baseline" secondItem="08m-9w-LPJ" secondAttribute="firstBaseline" id="9Dx-Pj-OxP"/>
+                            <constraint firstItem="08m-9w-LPJ" firstAttribute="baseline" secondItem="syB-JW-WYR" secondAttribute="firstBaseline" id="9fZ-1L-Qao"/>
                             <constraint firstItem="u8V-Zd-HBb" firstAttribute="leading" secondItem="xkN-72-a7d" secondAttribute="leadingMargin" id="Bo7-ie-R8R"/>
                             <constraint firstItem="Z5e-A7-jtL" firstAttribute="top" secondItem="08m-9w-LPJ" secondAttribute="bottom" constant="204" id="D4T-J1-Iui"/>
                             <constraint firstItem="u8V-Zd-HBb" firstAttribute="trailing" secondItem="o5K-qo-HOE" secondAttribute="trailing" id="DBr-KX-qet"/>
+                            <constraint firstItem="08m-9w-LPJ" firstAttribute="top" secondItem="syB-JW-WYR" secondAttribute="top" id="E8A-wM-Ud2"/>
                             <constraint firstItem="o5K-qo-HOE" firstAttribute="leading" secondItem="u8V-Zd-HBb" secondAttribute="leading" id="FOq-Tk-cew"/>
-                            <constraint firstItem="Pm5-iF-26c" firstAttribute="leading" secondItem="08m-9w-LPJ" secondAttribute="leading" id="GPh-cg-DkQ"/>
                             <constraint firstItem="hYz-eF-Pzs" firstAttribute="top" secondItem="o5K-qo-HOE" secondAttribute="bottom" constant="8" symbolic="YES" id="HEn-rR-4bR"/>
                             <constraint firstItem="uDt-7h-I0F" firstAttribute="leading" secondItem="xkN-72-a7d" secondAttribute="leading" id="HPG-dB-AkD"/>
-                            <constraint firstItem="Pm5-iF-26c" firstAttribute="trailing" secondItem="08m-9w-LPJ" secondAttribute="trailing" id="HdA-d9-JHA"/>
                             <constraint firstItem="o5K-qo-HOE" firstAttribute="trailing" secondItem="hYz-eF-Pzs" secondAttribute="trailing" id="IAO-qI-KLf"/>
                             <constraint firstItem="Pm5-iF-26c" firstAttribute="trailing" secondItem="hYz-eF-Pzs" secondAttribute="trailing" id="P67-Yc-71M"/>
+                            <constraint firstItem="08m-9w-LPJ" firstAttribute="leading" secondItem="xkN-72-a7d" secondAttribute="leadingMargin" id="Rd9-Hd-kny"/>
                             <constraint firstItem="Pm5-iF-26c" firstAttribute="top" secondItem="hYz-eF-Pzs" secondAttribute="bottom" constant="8" symbolic="YES" id="Sw7-nq-oUq"/>
                             <constraint firstItem="o5K-qo-HOE" firstAttribute="centerX" secondItem="uDt-7h-I0F" secondAttribute="centerX" id="TBL-mq-9yP"/>
+                            <constraint firstItem="08m-9w-LPJ" firstAttribute="top" secondItem="Pm5-iF-26c" secondAttribute="bottom" constant="8" symbolic="YES" id="TR7-XA-D9u"/>
+                            <constraint firstItem="o5K-qo-HOE" firstAttribute="top" secondItem="uDt-7h-I0F" secondAttribute="bottom" constant="8" id="Uwi-OC-zDj"/>
                             <constraint firstItem="Z5e-A7-jtL" firstAttribute="top" secondItem="uDt-7h-I0F" secondAttribute="bottom" constant="322" id="XIQ-nK-sv3"/>
+                            <constraint firstItem="Z5e-A7-jtL" firstAttribute="top" secondItem="08m-9w-LPJ" secondAttribute="bottom" constant="133" id="YBq-ic-oP7"/>
                             <constraint firstAttribute="trailing" secondItem="uDt-7h-I0F" secondAttribute="trailing" id="Zma-4I-PdQ"/>
+                            <constraint firstItem="syB-JW-WYR" firstAttribute="trailing" secondItem="Pm5-iF-26c" secondAttribute="trailing" id="h3f-eg-T3d"/>
+                            <constraint firstItem="uDt-7h-I0F" firstAttribute="top" secondItem="u8V-Zd-HBb" secondAttribute="bottom" constant="8" id="hyd-aT-Kon"/>
                             <constraint firstItem="u8V-Zd-HBb" firstAttribute="top" secondItem="FWR-8p-zUH" secondAttribute="bottom" id="iiZ-Kl-qn0"/>
                             <constraint firstItem="o5K-qo-HOE" firstAttribute="top" secondItem="uDt-7h-I0F" secondAttribute="bottom" constant="8" symbolic="YES" id="imD-d6-4CS"/>
+                            <constraint firstItem="08m-9w-LPJ" firstAttribute="leading" secondItem="Pm5-iF-26c" secondAttribute="leading" id="lOb-2l-SLk"/>
+                            <constraint firstItem="08m-9w-LPJ" firstAttribute="width" secondItem="syB-JW-WYR" secondAttribute="width" id="pi9-cP-dnC"/>
                             <constraint firstItem="uDt-7h-I0F" firstAttribute="top" secondItem="u8V-Zd-HBb" secondAttribute="bottom" constant="8" symbolic="YES" id="t6t-SE-ASy"/>
                             <constraint firstItem="Pm5-iF-26c" firstAttribute="leading" secondItem="hYz-eF-Pzs" secondAttribute="leading" id="vCV-96-FGa"/>
-                            <constraint firstItem="08m-9w-LPJ" firstAttribute="top" secondItem="Pm5-iF-26c" secondAttribute="bottom" constant="8" symbolic="YES" id="wL8-et-zfr"/>
+                            <constraint firstItem="08m-9w-LPJ" firstAttribute="height" secondItem="syB-JW-WYR" secondAttribute="height" id="yw4-Gz-DVf"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="t6t-SE-ASy"/>
+                                <exclude reference="imD-d6-4CS"/>
                                 <exclude reference="D4T-J1-Iui"/>
                                 <exclude reference="XIQ-nK-sv3"/>
+                                <exclude reference="YBq-ic-oP7"/>
                             </mask>
                         </variation>
                     </view>
@@ -339,6 +371,7 @@
                         <outlet property="imageView" destination="uDt-7h-I0F" id="9S9-9Y-kcD"/>
                         <outlet property="passwordTextField" destination="Pm5-iF-26c" id="D4s-9D-R92"/>
                         <outlet property="signInButton" destination="08m-9w-LPJ" id="RQB-Cn-UUG"/>
+                        <outlet property="signUpButton" destination="syB-JW-WYR" id="BUH-Ae-Az6"/>
                         <outlet property="subtitleLabel" destination="o5K-qo-HOE" id="zVg-Kk-J4H"/>
                         <outlet property="titleLabel" destination="u8V-Zd-HBb" id="lXa-H5-JvA"/>
                     </connections>
@@ -376,10 +409,10 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="mmI-AA-KKX" customClass="ClothingTypeCollectionViewCell">
-                                        <rect key="frame" x="96.5" y="10" width="182.5" height="200"/>
+                                        <rect key="frame" x="96" y="10" width="183" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="182.5" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="183" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="vel-eN-0Yp">
@@ -544,7 +577,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RBo-qO-0ce" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="958.5" y="1012"/>
+            <point key="canvasLocation" x="941.5" y="1012"/>
         </scene>
     </scenes>
     <resources>
