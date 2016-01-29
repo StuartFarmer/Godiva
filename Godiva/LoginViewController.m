@@ -15,7 +15,6 @@
 
 @interface LoginViewController () <UITextFieldDelegate> {
     NSUserDefaults *userDefaults;
-    NSNotificationCenter *notificationCenter;
     BOOL engaged;
     UITextField *lastTextField;
 }
@@ -28,16 +27,6 @@
     [super viewDidLoad];
 
     userDefaults = [NSUserDefaults standardUserDefaults];
-    notificationCenter = [NSNotificationCenter defaultCenter];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -50,17 +39,6 @@
     //self.signInButton.layer.borderColor = [UIColor blackColor].CGColor;
     //self.signInButton.layer.borderWidth = 1.0f;
     self.signInButton.layer.cornerRadius = 4.0f;
-    self.view.window.backgroundColor = [UIColor whiteColor];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    NSLog(@"Keyboard will hide");
-    NSLog(@"%f", self.view.frame.origin.y);
-}
-
-- (void)keyboardWillShow:(NSNotification *)notification {
-    NSLog(@"Keyboard will show");
-    NSLog(@"%f", self.view.frame.origin.y);
 }
 
 - (void)didReceiveMemoryWarning {
