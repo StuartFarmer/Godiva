@@ -15,6 +15,9 @@
 
 @interface LoginViewController () <UITextFieldDelegate> {
     NSUserDefaults *userDefaults;
+    NSNotificationCenter *notificationCenter;
+    BOOL engaged;
+    UITextField *lastTextField;
 }
 
 @end
@@ -25,6 +28,16 @@
     [super viewDidLoad];
 
     userDefaults = [NSUserDefaults standardUserDefaults];
+    notificationCenter = [NSNotificationCenter defaultCenter];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -37,7 +50,17 @@
     //self.signInButton.layer.borderColor = [UIColor blackColor].CGColor;
     //self.signInButton.layer.borderWidth = 1.0f;
     self.signInButton.layer.cornerRadius = 4.0f;
-    //self.signInButton.backgroundColor = nil;
+    self.view.window.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSLog(@"Keyboard will hide");
+    NSLog(@"%f", self.view.frame.origin.y);
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSLog(@"Keyboard will show");
+    NSLog(@"%f", self.view.frame.origin.y);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,7 +68,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma UITextFieldDelegate Methods
 - (int)keyboardHeight {
     int frameHeight = (int)self.view.frame.size.height;
     switch (frameHeight) {
@@ -54,15 +76,15 @@
             break;
         case 568:
             // iPhone 5
-            return 180;
+            return 220;
             break;
         case 667:
             // iPhone 6
-            return 120;
+            return 200;
             break;
         case 736:
             // iPhone 6+
-            return 60;
+            return 230;
             break;
         default:
             return 0;
@@ -70,12 +92,28 @@
     }
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    // move everything up so the keyboard doesn't block anything
+- (void)animateViewUp {
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
     [UIView animateWithDuration:0.3 animations:^{
         // check the height of the frame to determine how much to move the view
         self.view.center = CGPointMake(self.view.center.x, self.view.center.y-[self keyboardHeight]);
     }];
+}
+
+- (void)animateViewDown {
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    [UIView animateWithDuration:0.15
+                     animations:^{
+                         self.view.center = CGPointMake(self.view.center.x, self.view.center.y+[self keyboardHeight]);
+                     }];
+}
+
+#pragma UITextFieldDelegate Methods
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    // move up
+    if (!engaged) {
+        [self animateViewUp];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -88,19 +126,33 @@
     return YES;
 }
 
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    // set the engaged flag so if the email address is the first responder, it won't trigger move down animations
+    engaged = [self.emailAddressTextField isFirstResponder] ? true : false;
+    return YES;
+}
+
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     // move everything down
-    [UIView animateWithDuration:0.2 animations:^{
-        self.view.center = CGPointMake(self.view.center.x, self.view.center.y+[self keyboardHeight]);
-    }];
+    if (!engaged) {
+        [self animateViewDown];
+    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     // test if the user touches outside of the text boxes and then hide the keyboard
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:self.view];
+    
+    if (!(CGRectContainsPoint(self.passwordTextField.frame, touchLocation) && (CGRectContainsPoint(self.emailAddressTextField.frame, touchLocation)))) {
+        [self.passwordTextField resignFirstResponder];
+        [self.emailAddressTextField resignFirstResponder];
+    }
 }
 
 - (IBAction)signInPressed:(id)sender {
     // setup the sessions API endpoint to test if there is already a user with the user name and password
+    
     NSURL *sessionsURL = [NSURL URLWithString:@"http://godiva.logiclabs.systems/api/v1/sessions/"];
     NSDictionary *sessionsParams = @{@"data" : @{
                                              @"type" : @"users",
