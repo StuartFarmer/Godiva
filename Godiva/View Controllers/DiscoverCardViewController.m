@@ -63,6 +63,8 @@
 }
 
 - (void)resetCard:(NSNotification *)notification {
+    NSLog(@"Resetting card...");
+    self.view.layer.cornerRadius = 8.0f;
     self.view.backgroundColor = [UIColor whiteColor];
     self.view.alpha = 1.0f;
     self.view.layer.borderWidth = 0;

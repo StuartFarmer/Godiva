@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GodivaProductManager.h"
+#import "GodivaCardHelper.h"
 
 @interface DiscoverViewController : UIViewController
 
