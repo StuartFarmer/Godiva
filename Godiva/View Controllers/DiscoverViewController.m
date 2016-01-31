@@ -10,6 +10,8 @@
 #import "CGPoint+Vector.h"
 #import "UIColor+Godiva.h"
 
+#import "ProductResource.h"
+
 @import SafariServices;
 
 #define VIEWWIDTH 80
@@ -37,6 +39,7 @@
     
     GodivaProductManager *productManager;
     GodivaCardHelper *cardHelper;
+
 }
 
 @end
@@ -57,6 +60,7 @@
     [notificationCenter addObserver:self selector:@selector(passButtonPressed:) name:@"passButtonPressed" object:nil];
     
     userDefaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"Auth Token: %@", [userDefaults stringForKey:@"authenticationToken"]);
     
     // set up card helper for helper methods regarding positioning
     cardHelper = [GodivaCardHelper sharedInstance];
