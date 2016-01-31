@@ -37,6 +37,7 @@
     // Initiate user defaults
     [NSUserDefaults standardUserDefaults];
     
+    self.view.layer.cornerRadius = 8.0f;
     initialPoint = self.view.center;
 }
 

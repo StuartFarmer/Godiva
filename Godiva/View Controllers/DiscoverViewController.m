@@ -8,6 +8,7 @@
 
 #import "DiscoverViewController.h"
 #import "CGPoint+Vector.h"
+#import "UIColor+Godiva.h"
 
 @import SafariServices;
 
@@ -33,6 +34,7 @@
     NSUserDefaults *userDefaults;
     
     GodivaProductManager *productManager;
+    
 }
 
 @end
@@ -41,13 +43,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Set rightVector and leftVector for comparing angles against
+    
+    // pass
     rightVector.x = -1;
     rightVector.y = 0;
     
+    // save
     leftVector.x = 1;
     leftVector.y = 0;
     
+    // question
     upVector.x = 0;
     upVector.y = 1;
     
@@ -63,6 +70,7 @@
     
     userDefaults = [NSUserDefaults standardUserDefaults];
     
+    // start the product manager for updating info
     productManager = [GodivaProductManager sharedInstance];
 }
 
@@ -91,24 +99,24 @@
     swipeView.center = CGPointAdd(swipeView.center, difference);
     
     // Color UI elements if view is within valid zone
-    if ([self viewIsWithinValidZone:swipeView]) {
+    if ([self viewIsPointingTowards:swipeView Vector:leftVector]) {
         [notificationCenter postNotificationName:@"viewIsWithinValidZone" object:nil];
         [UIView animateWithDuration:0.2 animations:^{
-            self.view.backgroundColor = [UIColor colorWithRed:178.0f/255.0f green:198.0f/255.0f blue:186.0f/255.0f alpha:1];
+            self.view.backgroundColor = [UIColor godivaGreen];
         }];
         
-    } else if ([self viewIsWithinInValidZone:swipeView]) {
+    } else if ([self viewIsPointingTowards:swipeView Vector:rightVector]) {
         [UIView animateWithDuration:0.2 animations:^{
-            self.view.backgroundColor = [UIColor colorWithRed:197.0f/255.0f green:179.0f/255.0f blue:177.0f/255.0f alpha:1];
+            self.view.backgroundColor = [UIColor godivaRed];
         }];
-    } else if ([self viewIsWithinInfoZone:swipeView]) {
+    } else if ([self viewIsPointingTowards:swipeView Vector:upVector]) {
         [UIView animateWithDuration:0.2 animations:^{
-            self.view.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:236.0f/255.0f blue:241.0f/255.0f alpha:1];
+            self.view.backgroundColor = [UIColor godivaBlue];
         }];
     } else {
         [notificationCenter postNotificationName:@"viewIsNotWithinValidZone" object:nil];
         [UIView animateWithDuration:0.2 animations:^{
-            self.view.backgroundColor = [UIColor colorWithRed:239.0f/255.0f green:239.0f/255.0f blue:244.0f/255.0f alpha:1];
+            self.view.backgroundColor = [UIColor godivaWhite];
         }];
     }
     
@@ -118,23 +126,7 @@
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     // Check if the view is in valid zone
-    
-    switch ([self viewStateInValidZone:swipeView]) {
-        case 0:
-            [notificationCenter postNotificationName:@"viewDroppedNotWithinValidZone" object:nil];
-            break;
-        case 1:
-            swipeView.center = startingPoint;
-            swipeView.alpha = 1;
-            swipeView.backgroundColor = [UIColor whiteColor];
-            break;
-        case 2:
-            [notificationCenter postNotificationName:@"viewDroppedWithinValidZone" object:nil];
-        default:
-            break;
-    }
-    
-    if ([self viewIsWithinValidZone:swipeView] || [self viewIsWithinInValidZone:swipeView]) {
+    if ([self viewIsPointingTowards:swipeView Vector:leftVector] || [self viewIsPointingTowards:swipeView Vector:rightVector]) {
         // Animate view away if it needs to
         [self.view setUserInteractionEnabled:NO];
         [UIView animateWithDuration:0.3 animations:^{
@@ -154,7 +146,7 @@
             [self.view setUserInteractionEnabled:YES];
         }];
     } else {
-        if ([self viewIsWithinInfoZone:swipeView]) {
+        if ([self viewIsPointingTowards:swipeView Vector:upVector]) {
             // show the URL in a safari modal
             SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"http://google.com"]];
             [self presentViewController:safariViewController animated:YES completion:nil];
@@ -171,49 +163,14 @@
     
     [UIView animateWithDuration:0.2 animations:^{
         swipeView.alpha = 1;
-        self.view.backgroundColor = [UIColor colorWithRed:239.0f/255.0f green:239.0f/255.0f blue:244.0f/255.0f alpha:1];
+        self.view.backgroundColor = [UIColor godivaWhite];
     }];
 }
 
--(int)viewStateInValidZone:(UIView *)view {
+-(BOOL)viewIsPointingTowards:(UIView *)view Vector:(CGPoint)vector {
     // Calculate the current angle
     CGPoint distanceFromStartingPoint = CGPointSubtract(startingPoint, view.center);
-    CGFloat angle = CGPointGetAngleBetween(distanceFromStartingPoint, rightVector) * (180 / M_PI);
-    
-    // card is in proper angle and proper distance
-    if (angle < ANGLETHRESHOLD && CGPointGetDistance(startingPoint, view.center) > DISTANCETHRESHOLD) return 2;
-    
-    // card is not in proper distance
-    else if (CGPointGetDistance(startingPoint, view.center) < DISTANCETHRESHOLD) return 1;
-
-    // card is in proper distance but wrong angle
-    else return 0;
-}
-
--(BOOL)viewIsWithinValidZone:(UIView *)view {
-    // Calculate the current angle
-    CGPoint distanceFromStartingPoint = CGPointSubtract(startingPoint, view.center);
-    CGFloat angle = CGPointGetAngleBetween(distanceFromStartingPoint, rightVector) * (180 / M_PI);
-    
-    // Color view appropriately if it is within the 'good' zone
-    if (angle < ANGLETHRESHOLD && CGPointGetDistance(startingPoint, view.center) > DISTANCETHRESHOLD) return true;
-    else return false;
-}
-
--(BOOL)viewIsWithinInValidZone:(UIView *)view {
-    // Calculate the current angle
-    CGPoint distanceFromStartingPoint = CGPointSubtract(startingPoint, view.center);
-    CGFloat angle = CGPointGetAngleBetween(distanceFromStartingPoint, leftVector) * (180 / M_PI);
-    
-    // Color view appropriately if it is within the 'good' zone
-    if (angle < ANGLETHRESHOLD && CGPointGetDistance(startingPoint, view.center) > DISTANCETHRESHOLD) return true;
-    else return false;
-}
-
--(BOOL)viewIsWithinInfoZone:(UIView *)view {
-    // Calculate the current angle
-    CGPoint distanceFromStartingPoint = CGPointSubtract(startingPoint, view.center);
-    CGFloat angle = CGPointGetAngleBetween(distanceFromStartingPoint, upVector) * (180 / M_PI);
+    CGFloat angle = CGPointGetAngleBetween(distanceFromStartingPoint, vector) * (180 / M_PI);
     
     // Color view appropriately if it is within the 'good' zone
     if (angle < ANGLETHRESHOLD && CGPointGetDistance(startingPoint, view.center) > DISTANCETHRESHOLD) return true;
@@ -226,15 +183,66 @@
 }
 
 - (void)likeButtonPressed:(NSNotification *)notification {
-
+    [self.view setUserInteractionEnabled:NO];
+    [UIView animateWithDuration:0.2 animations:^{
+        swipeView.center = CGPointMake(swipeView.center.x+1000, swipeView.center.y);
+        self.view.backgroundColor = [UIColor godivaGreen];
+        swipeView.alpha = 0;
+    } completion:^(BOOL finished) {
+        // Reset the view
+        [UIView animateWithDuration:0.2 animations:^{
+            self.view.backgroundColor = [UIColor godivaWhite];
+        }];
+        swipeView.center = CGPointMake(swipeView.center.x-1000, swipeView.center.y);
+        swipeView.backgroundColor = [UIColor whiteColor];
+        
+        [notificationCenter postNotificationName:@"resetCard" object:nil];
+        swipeView.alpha = 1;
+        [self.view setUserInteractionEnabled:YES];
+    }];
 }
 
 - (void)questionButtonPressed:(NSNotification *)notification {
-    
+    [self.view setUserInteractionEnabled:NO];
+    [UIView animateWithDuration:0.2 animations:^{
+        // push view up and color
+        swipeView.center = CGPointMake(swipeView.center.x, swipeView.center.y-200);
+        self.view.backgroundColor = [UIColor godivaBlue];
+
+    } completion:^(BOOL finished) {
+        // Reset the view
+        [UIView animateWithDuration:0.2 animations:^{
+            // push view down and decolor
+            swipeView.center = CGPointMake(swipeView.center.x, swipeView.center.y+200);
+            self.view.backgroundColor = [UIColor godivaWhite];
+        }];
+        // show the URL in a safari modal
+        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"http://google.com"]];
+        [self presentViewController:safariViewController animated:YES completion:nil];
+        
+        [self.view setUserInteractionEnabled:YES];
+    }];
 }
 
 - (void)passButtonPressed:(NSNotification *)notification {
-    
+    [self.view setUserInteractionEnabled:NO];
+    [UIView animateWithDuration:0.2 animations:^{
+        swipeView.center = CGPointMake(swipeView.center.x-1000, swipeView.center.y);
+        self.view.backgroundColor = [UIColor godivaRed];
+        swipeView.alpha = 0;
+    } completion:^(BOOL finished) {
+        // Reset the view
+        // Reset the view
+        [UIView animateWithDuration:0.2 animations:^{
+            self.view.backgroundColor = [UIColor godivaWhite];
+        }];
+        swipeView.center = CGPointMake(swipeView.center.x+1000, swipeView.center.y);
+        swipeView.backgroundColor = [UIColor whiteColor];
+        
+        [notificationCenter postNotificationName:@"resetCard" object:nil];
+        swipeView.alpha = 1;
+        [self.view setUserInteractionEnabled:YES];
+    }];
 }
 
 @end

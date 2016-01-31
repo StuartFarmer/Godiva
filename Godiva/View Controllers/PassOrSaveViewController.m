@@ -20,6 +20,8 @@
     [self.passButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
     [self.questionButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
     [self.likeButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    
+    self.view.layer.cornerRadius = 8.0f;
 }
 
 - (void)didReceiveMemoryWarning {

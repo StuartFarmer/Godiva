@@ -30,6 +30,7 @@
 		5EC6D8371C5DB171007FB783 /* pass.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6D8341C5DB171007FB783 /* pass.png */; };
 		5EC6D8381C5DB171007FB783 /* pass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6D8351C5DB171007FB783 /* pass@2x.png */; };
 		5EC6D8391C5DB171007FB783 /* pass@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6D8361C5DB171007FB783 /* pass@3x.png */; };
+		5EC6D83C1C5E4A2D007FB783 /* UIColor+Godiva.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC6D83B1C5E4A2D007FB783 /* UIColor+Godiva.m */; };
 		B65DA8EF1C16154D000D72AA /* accessories.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8CE1C16154D000D72AA /* accessories.jpg */; };
 		B65DA8F01C16154D000D72AA /* accessories@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */; };
 		B65DA8F11C16154D000D72AA /* accessories@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8D01C16154D000D72AA /* accessories@3x.jpg */; };
@@ -140,6 +141,8 @@
 		5EC6D8341C5DB171007FB783 /* pass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pass.png; path = "Image Assets/pass.png"; sourceTree = "<group>"; };
 		5EC6D8351C5DB171007FB783 /* pass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pass@2x.png"; path = "Image Assets/pass@2x.png"; sourceTree = "<group>"; };
 		5EC6D8361C5DB171007FB783 /* pass@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pass@3x.png"; path = "Image Assets/pass@3x.png"; sourceTree = "<group>"; };
+		5EC6D83A1C5E4A2D007FB783 /* UIColor+Godiva.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Godiva.h"; sourceTree = "<group>"; };
+		5EC6D83B1C5E4A2D007FB783 /* UIColor+Godiva.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Godiva.m"; sourceTree = "<group>"; };
 		B65DA8CE1C16154D000D72AA /* accessories.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = accessories.jpg; path = "Image Assets/accessories.jpg"; sourceTree = "<group>"; };
 		B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "accessories@2x.jpg"; path = "Image Assets/accessories@2x.jpg"; sourceTree = "<group>"; };
 		B65DA8D01C16154D000D72AA /* accessories@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "accessories@3x.jpg"; path = "Image Assets/accessories@3x.jpg"; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 				5EB791691C5577B30024F4EF /* GodivaProductManager.m */,
 				5E3D7A6A1C39CA990054BCEF /* Product.h */,
 				5E3D7A6B1C39CA990054BCEF /* Product.m */,
+				5EC6D83A1C5E4A2D007FB783 /* UIColor+Godiva.h */,
+				5EC6D83B1C5E4A2D007FB783 /* UIColor+Godiva.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -745,6 +750,7 @@
 				B6B095091C0BB4B300C1DEC9 /* AppDelegate.m in Sources */,
 				B6B0952A1C0BB85A00C1DEC9 /* WishlistViewController.m in Sources */,
 				5E0EBB4D1C5694E100390AEC /* InitialTableViewCell.m in Sources */,
+				5EC6D83C1C5E4A2D007FB783 /* UIColor+Godiva.m in Sources */,
 				B6B095211C0BB82200C1DEC9 /* BrowseViewController.m in Sources */,
 				B68016291C1B8F6200B372B2 /* CGPoint+Vector.m in Sources */,
 				5EB7916A1C5577B30024F4EF /* GodivaProductManager.m in Sources */,

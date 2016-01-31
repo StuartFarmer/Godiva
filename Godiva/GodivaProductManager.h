@@ -18,6 +18,8 @@
 
 +(GodivaProductManager *)sharedInstance;
 
++(Product *)currentProduct;
+
 -(void)update;
 
 @end
