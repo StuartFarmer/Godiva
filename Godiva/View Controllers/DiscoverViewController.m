@@ -9,6 +9,8 @@
 #import "DiscoverViewController.h"
 #import "CGPoint+Vector.h"
 
+@import SafariServices;
+
 #define VIEWWIDTH 80
 #define VIEWHEIGHT 20
 
@@ -24,6 +26,7 @@
     CGPoint currentPoint;
     CGPoint rightVector;
     CGPoint leftVector;
+    CGPoint upVector;
     float totalDistance;
     
     NSNotificationCenter *notificationCenter;
@@ -45,12 +48,18 @@
     leftVector.x = 1;
     leftVector.y = 0;
     
+    upVector.x = 0;
+    upVector.y = 1;
+    
     // Setup swipe view
     swipeView = self.cardView;
     
     // Start notifications & defaults
     notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(discoverCardReset:) name:@"discoverCardReset" object:nil];
+    [notificationCenter addObserver:self selector:@selector(likeButtonPressed:) name:@"likeButtonPressed" object:nil];
+    [notificationCenter addObserver:self selector:@selector(questionButtonPressed:) name:@"questionButtonPressed" object:nil];
+    [notificationCenter addObserver:self selector:@selector(passButtonPressed:) name:@"passButtonPressed" object:nil];
     
     userDefaults = [NSUserDefaults standardUserDefaults];
     
@@ -91,6 +100,10 @@
     } else if ([self viewIsWithinInValidZone:swipeView]) {
         [UIView animateWithDuration:0.2 animations:^{
             self.view.backgroundColor = [UIColor colorWithRed:197.0f/255.0f green:179.0f/255.0f blue:177.0f/255.0f alpha:1];
+        }];
+    } else if ([self viewIsWithinInfoZone:swipeView]) {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.view.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:236.0f/255.0f blue:241.0f/255.0f alpha:1];
         }];
     } else {
         [notificationCenter postNotificationName:@"viewIsNotWithinValidZone" object:nil];
@@ -141,6 +154,12 @@
             [self.view setUserInteractionEnabled:YES];
         }];
     } else {
+        if ([self viewIsWithinInfoZone:swipeView]) {
+            // show the URL in a safari modal
+            SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"http://google.com"]];
+            [self presentViewController:safariViewController animated:YES completion:nil];
+        }
+        
         [self.view setUserInteractionEnabled:NO];
         [UIView animateWithDuration:0.2 animations:^{
             swipeView.center = startingPoint;
@@ -191,7 +210,30 @@
     else return false;
 }
 
+-(BOOL)viewIsWithinInfoZone:(UIView *)view {
+    // Calculate the current angle
+    CGPoint distanceFromStartingPoint = CGPointSubtract(startingPoint, view.center);
+    CGFloat angle = CGPointGetAngleBetween(distanceFromStartingPoint, upVector) * (180 / M_PI);
+    
+    // Color view appropriately if it is within the 'good' zone
+    if (angle < ANGLETHRESHOLD && CGPointGetDistance(startingPoint, view.center) > DISTANCETHRESHOLD) return true;
+    else return false;
+}
+
+#pragma NSNotificationCenter Methods
 - (void)discoverCardReset:(NSNotification *)notification {
+    
+}
+
+- (void)likeButtonPressed:(NSNotification *)notification {
+
+}
+
+- (void)questionButtonPressed:(NSNotification *)notification {
+    
+}
+
+- (void)passButtonPressed:(NSNotification *)notification {
     
 }
 

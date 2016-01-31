@@ -10,4 +10,12 @@
 
 @interface PassOrSaveViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *passButton;
+@property (weak, nonatomic) IBOutlet UIButton *questionButton;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+
+- (IBAction)passButtonPressed:(id)sender;
+- (IBAction)questionButtonPressed:(id)sender;
+- (IBAction)likeButtonPressed:(id)sender;
+
 @end

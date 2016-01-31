@@ -21,6 +21,15 @@
 		5EB791731C559C340024F4EF /* login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EB791701C559C340024F4EF /* login.jpg */; };
 		5EB791741C559C340024F4EF /* login@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EB791711C559C340024F4EF /* login@2x.jpg */; };
 		5EB791751C559C340024F4EF /* login@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EB791721C559C340024F4EF /* login@3x.jpg */; };
+		5EC6D82B1C5DAF9A007FB783 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6D8281C5DAF9A007FB783 /* like.png */; };
+		5EC6D82C1C5DAF9A007FB783 /* like@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6D8291C5DAF9A007FB783 /* like@2x.png */; };
+		5EC6D82D1C5DAF9A007FB783 /* like@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6D82A1C5DAF9A007FB783 /* like@3x.png */; };
+		5EC6D8311C5DB066007FB783 /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6D82E1C5DB066007FB783 /* question.png */; };
+		5EC6D8321C5DB066007FB783 /* question@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6D82F1C5DB066007FB783 /* question@2x.png */; };
+		5EC6D8331C5DB066007FB783 /* question@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6D8301C5DB066007FB783 /* question@3x.png */; };
+		5EC6D8371C5DB171007FB783 /* pass.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6D8341C5DB171007FB783 /* pass.png */; };
+		5EC6D8381C5DB171007FB783 /* pass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6D8351C5DB171007FB783 /* pass@2x.png */; };
+		5EC6D8391C5DB171007FB783 /* pass@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6D8361C5DB171007FB783 /* pass@3x.png */; };
 		B65DA8EF1C16154D000D72AA /* accessories.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8CE1C16154D000D72AA /* accessories.jpg */; };
 		B65DA8F01C16154D000D72AA /* accessories@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */; };
 		B65DA8F11C16154D000D72AA /* accessories@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8D01C16154D000D72AA /* accessories@3x.jpg */; };
@@ -122,6 +131,15 @@
 		5EB791701C559C340024F4EF /* login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = login.jpg; path = "Image Assets/login.jpg"; sourceTree = "<group>"; };
 		5EB791711C559C340024F4EF /* login@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "login@2x.jpg"; path = "Image Assets/login@2x.jpg"; sourceTree = "<group>"; };
 		5EB791721C559C340024F4EF /* login@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "login@3x.jpg"; path = "Image Assets/login@3x.jpg"; sourceTree = "<group>"; };
+		5EC6D8281C5DAF9A007FB783 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = like.png; path = "Image Assets/like.png"; sourceTree = "<group>"; };
+		5EC6D8291C5DAF9A007FB783 /* like@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "like@2x.png"; path = "Image Assets/like@2x.png"; sourceTree = "<group>"; };
+		5EC6D82A1C5DAF9A007FB783 /* like@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "like@3x.png"; path = "Image Assets/like@3x.png"; sourceTree = "<group>"; };
+		5EC6D82E1C5DB066007FB783 /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = question.png; path = "Image Assets/question.png"; sourceTree = "<group>"; };
+		5EC6D82F1C5DB066007FB783 /* question@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "question@2x.png"; path = "Image Assets/question@2x.png"; sourceTree = "<group>"; };
+		5EC6D8301C5DB066007FB783 /* question@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "question@3x.png"; path = "Image Assets/question@3x.png"; sourceTree = "<group>"; };
+		5EC6D8341C5DB171007FB783 /* pass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pass.png; path = "Image Assets/pass.png"; sourceTree = "<group>"; };
+		5EC6D8351C5DB171007FB783 /* pass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pass@2x.png"; path = "Image Assets/pass@2x.png"; sourceTree = "<group>"; };
+		5EC6D8361C5DB171007FB783 /* pass@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pass@3x.png"; path = "Image Assets/pass@3x.png"; sourceTree = "<group>"; };
 		B65DA8CE1C16154D000D72AA /* accessories.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = accessories.jpg; path = "Image Assets/accessories.jpg"; sourceTree = "<group>"; };
 		B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "accessories@2x.jpg"; path = "Image Assets/accessories@2x.jpg"; sourceTree = "<group>"; };
 		B65DA8D01C16154D000D72AA /* accessories@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "accessories@3x.jpg"; path = "Image Assets/accessories@3x.jpg"; sourceTree = "<group>"; };
@@ -385,6 +403,15 @@
 		B6B095351C0BCDC200C1DEC9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5EC6D8341C5DB171007FB783 /* pass.png */,
+				5EC6D8351C5DB171007FB783 /* pass@2x.png */,
+				5EC6D8361C5DB171007FB783 /* pass@3x.png */,
+				5EC6D82E1C5DB066007FB783 /* question.png */,
+				5EC6D82F1C5DB066007FB783 /* question@2x.png */,
+				5EC6D8301C5DB066007FB783 /* question@3x.png */,
+				5EC6D8281C5DAF9A007FB783 /* like.png */,
+				5EC6D8291C5DAF9A007FB783 /* like@2x.png */,
+				5EC6D82A1C5DAF9A007FB783 /* like@3x.png */,
 				5EB791701C559C340024F4EF /* login.jpg */,
 				5EB791711C559C340024F4EF /* login@2x.jpg */,
 				5EB791721C559C340024F4EF /* login@3x.jpg */,
@@ -589,22 +616,27 @@
 				B65DA9031C16154D000D72AA /* pants@3x.jpg in Resources */,
 				E478BDCF1C18D20E00BEBACD /* pinIt@2x.png in Resources */,
 				B65DA91E1C161810000D72AA /* sportswear@3x.jpg in Resources */,
+				5EC6D8381C5DB171007FB783 /* pass@2x.png in Resources */,
 				B65DA8FE1C16154D000D72AA /* outerwear.jpg in Resources */,
 				B65DA8F91C16154D000D72AA /* intimates@2x.jpg in Resources */,
 				B65DA8FC1C16154D000D72AA /* jewelry@2x.jpg in Resources */,
 				B65DA9051C16154D000D72AA /* shoes@2x.jpg in Resources */,
+				5EC6D82C1C5DAF9A007FB783 /* like@2x.png in Resources */,
 				B6B095141C0BB4B400C1DEC9 /* Assets.xcassets in Resources */,
+				5EC6D8331C5DB066007FB783 /* question@3x.png in Resources */,
 				B65DA9141C161730000D72AA /* dresses@2x.jpg in Resources */,
 				5EB791731C559C340024F4EF /* login.jpg in Resources */,
 				B65DA9021C16154D000D72AA /* pants@2x.jpg in Resources */,
 				E478BDD01C18D20E00BEBACD /* pinIt@3x.png in Resources */,
 				B65DA8EF1C16154D000D72AA /* accessories.jpg in Resources */,
+				5EC6D82B1C5DAF9A007FB783 /* like.png in Resources */,
 				B65DA8F21C16154D000D72AA /* bags.jpg in Resources */,
 				E478BDCE1C18D20E00BEBACD /* pinIt.png in Resources */,
 				B6B0950F1C0BB4B300C1DEC9 /* Main.storyboard in Resources */,
 				B65DA91C1C161810000D72AA /* sportswear.jpg in Resources */,
 				B65DA9211C161810000D72AA /* sweaters@3x.jpg in Resources */,
 				B65DA90C1C16154D000D72AA /* test@3x.jpg in Resources */,
+				5EC6D82D1C5DAF9A007FB783 /* like@3x.png in Resources */,
 				5EB791751C559C340024F4EF /* login@3x.jpg in Resources */,
 				B65DA90A1C16154D000D72AA /* test.jpg in Resources */,
 				B65DA91D1C161810000D72AA /* sportswear@2x.jpg in Resources */,
@@ -613,12 +645,16 @@
 				B65DA8FB1C16154D000D72AA /* jewelry.jpg in Resources */,
 				B65DA9071C16154D000D72AA /* skirts.jpg in Resources */,
 				B65DA9091C16154D000D72AA /* skirts@3x.jpg in Resources */,
+				5EC6D8321C5DB066007FB783 /* question@2x.png in Resources */,
 				B65DA8F01C16154D000D72AA /* accessories@2x.jpg in Resources */,
+				5EC6D8311C5DB066007FB783 /* question.png in Resources */,
 				B65DA8F41C16154D000D72AA /* bags@3x.jpg in Resources */,
+				5EC6D8391C5DB171007FB783 /* pass@3x.png in Resources */,
 				B65DA90D1C16154D000D72AA /* tops.jpg in Resources */,
 				B65DA9131C161730000D72AA /* dresses.jpg in Resources */,
 				B65DA8FD1C16154D000D72AA /* jewelry@3x.jpg in Resources */,
 				B65DA9011C16154D000D72AA /* pants.jpg in Resources */,
+				5EC6D8371C5DB171007FB783 /* pass.png in Resources */,
 				B65DA8F81C16154D000D72AA /* intimates.jpg in Resources */,
 				5EB791741C559C340024F4EF /* login@2x.jpg in Resources */,
 				B65DA9041C16154D000D72AA /* shoes.jpg in Resources */,

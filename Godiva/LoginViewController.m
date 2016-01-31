@@ -39,6 +39,7 @@
     //self.signInButton.layer.borderColor = [UIColor blackColor].CGColor;
     //self.signInButton.layer.borderWidth = 1.0f;
     self.signInButton.layer.cornerRadius = 4.0f;
+    self.signUpButton.layer.cornerRadius = 4.0f;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -89,9 +90,7 @@
 #pragma UITextFieldDelegate Methods
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     // move up
-    if (!engaged) {
-        [self animateViewUp];
-    }
+    [self animateViewUp];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -112,9 +111,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     // move everything down
-    if (!engaged) {
-        [self animateViewDown];
-    }
+    [self animateViewDown];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
