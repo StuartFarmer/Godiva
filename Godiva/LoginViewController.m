@@ -126,9 +126,7 @@
 }
 
 - (IBAction)signInPressed:(id)sender {
-    // setup the sessions API endpoint to test if there is already a user with the user name and password
-    
-    NSURL *sessionsURL = [NSURL URLWithString:@"http://godiva.logiclabs.systems/api/v1/sessions/"];
+    // 3.0
     NSDictionary *sessionsParams = @{@"data" : @{
                                              @"type" : @"users",
                                              @"attributes" : @{
@@ -137,60 +135,52 @@
                                                      }
                                              }
                                      };
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:sessionsParams options:0 error:&error];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
-    NSError *sessionError;
-    NSData *sessionJSONData = [NSJSONSerialization dataWithJSONObject:sessionsParams
-                                                              options:NSJSONWritingPrettyPrinted
-                                                                error:&sessionError];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
-    NSString *sessionJSONString = [[NSString alloc] initWithData:sessionJSONData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", sessionJSONString);
+    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:@"http://godiva.logiclabs.systems/api/v1/sessions/" parameters:nil error:nil];
     
-    NSMutableURLRequest *sessionRequest = [[NSMutableURLRequest alloc] initWithURL:sessionsURL];
+    req.timeoutInterval= [[[NSUserDefaults standardUserDefaults] valueForKey:@"timeoutInterval"] longValue];
+    [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     
-    [sessionRequest setHTTPMethod:@"POST"];
-    [sessionRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [sessionRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [sessionRequest setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[sessionJSONData length]] forHTTPHeaderField:@"Content-Length"];
-    [sessionRequest setHTTPBody: sessionJSONData];
-    
-    // attempt a request
-    AFHTTPRequestOperation *sessionOperation = [[AFHTTPRequestOperation alloc] initWithRequest:sessionRequest];
-    sessionOperation.responseSerializer = [AFJSONResponseSerializer serializer];
-    [sessionOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-        // set the authentication token to keep the user logged in and save the user email
-        NSLog(@"Success!");
-        NSString *authKey = responseObject[@"data"][@"attributes"][@"authentication_token"];
-        [userDefaults setObject:authKey forKey:@"authenticationToken"];
+    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
-        // set the succeeded flag to true so that we can carry onto the app!
-        [self dismissViewControllerAnimated:YES completion:nil];
-        
-    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-        // grab the error information and display it as an alert
-        NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:[error userInfo][AFNetworkingOperationFailingURLResponseDataErrorKey] options:0 error:&error];
-        
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Had trouble logging in."
-                                                                       message:errorDict[@"message"]
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        // reset text when user presses okay to prep them for another entry
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:nil];
-        
-        // add action and display
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-    }];
-    
-    [sessionOperation start];
+        if (!error) {
+            NSLog(@"Reply JSON: %@", responseObject);
+            // set the authentication token to keep the user logged in and save the user email
+            NSLog(@"Success!");
+            NSString *authKey = responseObject[@"data"][@"attributes"][@"authentication_token"];
+            [userDefaults setObject:authKey forKey:@"authenticationToken"];
+            
+            // set the succeeded flag to true so that we can carry onto the app!
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            // grab the error information and display it as an alert
+            NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:[error userInfo][AFNetworkingOperationFailingURLResponseDataErrorKey] options:0 error:&error];
+            
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Had trouble logging in."
+                                                                           message:errorDict[@"message"]
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            // reset text when user presses okay to prep them for another entry
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                  handler:nil];
+            
+            // add action and display
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }] resume];
 }
 
 - (IBAction)signUpPressed:(id)sender {
-    BOOL __block succeeded = false;
-    
-    // if not, setup the accounts API endpoint to create a new user
-    NSURL *url = [NSURL URLWithString:@"http://godiva.logiclabs.systems/api/v1/accounts/"];
+    // 3.0
+    __block BOOL succeeded;
     NSDictionary *params = @{@"data" : @{
                                      @"type" : @"account",
                                      @"attributes" : @{
@@ -200,62 +190,52 @@
                                              }
                                      }
                              };
-    
     NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params
-                                                       options:NSJSONWritingPrettyPrinted
-                                                         error:&error];
-    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", jsonString);
     
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[jsonData length]] forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody: jsonData];
+    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:@"http://godiva.logiclabs.systems/api/v1/accounts/" parameters:nil error:nil];
     
-    // attempt a request
-    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    op.responseSerializer = [AFJSONResponseSerializer serializer];
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-        // set the authentication token to keep the user logged in and save the user email
-        NSLog(@"Success!");
-        NSString *authKey = responseObject[@"data"][@"attributes"][@"authentication_token"];
-        [userDefaults setObject:authKey forKey:@"authenticationToken"];
+    req.timeoutInterval= [[[NSUserDefaults standardUserDefaults] valueForKey:@"timeoutInterval"] longValue];
+    [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
-        // set the succeeded flag to true so that we can carry onto the app!
-        succeeded = true;
-        
-    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-        
-        // grab the error information and display it as an alert
-        NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:[error userInfo][AFNetworkingOperationFailingURLResponseDataErrorKey] options:0 error:&error];
-        
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:errorDict[@"error"]
-                                                                       message:errorDict[@"message"]
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        // reset text when user presses okay to prep them for another entry
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {
-                                                                  self.passwordTextField.text = @"";
-                                                                  self.emailAddressTextField.text = @"";
-                                                              }];
-        
-        // add action and display
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-    }];
-    [op start];
+        if (!error) {
+            NSLog(@"Reply JSON: %@", responseObject);
+            // set the authentication token to keep the user logged in and save the user email
+            NSLog(@"Success!");
+            NSString *authKey = responseObject[@"data"][@"attributes"][@"authentication_token"];
+            [userDefaults setObject:authKey forKey:@"authenticationToken"];
+            
+            // set the succeeded flag to true so that we can carry onto the app!
+            succeeded = true;
+        } else {
+            // grab the error information and display it as an alert
+            NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:[error userInfo][AFNetworkingOperationFailingURLResponseDataErrorKey] options:0 error:&error];
+            
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:errorDict[@"error"]
+                                                                           message:errorDict[@"message"]
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            // reset text when user presses okay to prep them for another entry
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                    style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {
+                                                                      self.passwordTextField.text = @"";
+                                                                      self.emailAddressTextField.text = @"";
+                                                                  }];
+            
+            // add action and display
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }] resume];
     
     if (succeeded) [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)signIn {
-    
 }
 @end
