@@ -14,6 +14,12 @@
 		5E3D7A751C39CCB00054BCEF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3D7A721C39CCB00054BCEF /* libc++.tbd */; };
 		5E3D7A761C39CCB00054BCEF /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3D7A731C39CCB00054BCEF /* libc++abi.tbd */; };
 		5E3D7A7A1C39CD590054BCEF /* ProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3D7A791C39CD590054BCEF /* ProductTableViewCell.m */; };
+		5E5C4EDD1C5EAD1300E74027 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5C4ED71C5EAD1300E74027 /* like.png */; };
+		5E5C4EDE1C5EAD1300E74027 /* like@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5C4ED81C5EAD1300E74027 /* like@2x.png */; };
+		5E5C4EDF1C5EAD1300E74027 /* like@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5C4ED91C5EAD1300E74027 /* like@3x.png */; };
+		5E5C4EE01C5EAD1300E74027 /* login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5E5C4EDA1C5EAD1300E74027 /* login.jpg */; };
+		5E5C4EE11C5EAD1300E74027 /* login@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5E5C4EDB1C5EAD1300E74027 /* login@2x.jpg */; };
+		5E5C4EE21C5EAD1300E74027 /* login@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5E5C4EDC1C5EAD1300E74027 /* login@3x.jpg */; };
 		5E6C19821C5139460018301A /* GodivaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C19811C5139460018301A /* GodivaTests.m */; };
 		5E6C19901C5139690018301A /* GodivaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6C198F1C5139690018301A /* GodivaUITests.m */; };
 		5EB7916A1C5577B30024F4EF /* GodivaProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB791691C5577B30024F4EF /* GodivaProductManager.m */; };
@@ -120,6 +126,12 @@
 		5E3D7A731C39CCB00054BCEF /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
 		5E3D7A781C39CD590054BCEF /* ProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableViewCell.h; sourceTree = "<group>"; };
 		5E3D7A791C39CD590054BCEF /* ProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewCell.m; sourceTree = "<group>"; };
+		5E5C4ED71C5EAD1300E74027 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = like.png; path = "Image Assets/like.png"; sourceTree = "<group>"; };
+		5E5C4ED81C5EAD1300E74027 /* like@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "like@2x.png"; path = "Image Assets/like@2x.png"; sourceTree = "<group>"; };
+		5E5C4ED91C5EAD1300E74027 /* like@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "like@3x.png"; path = "Image Assets/like@3x.png"; sourceTree = "<group>"; };
+		5E5C4EDA1C5EAD1300E74027 /* login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = login.jpg; path = "Image Assets/login.jpg"; sourceTree = "<group>"; };
+		5E5C4EDB1C5EAD1300E74027 /* login@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "login@2x.jpg"; path = "Image Assets/login@2x.jpg"; sourceTree = "<group>"; };
+		5E5C4EDC1C5EAD1300E74027 /* login@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "login@3x.jpg"; path = "Image Assets/login@3x.jpg"; sourceTree = "<group>"; };
 		5E6C197F1C5139460018301A /* GodivaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GodivaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E6C19811C5139460018301A /* GodivaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GodivaTests.m; sourceTree = "<group>"; };
 		5E6C19831C5139460018301A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -413,6 +425,12 @@
 		B6B095351C0BCDC200C1DEC9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5E5C4ED71C5EAD1300E74027 /* like.png */,
+				5E5C4ED81C5EAD1300E74027 /* like@2x.png */,
+				5E5C4ED91C5EAD1300E74027 /* like@3x.png */,
+				5E5C4EDA1C5EAD1300E74027 /* login.jpg */,
+				5E5C4EDB1C5EAD1300E74027 /* login@2x.jpg */,
+				5E5C4EDC1C5EAD1300E74027 /* login@3x.jpg */,
 				5EC6D8341C5DB171007FB783 /* pass.png */,
 				5EC6D8351C5DB171007FB783 /* pass@2x.png */,
 				5EC6D8361C5DB171007FB783 /* pass@3x.png */,
@@ -635,6 +653,7 @@
 				B6B095141C0BB4B400C1DEC9 /* Assets.xcassets in Resources */,
 				5EC6D8331C5DB066007FB783 /* question@3x.png in Resources */,
 				B65DA9141C161730000D72AA /* dresses@2x.jpg in Resources */,
+				5E5C4EE11C5EAD1300E74027 /* login@2x.jpg in Resources */,
 				5EB791731C559C340024F4EF /* login.jpg in Resources */,
 				B65DA9021C16154D000D72AA /* pants@2x.jpg in Resources */,
 				E478BDD01C18D20E00BEBACD /* pinIt@3x.png in Resources */,
@@ -643,8 +662,10 @@
 				B65DA8F21C16154D000D72AA /* bags.jpg in Resources */,
 				E478BDCE1C18D20E00BEBACD /* pinIt.png in Resources */,
 				B6B0950F1C0BB4B300C1DEC9 /* Main.storyboard in Resources */,
+				5E5C4EE01C5EAD1300E74027 /* login.jpg in Resources */,
 				B65DA91C1C161810000D72AA /* sportswear.jpg in Resources */,
 				B65DA9211C161810000D72AA /* sweaters@3x.jpg in Resources */,
+				5E5C4EDD1C5EAD1300E74027 /* like.png in Resources */,
 				B65DA90C1C16154D000D72AA /* test@3x.jpg in Resources */,
 				5EC6D82D1C5DAF9A007FB783 /* like@3x.png in Resources */,
 				5EB791751C559C340024F4EF /* login@3x.jpg in Resources */,
@@ -652,6 +673,7 @@
 				B65DA91D1C161810000D72AA /* sportswear@2x.jpg in Resources */,
 				B65DA8FA1C16154D000D72AA /* intimates@3x.jpg in Resources */,
 				B65DA9001C16154D000D72AA /* outerwear@3x.jpg in Resources */,
+				5E5C4EDF1C5EAD1300E74027 /* like@3x.png in Resources */,
 				B65DA8FB1C16154D000D72AA /* jewelry.jpg in Resources */,
 				B65DA9071C16154D000D72AA /* skirts.jpg in Resources */,
 				B65DA9091C16154D000D72AA /* skirts@3x.jpg in Resources */,
@@ -668,6 +690,8 @@
 				B65DA8F81C16154D000D72AA /* intimates.jpg in Resources */,
 				5EB791741C559C340024F4EF /* login@2x.jpg in Resources */,
 				B65DA9041C16154D000D72AA /* shoes.jpg in Resources */,
+				5E5C4EE21C5EAD1300E74027 /* login@3x.jpg in Resources */,
+				5E5C4EDE1C5EAD1300E74027 /* like@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

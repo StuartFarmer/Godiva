@@ -280,10 +280,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="t27-Nt-wLM">
-                                <rect key="frame" x="24" y="494" width="327" height="37"/>
+                                <rect key="frame" x="16" y="494" width="343" height="37"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08m-9w-LPJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="159" height="37"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="37"/>
                                         <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="20"/>
                                         <state key="normal" title="log in">
@@ -295,7 +295,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syB-JW-WYR">
-                                        <rect key="frame" x="169" y="0.0" width="159" height="37"/>
+                                        <rect key="frame" x="177" y="0.0" width="167" height="37"/>
                                         <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="161" id="AaX-1a-lpX"/>
@@ -321,6 +321,7 @@
                         <constraints>
                             <constraint firstItem="o5K-qo-HOE" firstAttribute="leading" secondItem="hYz-eF-Pzs" secondAttribute="leading" id="3QY-Di-d0E"/>
                             <constraint firstItem="u8V-Zd-HBb" firstAttribute="leading" secondItem="xkN-72-a7d" secondAttribute="leadingMargin" id="Bo7-ie-R8R"/>
+                            <constraint firstItem="t27-Nt-wLM" firstAttribute="centerX" secondItem="xkN-72-a7d" secondAttribute="centerX" id="CzI-Ha-X5V"/>
                             <constraint firstItem="u8V-Zd-HBb" firstAttribute="trailing" secondItem="o5K-qo-HOE" secondAttribute="trailing" id="DBr-KX-qet"/>
                             <constraint firstItem="o5K-qo-HOE" firstAttribute="leading" secondItem="u8V-Zd-HBb" secondAttribute="leading" id="FOq-Tk-cew"/>
                             <constraint firstItem="hYz-eF-Pzs" firstAttribute="top" secondItem="o5K-qo-HOE" secondAttribute="bottom" constant="8" symbolic="YES" id="HEn-rR-4bR"/>
@@ -331,10 +332,10 @@
                             <constraint firstItem="o5K-qo-HOE" firstAttribute="centerX" secondItem="uDt-7h-I0F" secondAttribute="centerX" id="TBL-mq-9yP"/>
                             <constraint firstItem="o5K-qo-HOE" firstAttribute="top" secondItem="uDt-7h-I0F" secondAttribute="bottom" constant="8" id="Uwi-OC-zDj"/>
                             <constraint firstItem="Z5e-A7-jtL" firstAttribute="top" secondItem="uDt-7h-I0F" secondAttribute="bottom" constant="322" id="XIQ-nK-sv3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="t27-Nt-wLM" secondAttribute="trailing" constant="8" id="XTl-RE-wAa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="t27-Nt-wLM" secondAttribute="trailing" id="XTl-RE-wAa"/>
                             <constraint firstItem="t27-Nt-wLM" firstAttribute="top" secondItem="Pm5-iF-26c" secondAttribute="bottom" constant="8" id="XVS-5B-Pn0"/>
                             <constraint firstAttribute="trailing" secondItem="uDt-7h-I0F" secondAttribute="trailing" id="Zma-4I-PdQ"/>
-                            <constraint firstItem="t27-Nt-wLM" firstAttribute="leading" secondItem="xkN-72-a7d" secondAttribute="leadingMargin" constant="8" id="gv3-3t-PR0"/>
+                            <constraint firstItem="t27-Nt-wLM" firstAttribute="leading" secondItem="xkN-72-a7d" secondAttribute="leadingMargin" id="gv3-3t-PR0"/>
                             <constraint firstItem="uDt-7h-I0F" firstAttribute="top" secondItem="u8V-Zd-HBb" secondAttribute="bottom" constant="8" id="hyd-aT-Kon"/>
                             <constraint firstItem="u8V-Zd-HBb" firstAttribute="top" secondItem="FWR-8p-zUH" secondAttribute="bottom" id="iiZ-Kl-qn0"/>
                             <constraint firstItem="o5K-qo-HOE" firstAttribute="top" secondItem="uDt-7h-I0F" secondAttribute="bottom" constant="8" symbolic="YES" id="imD-d6-4CS"/>
