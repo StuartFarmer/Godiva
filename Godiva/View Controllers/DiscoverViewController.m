@@ -107,11 +107,15 @@
     if ([self view:swipeView IsPointingTowards:[GodivaCardHelper passVector]] || [self view:swipeView IsPointingTowards:[GodivaCardHelper likeVector]]) {
         // Animate view away if it needs to
         [self.view setUserInteractionEnabled:NO];
+        
+        CGPoint difference = CGPointSubtract(swipeView.center, startingPoint);
+        CGPoint multiple = CGPointMultiply(difference, 3);
+        CGPointNormalize(multiple);
+        //CGPointMultiply(multiple, 10);
+        NSLog(@"multiple.x: %f multiple.y: %f", multiple.x, multiple.y);
+        
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
         [UIView animateWithDuration:ANIMATION_TIME animations:^{
-            CGPoint difference = CGPointSubtract(swipeView.center, startingPoint);
-            CGPoint multiple = CGPointMultiply(difference, 10);
-            CGPointNormalize(multiple);
-            CGPointMultiply(multiple, 10);
             swipeView.center = CGPointAdd(swipeView.center, multiple);
             swipeView.alpha = 0;
         } completion:^(BOOL finished) {
@@ -120,6 +124,9 @@
             swipeView.backgroundColor = [UIColor whiteColor];
             
             [notificationCenter postNotificationName:@"resetCard" object:nil];
+            
+            swipeView.alpha = 1;
+            self.view.backgroundColor = [UIColor godivaWhite];
             
             [self.view setUserInteractionEnabled:YES];
         }];
@@ -135,14 +142,16 @@
             swipeView.center = startingPoint;
             swipeView.backgroundColor = [UIColor whiteColor];
         } completion:^(BOOL finished) {
+            
+            swipeView.alpha = 1;
+            self.view.backgroundColor = [UIColor godivaWhite];
+            
             [self.view setUserInteractionEnabled:YES];
         }];
     }
     
-    [UIView animateWithDuration:ANIMATION_TIME animations:^{
-        swipeView.alpha = 1;
-        self.view.backgroundColor = [UIColor godivaWhite];
-    }];
+    
+    
 }
 
 -(BOOL)view:(UIView *)view IsPointingTowards:(CGPoint)vector {
