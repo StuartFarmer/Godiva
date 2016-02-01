@@ -11,6 +11,8 @@
 #import "InitialTableViewCell.h"
 #import "Product.h"
 
+@import SafariServices;
+
 @interface WishlistViewController () {
     RLMRealm *realm;
     RLMResults *products;
@@ -27,19 +29,22 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    // Set up Realm
-    realm = [RLMRealm defaultRealm];
-    
-    Product *something = [[Product alloc] init];
-    
-    [realm beginWriteTransaction];
-    something.productName = @"Super Duper Scarf Deluxe";
-    something.productType = @"accessories";
-    something.price = 20.00f;
-    something.image = (UIImagePNGRepresentation([UIImage imageNamed:@"accessories.jpg"]));
-    something.type = @"saved";
-    something.brandName = @"H&M";
-    [realm commitWriteTransaction];
+//    // Set up Realm
+//    realm = [RLMRealm defaultRealm];
+//    
+//    Product *something = [[Product alloc] init];
+//    
+//    [realm beginWriteTransaction];
+//    something.productName = @"Super Duper Scarf Deluxe";
+//    something.productType = @"accessories";
+//    something.price = 20.00f;
+//    something.image = (UIImagePNGRepresentation([UIImage imageNamed:@"accessories.jpg"]));
+//    something.type = @"saved";
+//    something.brandName = @"H&M";
+//    something.affiliateURL = @"http://hm.com";
+//    something.timeSaved = [NSDate date];
+//    [realm addObject:something];
+//    [realm commitWriteTransaction];
     
     [self loadCells];
 }
@@ -57,7 +62,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return products.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -69,11 +74,13 @@
         cell = [nib objectAtIndex:0];
     }
     
+    Product *product = [products objectAtIndex:indexPath.row];
+    
     // Load cell assets
-    cell.productLabel.text = @"Really Long Name For An Expensive Product";
-    cell.brandLabel.text = @"Burburry";
-    cell.priceLabel.text = @"$100.00";
-    cell.imageView.image = nil;
+    cell.productLabel.text = product.productName;
+    cell.brandLabel.text = product.brandName;
+    cell.priceLabel.text = [NSString stringWithFormat:@"$%.2f", product.price];
+    cell.imageView.image = [UIImage imageWithData:product.image];
     
     return cell;
     //}
@@ -89,6 +96,13 @@
 //        cell.descriptionLabel.text = @"Woohoo";
 //        return cell;
 //    }
+}
+
+// present the affiliate link when tapped
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Product *product = [products objectAtIndex:indexPath.row];
+    SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:product.affiliateURL]];
+    [self presentViewController:safariViewController animated:YES completion:nil];
 }
 
 /*
