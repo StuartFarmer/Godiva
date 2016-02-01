@@ -42,6 +42,13 @@
     self.signUpButton.layer.cornerRadius = 4.0f;
 }
 
+- (void)keyboardWillChange:(NSNotification *)notification {
+    NSDictionary* keyboardInfo = [notification userInfo];
+    NSValue *keyboardHeight = [keyboardInfo valueForKey:UIKeyboardFrameBeginUserInfoKey];
+    NSValue *keyboardHeight2 = [keyboardInfo valueForKey:UIKeyboardFrameEndUserInfoKey];
+    NSLog(@"begin: %@/nend: %@", keyboardHeight, keyboardHeight2);
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -127,6 +134,8 @@
 
 - (IBAction)signInPressed:(id)sender {
     // 3.0
+    
+    
     NSDictionary *sessionsParams = @{@"data" : @{
                                              @"type" : @"users",
                                              @"attributes" : @{
@@ -156,6 +165,7 @@
             NSLog(@"Success!");
             NSString *authKey = responseObject[@"data"][@"attributes"][@"authentication_token"];
             [userDefaults setObject:authKey forKey:@"authenticationToken"];
+            [userDefaults setObject:responseObject[@"data"][@"attributes"][@"email"] forKey:@"email"];
             
             // set the succeeded flag to true so that we can carry onto the app!
             [self dismissViewControllerAnimated:YES completion:nil];
@@ -211,6 +221,7 @@
             NSLog(@"Success!");
             NSString *authKey = responseObject[@"data"][@"attributes"][@"authentication_token"];
             [userDefaults setObject:authKey forKey:@"authenticationToken"];
+            [userDefaults setObject:responseObject[@"data"][@"attributes"][@"email"] forKey:@"email"];
             
             // set the succeeded flag to true so that we can carry onto the app!
             succeeded = true;

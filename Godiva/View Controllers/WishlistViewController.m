@@ -57,39 +57,38 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return products.count ? products.count : 1;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (products.count > 0) {
-        // load wishlist cells
-        ProductTableViewCell *cell = (ProductTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-        if (cell == nil) {
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ProductTableViewCell" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-        }
-        
-        Product *product = [products objectAtIndex:indexPath.row];
-        
-        // Load cell assets
-        cell.productLabel.text = product.productName;
-        cell.brandLabel.text = product.brandName;
-        cell.priceLabel.text = [NSString stringWithFormat:@"%0.2f", product.price];
-        cell.imageView.image = [UIImage imageWithData:product.image];
-        
-        return cell;
-        
-    } else {
-        // load initial cell
-        [tableView registerClass:[InitialTableViewCell class] forCellReuseIdentifier:@"initialCell"];
-
-        InitialTableViewCell *cell = (InitialTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"initialCell" forIndexPath:indexPath];
-        if (cell == nil) {
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"InitialTableViewCell" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-        }
-        return cell;
+    // load wishlist cells
+    //if (products.count > 1) {
+    ProductTableViewCell *cell = (ProductTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    if (cell == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ProductTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
+    
+    // Load cell assets
+    cell.productLabel.text = @"Really Long Name For An Expensive Product";
+    cell.brandLabel.text = @"Burburry";
+    cell.priceLabel.text = @"$100.00";
+    cell.imageView.image = nil;
+    
+    return cell;
+    //}
+//    else {
+//        // load initial cell
+//        [tableView registerClass:[InitialTableViewCell class] forCellReuseIdentifier:@"initialCell"];
+//        InitialTableViewCell *cell = (InitialTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"initialCell" forIndexPath:indexPath];
+//        if (cell == nil) {
+//            NSLog(@"It's nil");
+//            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"InitialTableViewCell" owner:self options:nil];
+//            cell = [nib objectAtIndex:0];
+//        }
+//        cell.descriptionLabel.text = @"Woohoo";
+//        return cell;
+//    }
 }
 
 /*
