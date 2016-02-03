@@ -8,7 +8,6 @@
 
 #import "WishlistViewController.h"
 #import "ProductTableViewCell.h"
-#import "InitialTableViewCell.h"
 #import "Product.h"
 
 @import SafariServices;
