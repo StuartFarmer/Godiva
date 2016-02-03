@@ -152,57 +152,6 @@
                                             <outlet property="productLabel" destination="zAG-VC-NV7" id="3E9-wd-1g9"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="intitialCell" rowHeight="200" id="MNK-90-0Nv" customClass="InitialTableViewCell">
-                                        <rect key="frame" x="0.0" y="228" width="375" height="200"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MNK-90-0Nv" id="2QE-jE-cSR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Bsw-au-E4Q">
-                                                    <rect key="frame" x="8" y="8" width="359" height="166"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Wishlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sex-CC-D2c">
-                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="39"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="39" id="V3d-da-l9D"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="33"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbx-1C-jxs">
-                                                            <rect key="frame" x="0.0" y="39" width="359" height="70"/>
-                                                            <string key="text">Swipe right on products in the Discovery tab to save to your wishlist. View saved items here and tap on them to view more information.</string>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="™" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuM-rs-Vcw">
-                                                            <rect key="frame" x="0.0" y="109" width="359" height="57"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="57" id="IZ8-un-3H8"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="BodoniOrnamentsITCTT" family="Bodoni Ornaments" pointSize="45"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="vbx-1C-jxs" firstAttribute="centerY" secondItem="2QE-jE-cSR" secondAttribute="centerY" id="E3S-9w-1p9"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Bsw-au-E4Q" secondAttribute="trailing" id="Fli-lL-f4D"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Bsw-au-E4Q" secondAttribute="bottom" id="WtK-8O-pka"/>
-                                                <constraint firstItem="tuM-rs-Vcw" firstAttribute="centerX" secondItem="2QE-jE-cSR" secondAttribute="centerX" id="ddL-ek-sQu"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="descriptionLabel" destination="vbx-1C-jxs" id="rvR-S6-LhD"/>
-                                            <outlet property="ornamentLabel" destination="tuM-rs-Vcw" id="8sQ-0c-pZW"/>
-                                            <outlet property="titleLabel" destination="Sex-CC-D2c" id="Wr9-zh-XqF"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qUU-un-diO">

@@ -86,19 +86,6 @@
     cell.imageView.image = [UIImage imageWithData:product.image];
     
     return cell;
-    //}
-//    else {
-//        // load initial cell
-//        [tableView registerClass:[InitialTableViewCell class] forCellReuseIdentifier:@"initialCell"];
-//        InitialTableViewCell *cell = (InitialTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"initialCell" forIndexPath:indexPath];
-//        if (cell == nil) {
-//            NSLog(@"It's nil");
-//            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"InitialTableViewCell" owner:self options:nil];
-//            cell = [nib objectAtIndex:0];
-//        }
-//        cell.descriptionLabel.text = @"Woohoo";
-//        return cell;
-//    }
 }
 
 // present the affiliate link when tapped
