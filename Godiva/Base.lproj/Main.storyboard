@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rrt-qa-RIS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rrt-qa-RIS">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -199,117 +199,112 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hYz-eF-Pzs">
-                                <rect key="frame" x="20" y="418" width="335" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="cll-Ia-4bh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pm5-iF-26c">
-                                <rect key="frame" x="20" y="456" width="335" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="FGG-3F-heu"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                            </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="login.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="uDt-7h-I0F">
-                                <rect key="frame" x="0.0" y="128" width="375" height="354"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="u6L-4N-943"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Shop clothing styles that learn from you." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5K-qo-HOE">
-                                <rect key="frame" x="20" y="370" width="335" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="eEq-e4-IBn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-BookIta" family="Bodoni 72" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Godiva" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8V-Zd-HBb">
-                                <rect key="frame" x="20" y="20" width="335" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="iNd-ZC-xwr"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="vFu-fz-dLB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="66"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="t27-Nt-wLM">
-                                <rect key="frame" x="16" y="494" width="343" height="37"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1S-46-k5T" customClass="TPKeyboardAvoidingScrollView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08m-9w-LPJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="167" height="37"/>
-                                        <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="20"/>
-                                        <state key="normal" title="log in">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="titleShadowColor" red="0.75686274509803919" green="0.75686274509803919" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="signInPressed:" destination="ebb-d8-YfJ" eventType="touchUpInside" id="PoD-pF-fbw"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syB-JW-WYR">
-                                        <rect key="frame" x="177" y="0.0" width="167" height="37"/>
-                                        <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BWd-eN-T6g">
+                                        <rect key="frame" x="11" y="11" width="628" height="698"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Godiva" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8V-Zd-HBb">
+                                                <rect key="frame" x="0.0" y="0.0" width="628" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="iNd-ZC-xwr"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="vFu-fz-dLB"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="66"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="uDt-7h-I0F">
+                                                <rect key="frame" x="0.0" y="108" width="628" height="421"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="u6L-4N-943"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop clothing styles that learn from you." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5K-qo-HOE">
+                                                <rect key="frame" x="0.0" y="537" width="628" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="eEq-e4-IBn"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-BookIta" family="Bodoni 72" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hYz-eF-Pzs">
+                                                <rect key="frame" x="0.0" y="585" width="628" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="cll-Ia-4bh"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pm5-iF-26c">
+                                                <rect key="frame" x="0.0" y="623" width="628" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="FGG-3F-heu"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="t27-Nt-wLM">
+                                                <rect key="frame" x="0.0" y="661" width="628" height="37"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08m-9w-LPJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="309" height="37"/>
+                                                        <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="20"/>
+                                                        <state key="normal" title="log in">
+                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleShadowColor" red="0.75686274509803919" green="0.75686274509803919" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="signInPressed:" destination="ebb-d8-YfJ" eventType="touchUpInside" id="PoD-pF-fbw"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syB-JW-WYR">
+                                                        <rect key="frame" x="319" y="0.0" width="309" height="37"/>
+                                                        <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="161" id="AaX-1a-lpX"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="20"/>
+                                                        <state key="normal" title="sign up">
+                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleShadowColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="AaX-1a-lpX"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="signUpPressed:" destination="ebb-d8-YfJ" eventType="touchUpInside" id="Ip8-6E-weI"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="161" id="AaX-1a-lpX"/>
+                                            <constraint firstAttribute="trailing" secondItem="hYz-eF-Pzs" secondAttribute="trailing" id="ifY-qU-h07"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="20"/>
-                                        <state key="normal" title="sign up">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="titleShadowColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="AaX-1a-lpX"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <action selector="signUpPressed:" destination="ebb-d8-YfJ" eventType="touchUpInside" id="Ip8-6E-weI"/>
-                                        </connections>
-                                    </button>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstItem="BWd-eN-T6g" firstAttribute="leading" secondItem="x1S-46-k5T" secondAttribute="leading" constant="11" id="18s-kw-gDO"/>
+                                    <constraint firstItem="BWd-eN-T6g" firstAttribute="top" secondItem="x1S-46-k5T" secondAttribute="top" constant="11" id="Dto-Wu-Ub6"/>
+                                    <constraint firstItem="hYz-eF-Pzs" firstAttribute="leading" secondItem="x1S-46-k5T" secondAttribute="leading" constant="11" id="I37-lr-faK"/>
+                                    <constraint firstAttribute="trailing" secondItem="BWd-eN-T6g" secondAttribute="trailing" constant="-264" id="LRG-bo-PbS"/>
+                                    <constraint firstAttribute="bottom" secondItem="BWd-eN-T6g" secondAttribute="bottom" constant="-42" id="PWt-Kp-ggC"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.98691799496644295" green="0.99011640100671139" blue="0.98191065436241609" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="o5K-qo-HOE" firstAttribute="leading" secondItem="hYz-eF-Pzs" secondAttribute="leading" id="3QY-Di-d0E"/>
-                            <constraint firstItem="u8V-Zd-HBb" firstAttribute="leading" secondItem="xkN-72-a7d" secondAttribute="leadingMargin" id="Bo7-ie-R8R"/>
-                            <constraint firstItem="t27-Nt-wLM" firstAttribute="centerX" secondItem="xkN-72-a7d" secondAttribute="centerX" id="CzI-Ha-X5V"/>
-                            <constraint firstItem="u8V-Zd-HBb" firstAttribute="trailing" secondItem="o5K-qo-HOE" secondAttribute="trailing" id="DBr-KX-qet"/>
-                            <constraint firstItem="o5K-qo-HOE" firstAttribute="leading" secondItem="u8V-Zd-HBb" secondAttribute="leading" id="FOq-Tk-cew"/>
-                            <constraint firstItem="hYz-eF-Pzs" firstAttribute="top" secondItem="o5K-qo-HOE" secondAttribute="bottom" constant="8" symbolic="YES" id="HEn-rR-4bR"/>
-                            <constraint firstItem="uDt-7h-I0F" firstAttribute="leading" secondItem="xkN-72-a7d" secondAttribute="leading" id="HPG-dB-AkD"/>
-                            <constraint firstItem="o5K-qo-HOE" firstAttribute="trailing" secondItem="hYz-eF-Pzs" secondAttribute="trailing" id="IAO-qI-KLf"/>
-                            <constraint firstItem="Pm5-iF-26c" firstAttribute="trailing" secondItem="hYz-eF-Pzs" secondAttribute="trailing" id="P67-Yc-71M"/>
-                            <constraint firstItem="Pm5-iF-26c" firstAttribute="top" secondItem="hYz-eF-Pzs" secondAttribute="bottom" constant="8" symbolic="YES" id="Sw7-nq-oUq"/>
-                            <constraint firstItem="o5K-qo-HOE" firstAttribute="centerX" secondItem="uDt-7h-I0F" secondAttribute="centerX" id="TBL-mq-9yP"/>
-                            <constraint firstItem="o5K-qo-HOE" firstAttribute="top" secondItem="uDt-7h-I0F" secondAttribute="bottom" constant="8" id="Uwi-OC-zDj"/>
-                            <constraint firstItem="Z5e-A7-jtL" firstAttribute="top" secondItem="uDt-7h-I0F" secondAttribute="bottom" constant="322" id="XIQ-nK-sv3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="t27-Nt-wLM" secondAttribute="trailing" id="XTl-RE-wAa"/>
-                            <constraint firstItem="t27-Nt-wLM" firstAttribute="top" secondItem="Pm5-iF-26c" secondAttribute="bottom" constant="8" id="XVS-5B-Pn0"/>
-                            <constraint firstAttribute="trailing" secondItem="uDt-7h-I0F" secondAttribute="trailing" id="Zma-4I-PdQ"/>
-                            <constraint firstItem="t27-Nt-wLM" firstAttribute="leading" secondItem="xkN-72-a7d" secondAttribute="leadingMargin" id="gv3-3t-PR0"/>
-                            <constraint firstItem="uDt-7h-I0F" firstAttribute="top" secondItem="u8V-Zd-HBb" secondAttribute="bottom" constant="8" id="hyd-aT-Kon"/>
-                            <constraint firstItem="u8V-Zd-HBb" firstAttribute="top" secondItem="FWR-8p-zUH" secondAttribute="bottom" id="iiZ-Kl-qn0"/>
-                            <constraint firstItem="o5K-qo-HOE" firstAttribute="top" secondItem="uDt-7h-I0F" secondAttribute="bottom" constant="8" symbolic="YES" id="imD-d6-4CS"/>
-                            <constraint firstItem="uDt-7h-I0F" firstAttribute="top" secondItem="u8V-Zd-HBb" secondAttribute="bottom" constant="8" symbolic="YES" id="t6t-SE-ASy"/>
-                            <constraint firstItem="Pm5-iF-26c" firstAttribute="leading" secondItem="hYz-eF-Pzs" secondAttribute="leading" id="vCV-96-FGa"/>
+                            <constraint firstItem="x1S-46-k5T" firstAttribute="leading" secondItem="xkN-72-a7d" secondAttribute="leading" id="aBg-LK-EcD"/>
+                            <constraint firstItem="x1S-46-k5T" firstAttribute="top" secondItem="xkN-72-a7d" secondAttribute="top" id="fIW-q6-aAv"/>
+                            <constraint firstAttribute="trailing" secondItem="x1S-46-k5T" secondAttribute="trailing" id="sTG-uG-GPH"/>
+                            <constraint firstItem="x1S-46-k5T" firstAttribute="bottom" secondItem="Z5e-A7-jtL" secondAttribute="top" id="uIc-Q7-k2r"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="t6t-SE-ASy"/>
-                                <exclude reference="imD-d6-4CS"/>
-                                <exclude reference="XIQ-nK-sv3"/>
-                            </mask>
-                        </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
@@ -474,7 +469,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c00-3k-ODe">
                                         <rect key="frame" x="0.0" y="396" width="315" height="60"/>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="36"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -565,6 +560,10 @@
         <scene sceneID="qH0-Fs-XOP">
             <objects>
                 <viewController id="axA-XT-rxz" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TAG-d7-YLG"/>
+                        <viewControllerLayoutGuide type="bottom" id="QMv-K9-IJz"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MDB-2A-3dg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -578,14 +577,14 @@
                                             <constraint firstAttribute="height" constant="39" id="iwd-E3-CCh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="33"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caL-H4-NHX">
                                         <rect key="frame" x="0.0" y="119" width="343" height="337"/>
                                         <string key="text">Swipe right on products in the Discovery tab to save to your wishlist. View saved items here and tap on them to view more information.</string>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="™" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kn8-tf-OrF">
@@ -594,7 +593,7 @@
                                             <constraint firstAttribute="height" constant="57" id="MLM-Nd-aen"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="BodoniOrnamentsITCTT" family="Bodoni Ornaments" pointSize="45"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>

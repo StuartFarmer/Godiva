@@ -18,15 +18,18 @@ PODS:
   - Realm (0.97.0):
     - Realm/Headers (= 0.97.0)
   - Realm/Headers (0.97.0)
+  - TPKeyboardAvoiding (1.2.11)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - JSONAPI (~> 1.0.6)
   - Realm
+  - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   JSONAPI: 9b32b11cb196ede8bf22489879fb4003c3e5e8f3
   Realm: b498a6fb9d288b171ff98d0e2d4384c295be8990
+  TPKeyboardAvoiding: e5ce146b313de063957bfa75a13f1e9b0ff18ab7
 
 COCOAPODS: 0.39.0
