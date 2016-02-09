@@ -68,7 +68,7 @@
     // start the product manager for updating info
     productManager = [GodivaProductManager sharedInstance];
     
-    [self getAProduct];
+    [productManager getProductFor:[userDefaults stringForKey:@"selectedObject"] number:12];
 }
 
 - (void)getAProduct {

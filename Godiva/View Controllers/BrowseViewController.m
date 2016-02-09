@@ -72,8 +72,8 @@
     BrowseCollectionViewObject *object = [collectionViewCells objectAtIndex:indexPath.row];
     
     // set user defaults to selected object
-    [userDefaults setObject:object.name forKey:@"selectedObject"];
-    NSLog(@"Selected: %@", object.name);
+    [userDefaults setObject:object.category forKey:@"selectedObject"];
+    NSLog(@"Selected: %@", object.category);
     // move user over to card controller
     [self.tabBarController setSelectedIndex:1];
 }

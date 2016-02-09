@@ -20,6 +20,21 @@
 
 +(Product *)currentProduct;
 
++(NSString *)idForTops;
++(NSString *)idForPants;
++(NSString *)idForDresses;
++(NSString *)idForSkirtsAndShorts;
++(NSString *)idForSweaters;
++(NSString *)idForSportswear;
++(NSString *)idForOuterwear;
++(NSString *)idForShoes;
++(NSString *)idForBags;
++(NSString *)idForJewelry;
++(NSString *)idForIntimates;
++(NSString *)idForAccessories;
+
+-(void)getProductFor:(NSString *)type number:(int)amount;
+
 -(void)update;
 
 @end
