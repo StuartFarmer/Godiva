@@ -68,21 +68,7 @@
     // start the product manager for updating info
     productManager = [GodivaProductManager sharedInstance];
     
-    [productManager getProductFor:[userDefaults stringForKey:@"selectedObject"] number:12];
-}
-
-- (void)getAProduct {
-    
-    NSDictionary *params = @{@"user_email" : [userDefaults objectForKey:@"email"], @"user_token" : [userDefaults objectForKey:@"authenticationToken"], @"number_records" : @"1"};
-    
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    [manager GET:@"http://godiva.logiclabs.systems/api/v1/products/" parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
+    [productManager update];
 }
 
 - (void)didReceiveMemoryWarning {

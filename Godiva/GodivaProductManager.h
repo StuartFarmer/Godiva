@@ -13,8 +13,11 @@
 
 @interface GodivaProductManager : NSObject
 
-@property NSString *context;
-@property BOOL isUpdating;
+@property (strong, nonatomic) NSString *context;
+@property (nonatomic) BOOL isUpdating;
+
+@property (strong, nonatomic) RLMRealm *realm;
+@property (strong, nonatomic) RLMResults<Product *> *products;
 
 +(GodivaProductManager *)sharedInstance;
 

@@ -79,9 +79,9 @@
     Product *product = [products objectAtIndex:indexPath.row];
     
     // Load cell assets
-    cell.productLabel.text = product.productName;
+    cell.productLabel.text = product.name;
     cell.brandLabel.text = product.brandName;
-    cell.priceLabel.text = [NSString stringWithFormat:@"$%.2f", product.price];
+    cell.priceLabel.text = product.price;
     cell.imageView.image = [UIImage imageWithData:product.image];
     
     return cell;
@@ -90,7 +90,7 @@
 // present the affiliate link when tapped
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Product *product = [products objectAtIndex:indexPath.row];
-    SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:product.affiliateURL]];
+    SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:product.clickURL]];
     [self presentViewController:safariViewController animated:YES completion:nil];
 }
 

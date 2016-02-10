@@ -7,20 +7,19 @@
 //
 
 #import <Realm/Realm.h>
+@import UIKit;
 
 @interface Product : RLMObject
 
-@property NSString *type;
-@property NSDate *timeSaved;
-
-@property NSData *image;
-@property float price;
-
-@property NSString *productType;
-@property NSString *productName;
-@property NSString *brandName;
-
-@property NSString *affiliateURL;
+@property (strong, nonatomic) NSString *type;
+@property (strong, nonatomic) NSString *brandName;
+@property (strong, nonatomic) NSString *clickURL;
+@property (strong, nonatomic) NSData *image;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *unbrandedName;
+@property (strong, nonatomic) NSString *price;
+@property (strong, nonatomic) NSString *userID;
+@property (strong, nonatomic) NSString *productID;
 
 @end
 RLM_ARRAY_TYPE(Product)

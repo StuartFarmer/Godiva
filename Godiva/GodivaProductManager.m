@@ -14,8 +14,7 @@
 
 @implementation GodivaProductManager {
     NSUserDefaults *userDefaults;
-    RLMRealm *realm;
-    RLMResults<Product *> *products;
+    Product *currentProduct;
 }
 
 +(GodivaProductManager *)sharedInstance {
@@ -30,28 +29,24 @@
 -(void)update {
     // set the context to the current product type
     userDefaults = [NSUserDefaults standardUserDefaults];
-    realm = [RLMRealm defaultRealm];
+    _realm = [RLMRealm defaultRealm];
     
     self.context = [userDefaults stringForKey:@"selectedObject"];
     
     // check if there are enough products in the current context
     if (!self.isUpdating) {
         self.isUpdating = true;
-        products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", self.context]];
+        _products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", self.context]];
         
         // if not, update
-        if (products.count < PRODUCT_FLOOR) {
-            // query for more objects
-            dispatch_async(dispatch_get_main_queue(), ^{
-
-            });
+        if (_products.count < PRODUCT_FLOOR) {
+            // query for more objects until it reaches the ceiling
+            [self getProductFor:self.context number:PRODUCT_CHUNK for:(int)PRODUCT_FLOOR/PRODUCT_CEILING];
         }
     }
 }
 
-- (void)getProductFor:(NSString *)type number:(int)amount {
-    userDefaults = [NSUserDefaults standardUserDefaults];
-    
+- (NSString *)categoryIDforProductID:(NSString *)type {
     NSString *categoryString;
     
     // determine the ID for the type
@@ -69,8 +64,35 @@
     else if ([type isEqualToString:[GodivaProductManager idForTops]]) categoryString = @"149";
     else categoryString = @"149";
     
-    NSLog(@"%@", type);
-    NSLog(@"%@", categoryString);
+    return categoryString;
+}
+
+- (NSString *)productIDforCategoryID:(NSString *)category {
+    
+    NSString *categoryString = category;
+    
+    if ([categoryString isEqualToString:@"3"]) return [GodivaProductManager idForAccessories];
+    else if ([categoryString isEqualToString:@"161"]) return [GodivaProductManager idForBags];
+    else if ([categoryString isEqualToString:@"35"]) return [GodivaProductManager idForDresses];
+    else if ([categoryString isEqualToString:@"40"]) return [GodivaProductManager idForIntimates];
+    else if ([categoryString isEqualToString:@"58"]) return [GodivaProductManager idForJewelry];
+    else if ([categoryString isEqualToString:@"79"]) return [GodivaProductManager idForOuterwear];
+    else if ([categoryString isEqualToString:@"86"]) return [GodivaProductManager idForPants];
+    else if ([categoryString isEqualToString:@"170"]) return [GodivaProductManager idForShoes];
+    else if ([categoryString isEqualToString:@"120"]) return [GodivaProductManager idForSkirtsAndShorts];
+    else if ([categoryString isEqualToString:@"14"]) return [GodivaProductManager idForSportswear];
+    else if ([categoryString isEqualToString:@"125"]) return [GodivaProductManager idForSweaters];
+    else if ([categoryString isEqualToString:@"149"]) return [GodivaProductManager idForTops];
+    else return @"149";
+    
+}
+
+- (void)getProductFor:(NSString *)type number:(int)amount for:(int)chunks{
+    userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *categoryString = [self categoryIDforProductID:type];
+    
+    NSLog(@"Get request for %i %@", amount, type);
     
     // set up query parameters
     NSDictionary *params = @{@"user_email" : [userDefaults objectForKey:@"email"], @"user_token" : [userDefaults objectForKey:@"authenticationToken"], @"number_records" : [NSString stringWithFormat:@"%i", amount], @"category" : categoryString};
@@ -80,7 +102,29 @@
     
     // get a response
     [manager GET:@"http://godiva.logiclabs.systems/api/v1/user_products/" parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        // Put JSON into Product data object and put into Realm
         NSLog(@"JSON: %@", responseObject);
+        NSArray *data = responseObject[@"data"];
+        for (NSDictionary *item in data) {
+            // create an object and fill it with the pulled data
+            Product *product = [[Product alloc] init];
+            product.brandName = item[@"attributes"][@"brand_name"];
+            product.clickURL = item[@"attributes"][@"click_url"];
+            product.image = [NSData dataWithContentsOfURL:[NSURL URLWithString:item[@"attributes"][@"image_url"]]];
+            product.name = item[@"attributes"][@"name"];
+            product.price = item[@"attributes"][@"price"];
+            product.userID = item[@"attributes"][@"user_id"];
+            product.productID = item[@"attributes"][@"product_id"];
+            product.type = [self productIDforCategoryID:type];
+            
+            // add it to the database
+            [_realm beginWriteTransaction];
+            [_realm addObject:product];
+            [_realm commitWriteTransaction];
+        }
+        // recursively get another set
+        [self getProductFor:type number:amount for:chunks-1];
+        
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
