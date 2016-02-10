@@ -3,7 +3,7 @@
 //  Godiva
 //
 //  Created by Stuart Farmer on 1/24/16.
-//  Copyright © 2016 app.kitchen. All rights reserved.
+//  Copyright © 2016 Logic Labs Ltd. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -36,7 +36,7 @@
 +(NSString *)idForIntimates;
 +(NSString *)idForAccessories;
 
--(void)getProductFor:(NSString *)type number:(int)amount;
+-(void)getProductFor:(NSString *)type number:(int)amount for:(int)chunks;
 
 -(void)update;
 

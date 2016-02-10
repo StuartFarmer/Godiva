@@ -3,7 +3,7 @@
 //  Godiva
 //
 //  Created by Stuart Farmer on 1/24/16.
-//  Copyright © 2016 app.kitchen. All rights reserved.
+//  Copyright © 2016 Logic Labs Ltd. All rights reserved.
 //
 
 #import "GodivaProductManager.h"
@@ -123,7 +123,7 @@
             [_realm commitWriteTransaction];
         }
         // recursively get another set
-        [self getProductFor:type number:amount for:chunks-1];
+        if (data.count > 0) [self getProductFor:type number:amount for:chunks-1];
         
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
