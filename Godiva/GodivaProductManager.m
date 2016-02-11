@@ -99,35 +99,37 @@
     
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    // get a response
-    [manager GET:@"http://godiva.logiclabs.systems/api/v1/user_products/" parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        // Put JSON into Product data object and put into Realm
-        NSLog(@"JSON: %@", responseObject);
-        NSArray *data = responseObject[@"data"];
-        for (NSDictionary *item in data) {
-            // create an object and fill it with the pulled data
-            Product *product = [[Product alloc] init];
-            product.brandName = item[@"attributes"][@"brand_name"];
-            product.clickURL = item[@"attributes"][@"click_url"];
-            product.image = [NSData dataWithContentsOfURL:[NSURL URLWithString:item[@"attributes"][@"image_url"]]];
-            product.name = item[@"attributes"][@"name"];
-            product.price = item[@"attributes"][@"price"];
-            product.userID = item[@"attributes"][@"user_id"];
-            product.productID = item[@"attributes"][@"product_id"];
-            product.type = [self productIDforCategoryID:type];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // get a response
+        [manager GET:@"http://godiva.logiclabs.systems/api/v1/user_products/" parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            // Put JSON into Product data object and put into Realm
+            NSLog(@"JSON: %@", responseObject);
+            NSArray *data = responseObject[@"data"];
+            for (NSDictionary *item in data) {
+                // create an object and fill it with the pulled data
+                Product *product = [[Product alloc] init];
+                product.brandName = item[@"attributes"][@"brand_name"];
+                product.clickURL = item[@"attributes"][@"click_url"];
+                product.image = [NSData dataWithContentsOfURL:[NSURL URLWithString:item[@"attributes"][@"image_url"]]];
+                product.name = item[@"attributes"][@"name"];
+                product.price = item[@"attributes"][@"price"];
+                product.userID = item[@"attributes"][@"user_id"];
+                product.productID = item[@"attributes"][@"product_id"];
+                product.type = [self productIDforCategoryID:type];
+                
+                // add it to the database
+                [_realm beginWriteTransaction];
+                [_realm addObject:product];
+                [_realm commitWriteTransaction];
+            }
+            // recursively get another set
+            if (data.count > 0) [self getProductFor:type number:amount for:chunks-1];
             
-            // add it to the database
-            [_realm beginWriteTransaction];
-            [_realm addObject:product];
-            [_realm commitWriteTransaction];
-        }
-        // recursively get another set
-        if (data.count > 0) [self getProductFor:type number:amount for:chunks-1];
-        
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+    });
+    
 }
 
 #pragma Identifiers for different types of categories

@@ -10,9 +10,8 @@
 #import "CGPoint+Vector.h"
 #import "UIColor+Godiva.h"
 
-#import "ProductResource.h"
-
 @import SafariServices;
+@import QuartzCore;
 
 #define VIEWWIDTH 80
 #define VIEWHEIGHT 20
@@ -131,6 +130,7 @@
             
             [notificationCenter postNotificationName:@"resetCard" object:nil];
             
+            swipeView.layer.cornerRadius = 8.0f;
             swipeView.alpha = 1;
             self.view.backgroundColor = [UIColor godivaWhite];
             
