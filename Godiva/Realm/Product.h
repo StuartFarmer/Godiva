@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString *price;
 @property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) NSString *productID;
+@property (strong, nonatomic) NSString *identifier;
 
 @end
 RLM_ARRAY_TYPE(Product)

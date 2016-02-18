@@ -47,7 +47,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Setup swipe view
     swipeView = self.cardView;
     
@@ -116,8 +115,6 @@
         CGPoint difference = CGPointSubtract(swipeView.center, startingPoint);
         CGPoint multiple = CGPointMultiply(difference, 3);
         CGPointNormalize(multiple);
-        //CGPointMultiply(multiple, 10);
-        NSLog(@"multiple.x: %f multiple.y: %f", multiple.x, multiple.y);
         
         [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
         [UIView animateWithDuration:ANIMATION_TIME animations:^{
@@ -155,9 +152,6 @@
             [self.view setUserInteractionEnabled:YES];
         }];
     }
-    
-    
-    
 }
 
 -(BOOL)view:(UIView *)view IsPointingTowards:(CGPoint)vector {

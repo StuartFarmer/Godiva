@@ -16,6 +16,8 @@
 @property (strong, nonatomic) NSString *context;
 @property (nonatomic) BOOL isUpdating;
 
+@property (strong, nonatomic) NSArray *categories;
+
 @property (strong, nonatomic) RLMRealm *realm;
 @property (strong, nonatomic) RLMResults<Product *> *products;
 
@@ -39,5 +41,7 @@
 -(void)getProductFor:(NSString *)type number:(int)amount for:(int)chunks;
 
 -(void)update;
+
+-(NSArray *)getCategoriesWithCompletion:(void (^)(BOOL finished))completion;
 
 @end

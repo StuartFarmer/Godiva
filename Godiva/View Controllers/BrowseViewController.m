@@ -9,6 +9,7 @@
 #import "BrowseViewController.h"
 #import "GodivaProductManager.h"
 #import "LoginViewController.h"
+#import "GodivaCategory.h"
 
 #define M_PHI 1.61803398874989484820
 #define M_RATIO 1.3
@@ -34,9 +35,41 @@
     
     // set up user defaults
     userDefaults = [NSUserDefaults standardUserDefaults];
-    
+    NSLog(@"%@", [userDefaults stringForKey:@"authenticationToken"]);
+    NSLog(@"%@", [userDefaults stringForKey:@"email"]);
     // set up product manager
     productManager = [GodivaProductManager sharedInstance];
+}
+
+- (void)getCategories {
+    self.view.userInteractionEnabled = NO;
+    [[GodivaProductManager sharedInstance] getCategoriesWithCompletion:^(BOOL finished) {
+        if (finished) {
+            // Cool, we're good to go.
+            NSLog(@"This works! Continue!!");
+            self.view.userInteractionEnabled = YES;
+            for (GodivaCategory *category in [[GodivaProductManager sharedInstance] categories]) {
+                NSLog(@"%@", category.name);
+            }
+        } else {
+            // Alert that there was an error
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error Getting Category Data"
+                                                                           message:@"There was trouble getting categories over the network. Check your connection and press OK to try again."
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            // reset text when user presses okay to prep them for another entry
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                    style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {
+                                                                      [self getCategories];
+                                                                  }];
+            
+            // add action and display
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -44,7 +77,7 @@
         // Log in
         LoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [self presentViewController:loginViewController animated:YES completion:nil];
-    }
+    } else [self getCategories];
 }
 
 - (void)didReceiveMemoryWarning {

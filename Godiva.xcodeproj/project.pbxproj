@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DF4831FBBBF4E3614BE409E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 442CF2F1A6E5AF0CDFB00C90 /* libPods.a */; };
+		5E31BF091C752F4F0050B436 /* GodivaCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E31BF081C752F4F0050B436 /* GodivaCategory.m */; };
 		5E3D7A6C1C39CA990054BCEF /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3D7A6B1C39CA990054BCEF /* Product.m */; };
 		5E3D7A741C39CCB00054BCEF /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3D7A711C39CCB00054BCEF /* libc++.1.tbd */; };
 		5E3D7A751C39CCB00054BCEF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3D7A721C39CCB00054BCEF /* libc++.tbd */; };
@@ -116,6 +117,8 @@
 /* Begin PBXFileReference section */
 		35C7E775BF720FE23A979DE8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		442CF2F1A6E5AF0CDFB00C90 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E31BF071C752F4F0050B436 /* GodivaCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GodivaCategory.h; sourceTree = "<group>"; };
+		5E31BF081C752F4F0050B436 /* GodivaCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GodivaCategory.m; sourceTree = "<group>"; };
 		5E3D7A6A1C39CA990054BCEF /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = Realm/Product.h; sourceTree = "<group>"; };
 		5E3D7A6B1C39CA990054BCEF /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = Realm/Product.m; sourceTree = "<group>"; };
 		5E3D7A711C39CCB00054BCEF /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
@@ -286,6 +289,8 @@
 				5E3D7A6B1C39CA990054BCEF /* Product.m */,
 				5EC6D83A1C5E4A2D007FB783 /* UIColor+Godiva.h */,
 				5EC6D83B1C5E4A2D007FB783 /* UIColor+Godiva.m */,
+				5E31BF071C752F4F0050B436 /* GodivaCategory.h */,
+				5E31BF081C752F4F0050B436 /* GodivaCategory.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -774,6 +779,7 @@
 				5E3D7A7A1C39CD590054BCEF /* ProductTableViewCell.m in Sources */,
 				B6B095091C0BB4B300C1DEC9 /* AppDelegate.m in Sources */,
 				B6B0952A1C0BB85A00C1DEC9 /* WishlistViewController.m in Sources */,
+				5E31BF091C752F4F0050B436 /* GodivaCategory.m in Sources */,
 				5EC6D83C1C5E4A2D007FB783 /* UIColor+Godiva.m in Sources */,
 				B6B095211C0BB82200C1DEC9 /* BrowseViewController.m in Sources */,
 				B68016291C1B8F6200B372B2 /* CGPoint+Vector.m in Sources */,
