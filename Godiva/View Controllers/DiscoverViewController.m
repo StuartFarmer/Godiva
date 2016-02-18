@@ -115,6 +115,9 @@
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     // Check if the view is in valid zone
     if ([self view:swipeView IsPointingTowards:[GodivaCardHelper passVector]] || [self view:swipeView IsPointingTowards:[GodivaCardHelper likeVector]]) {
+        if ([self view:swipeView IsPointingTowards:[GodivaCardHelper passVector]]) [notificationCenter postNotificationName:@"deleteProduct" object:nil];
+        else [notificationCenter postNotificationName:@"saveProduct" object:nil];
+        
         // Animate view away if it needs to
         [self.view setUserInteractionEnabled:NO];
         
@@ -194,8 +197,8 @@
         
         // change product type to 'saved' on card's end and then remove it from play
         [notificationCenter postNotificationName:@"saveProduct" object:nil];
-        
         [notificationCenter postNotificationName:@"resetCard" object:nil];
+        
         swipeView.alpha = 1;
         [self.view setUserInteractionEnabled:YES];
     }];
@@ -216,7 +219,7 @@
             self.view.backgroundColor = [UIColor godivaWhite];
         }];
         // show the URL in a safari modal
-        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"http://google.com"]];
+        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[[NSUserDefaults standardUserDefaults] URLForKey:@"url"]];
         [self presentViewController:safariViewController animated:YES completion:nil];
         
         [self.view setUserInteractionEnabled:YES];
@@ -232,13 +235,13 @@
         swipeView.alpha = 0;
     } completion:^(BOOL finished) {
         // Reset the view
-        // Reset the view
         [UIView animateWithDuration:ANIMATION_TIME animations:^{
             self.view.backgroundColor = [UIColor godivaWhite];
         }];
         swipeView.center = CGPointMake(swipeView.center.x+DEFAULT_DISCARD_DISTANCE, swipeView.center.y);
         swipeView.backgroundColor = [UIColor whiteColor];
         
+        [notificationCenter postNotificationName:@"deleteProduct" object:nil];
         [notificationCenter postNotificationName:@"resetCard" object:nil];
         swipeView.alpha = 1;
         

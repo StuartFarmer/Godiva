@@ -156,7 +156,7 @@
             [userDefaults setObject:responseObject[@"data"][@"attributes"][@"email"] forKey:@"email"];
             
             // set the succeeded flag to true so that we can carry onto the app!
-            succeeded = true;
+            [self dismissViewControllerAnimated:YES completion:nil];
         } else {
             // grab the error information and display it as an alert
             NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:[error userInfo][AFNetworkingOperationFailingURLResponseDataErrorKey] options:0 error:&error];
@@ -168,10 +168,7 @@
             // reset text when user presses okay to prep them for another entry
             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
                                                                     style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action) {
-                                                                      self.passwordTextField.text = @"";
-                                                                      self.emailAddressTextField.text = @"";
-                                                                  }];
+                                                                  handler:nil];
             
             // add action and display
             [alert addAction:defaultAction];

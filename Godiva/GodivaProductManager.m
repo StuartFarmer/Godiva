@@ -214,51 +214,51 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
 
 #pragma Identifiers for different types of categories
 +(NSString *)idForAccessories {
-    return @"accessories";
+    return @"Accessories";
 }
 
 +(NSString *)idForBags {
-    return @"bags";
+    return @"Bags";
 }
 
 +(NSString *)idForDresses {
-    return @"dresses";
+    return @"Dresses";
 }
 
 +(NSString *)idForIntimates {
-    return @"intimates";
+    return @"Intimates";
 }
 
 +(NSString *)idForJewelry {
-    return @"jewelry";
+    return @"Jewelry";
 }
 
 +(NSString *)idForOuterwear {
-    return @"outerwear";
+    return @"Outerwear";
 }
 
 +(NSString *)idForPants {
-    return @"pants";
+    return @"Pants";
 }
 
 +(NSString *)idForShoes {
-    return @"shoes";
+    return @"Shoes";
 }
 
 +(NSString *)idForSkirtsAndShorts {
-    return @"skirts&shorts";
+    return @"Skirts & Shorts";
 }
 
 +(NSString *)idForSportswear {
-    return @"sportswear";
+    return @"Sportswear";
 }
 
 +(NSString *)idForSweaters {
-    return @"sweaters";
+    return @"Sweaters";
 }
 
 +(NSString *)idForTops {
-    return @"tops";
+    return @"Tops";
 }
 
 @end

@@ -26,16 +26,8 @@
     
     // Set up notification center
     notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self selector:@selector(viewIsWithinValidZone:) name:@"viewIsWithinValidZone" object:nil];
-    
-    [notificationCenter addObserver:self selector:@selector(viewIsNotWithinValidZone:) name:@"viewIsNotWithinValidZone" object:nil];
-    
-    [notificationCenter addObserver:self selector:@selector(viewDroppedWithinValidZone:) name:@"viewDroppedWithinValidZone" object:nil];
-    
-    [notificationCenter addObserver:self selector:@selector(viewDroppedNotWithinValidZone:) name:@"viewDroppedNotWithinValidZone" object:nil];
-    
     [notificationCenter addObserver:self selector:@selector(saveProduct:) name:@"saveProduct" object:nil];
-    
+    [notificationCenter addObserver:self selector:@selector(deleteProduct:) name:@"deleteProduct" object:nil];
     [notificationCenter addObserver:self selector:@selector(resetCard:) name:@"resetCard" object:nil];
     
     // Initiate user defaults
@@ -43,45 +35,26 @@
     
     self.view.layer.cornerRadius = 8.0f;
     initialPoint = self.view.center;
+    
+    // Load the first card
+    [self resetView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (void)viewIsWithinValidZone:(NSNotification *)notification {
-
-}
-
-- (void)viewIsNotWithinValidZone:(NSNotification *)notification {
-
-}
-
-- (void)viewDroppedWithinValidZone:(NSNotification *)notification {
-
-}
-
-- (void)viewDroppedNotWithinValidZone:(NSNotification *)notification {
-
-}
-
 - (void)resetCard:(NSNotification *)notification {
-    NSLog(@"Resetting card...");
+    NSLog(@"Resetting card.");
     self.view.layer.cornerRadius = 8.0f;
     self.view.backgroundColor = [UIColor whiteColor];
     self.view.alpha = 1.0f;
     self.view.layer.borderWidth = 0;
-    NSLog(@"type: %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]);
-    product = [[GodivaProductManager sharedInstance] getAnyProductsWithType:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
-    self.imageView.image = [UIImage imageWithData:product.image];
-    self.productLabel.text = product.name;
-    self.priceLabel.text = [NSString stringWithFormat:@"$%@0", product.price];
-    [[NSUserDefaults standardUserDefaults] setURL:[NSURL URLWithString:product.clickURL] forKey:@"url"];
+    [self resetView];
 }
 
 - (void)saveProduct:(NSNotification *)notification {
-    NSLog(@"This is happening");
+    NSLog(@"Saving Card.");
     
     [[RLMRealm defaultRealm] beginWriteTransaction];
     product.type = @"saved";
@@ -89,8 +62,21 @@
     [[RLMRealm defaultRealm] commitWriteTransaction];
 }
 
-- (void)resetView {
+- (void)deleteProduct:(NSNotification *)notification {
+    NSLog(@"Deleting Card.");
     
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    [[RLMRealm defaultRealm] deleteObject:product];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+}
+
+- (void)resetView {
+    NSLog(@"type: %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]);
+    product = [[GodivaProductManager sharedInstance] getAnyProductsWithType:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
+    self.imageView.image = [UIImage imageWithData:product.image];
+    self.productLabel.text = product.name;
+    self.priceLabel.text = [NSString stringWithFormat:@"$%@0", product.price];
+    [[NSUserDefaults standardUserDefaults] setURL:[NSURL URLWithString:product.clickURL] forKey:@"url"];
 }
 
 @end

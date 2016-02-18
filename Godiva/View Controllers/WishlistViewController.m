@@ -80,7 +80,7 @@
     // Load cell assets
     cell.productLabel.text = product.name;
     cell.brandLabel.text = product.brandName;
-    cell.priceLabel.text = product.price;
+    cell.priceLabel.text = [NSString stringWithFormat:@"$%@0", product.price];
     cell.imageView.image = [UIImage imageWithData:product.image];
     
     return cell;
