@@ -11,6 +11,7 @@
 
 @interface Product : RLMObject
 
+@property (strong, nonatomic) NSString *uuid;
 @property (strong, nonatomic) NSString *type;
 @property (strong, nonatomic) NSString *brandName;
 @property (strong, nonatomic) NSString *clickURL;

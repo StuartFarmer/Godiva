@@ -82,13 +82,10 @@
 
 - (void)saveProduct:(NSNotification *)notification {
     NSLog(@"This is happening");
-    [[RLMRealm defaultRealm] beginWriteTransaction];
-    [[RLMRealm defaultRealm] deleteObject:product];
-    [[RLMRealm defaultRealm] commitWriteTransaction];
     
     [[RLMRealm defaultRealm] beginWriteTransaction];
     product.type = @"saved";
-    [[RLMRealm defaultRealm] addObject:product];
+    [[RLMRealm defaultRealm] addOrUpdateObject:product];
     [[RLMRealm defaultRealm] commitWriteTransaction];
 }
 

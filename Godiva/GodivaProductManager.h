@@ -12,7 +12,7 @@
 #import "Product.h"
 
 #define PRODUCT_CEILING 300
-#define PRODUCT_FLOOR 0
+#define PRODUCT_FLOOR 100
 #define PRODUCT_CHUNK 20
 
 @interface GodivaProductManager : NSObject

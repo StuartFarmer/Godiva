@@ -10,14 +10,15 @@
 
 @implementation Product
 
-// Specify default values for properties
++ (NSString *)primaryKey
+{
+    return @"uuid";
+}
 
-//+ (NSDictionary *)defaultPropertyValues
-//{
-//    return @{};
-//}
-
-// Specify properties to ignore (Realm won't persist these)
++ (NSDictionary *)defaultPropertyValues
+{
+    return @{@"uuid": [[NSUUID UUID] UUIDString]};
+}
 
 //+ (NSArray *)ignoredProperties
 //{

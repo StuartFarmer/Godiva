@@ -72,7 +72,7 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
     
     // check if there are enough products in the current context
     _products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", type]];
-    if (_products.count < PRODUCT_FLOOR) {
+    if (_products.count <= PRODUCT_FLOOR) {
         NSLog(@"%lu", _products.count);
         // if not, update
         NSLog(@"%i", (int)(PRODUCT_CEILING-_products.count)/PRODUCT_CHUNK);
