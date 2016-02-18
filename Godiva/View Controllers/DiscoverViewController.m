@@ -9,6 +9,7 @@
 #import "DiscoverViewController.h"
 #import "CGPoint+Vector.h"
 #import "UIColor+Godiva.h"
+#import "Product.h"
 
 @import SafariServices;
 @import QuartzCore;
@@ -39,6 +40,7 @@
     GodivaProductManager *productManager;
     GodivaCardHelper *cardHelper;
 
+    RLMResults<Product *> *products;
 }
 
 @end
@@ -67,6 +69,9 @@
     productManager = [GodivaProductManager sharedInstance];
     
     [productManager updateForContextType:[userDefaults stringForKey:@"selectedObject"]];
+    
+    // load first card
+    products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", [userDefaults stringForKey:@"selectedObject"]]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -136,7 +141,7 @@
     } else {
         if ([self view:swipeView IsPointingTowards:[GodivaCardHelper questionVector]]) {
             // show the URL in a safari modal
-            SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"http://google.com"]];
+            SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[[NSUserDefaults standardUserDefaults] URLForKey:@"url"]];
             [self presentViewController:safariViewController animated:YES completion:nil];
         }
         
@@ -185,6 +190,9 @@
         swipeView.backgroundColor = [UIColor whiteColor];
         
         swipeView.layer.cornerRadius = 8.0f;
+        
+        // change product type to 'saved' on card's end and then remove it from play
+        [notificationCenter postNotificationName:@"saveProduct" object:nil];
         
         [notificationCenter postNotificationName:@"resetCard" object:nil];
         swipeView.alpha = 1;

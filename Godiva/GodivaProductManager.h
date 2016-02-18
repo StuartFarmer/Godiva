@@ -11,6 +11,10 @@
 #import <AFNetworking/AFNetworking.h>
 #import "Product.h"
 
+#define PRODUCT_CEILING 300
+#define PRODUCT_FLOOR 0
+#define PRODUCT_CHUNK 20
+
 @interface GodivaProductManager : NSObject
 
 @property (strong, nonatomic) NSString *context;
@@ -39,9 +43,8 @@
 +(NSString *)idForAccessories;
 
 -(void)getProductFor:(NSString *)type number:(int)amount for:(int)chunks;
-
 -(void)updateForContextType:(NSString *)type;
-
+-(Product *)getAnyProductsWithType:(NSString *)type;
 -(NSArray *)getCategoriesWithCompletion:(void (^)(BOOL finished))completion;
 
 @end

@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "GodivaProductManager.h"
 #import "GodivaCardHelper.h"
+#import "DiscoverCardViewController.h"
 
 @interface DiscoverViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIView *cardView;
+@property (strong, nonatomic) IBOutlet DiscoverCardViewController *cardView;
 @property (strong, nonatomic) IBOutlet UIView *passOrSaveView;
 
 @end

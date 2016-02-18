@@ -8,11 +8,13 @@
 
 #import "DiscoverCardViewController.h"
 #import "CGPoint+Vector.h"
+#import "GodivaProductManager.h"
 
 @interface DiscoverCardViewController () {
     NSNotificationCenter *notificationCenter;
     NSUserDefaults *userDefaults;
     CGPoint initialPoint;
+    Product *product;
 }
 
 @end
@@ -31,6 +33,8 @@
     [notificationCenter addObserver:self selector:@selector(viewDroppedWithinValidZone:) name:@"viewDroppedWithinValidZone" object:nil];
     
     [notificationCenter addObserver:self selector:@selector(viewDroppedNotWithinValidZone:) name:@"viewDroppedNotWithinValidZone" object:nil];
+    
+    [notificationCenter addObserver:self selector:@selector(saveProduct:) name:@"saveProduct" object:nil];
     
     [notificationCenter addObserver:self selector:@selector(resetCard:) name:@"resetCard" object:nil];
     
@@ -68,6 +72,24 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.view.alpha = 1.0f;
     self.view.layer.borderWidth = 0;
+    NSLog(@"type: %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]);
+    product = [[GodivaProductManager sharedInstance] getAnyProductsWithType:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
+    self.imageView.image = [UIImage imageWithData:product.image];
+    self.productLabel.text = product.name;
+    self.priceLabel.text = [NSString stringWithFormat:@"$%@0", product.price];
+    [[NSUserDefaults standardUserDefaults] setURL:[NSURL URLWithString:product.clickURL] forKey:@"url"];
+}
+
+- (void)saveProduct:(NSNotification *)notification {
+    NSLog(@"This is happening");
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    [[RLMRealm defaultRealm] deleteObject:product];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+    
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    product.type = @"saved";
+    [[RLMRealm defaultRealm] addObject:product];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
 }
 
 - (void)resetView {

@@ -9,12 +9,6 @@
 #import "GodivaProductManager.h"
 #import "GodivaCategory.h"
 
-#define PRODUCT_CEILING 4
-#define PRODUCT_FLOOR 0
-#define PRODUCT_CHUNK 2
-
-
-
 NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/categories";
 
 @implementation GodivaProductManager {
@@ -65,20 +59,25 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
     return (NSArray *)categories;
 }
 
+- (Product *)getAnyProductsWithType:(NSString *)type {
+    RLMResults<Product *> *products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", type]];
+    NSLog(@"Number of objects for type %@: %lu", type, products.count);
+    return [products objectAtIndex:0];
+}
+
 - (void)updateForContextType:(NSString *)type; {
     // set the context to the current product type
     userDefaults = [NSUserDefaults standardUserDefaults];
     _realm = [RLMRealm defaultRealm];
     
     // check if there are enough products in the current context
-    if (!self.isUpdating) {
-        self.isUpdating = true;
-        _products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", type]];
+    _products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", type]];
+    if (_products.count < PRODUCT_FLOOR) {
         NSLog(@"%lu", _products.count);
         // if not, update
-        if (_products.count <= PRODUCT_FLOOR) {
-            // query for more objects until it reaches the ceiling
-            [self getProductFor:type number:PRODUCT_CHUNK for:(int)PRODUCT_FLOOR/PRODUCT_CEILING];
+        NSLog(@"%i", (int)(PRODUCT_CEILING-_products.count)/PRODUCT_CHUNK);
+        for (int i = 0; i < (int)PRODUCT_CEILING/PRODUCT_CHUNK; i++) {
+            [self getProductFor:type number:PRODUCT_CHUNK for:1];
         }
     }
 }
@@ -197,9 +196,11 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
                     product.type = type;
                     
                     // add it to the database
-                    [_realm beginWriteTransaction];
-                    [_realm addObject:product];
-                    [_realm commitWriteTransaction];
+                    [_realm transactionWithBlock:^{
+                        //[_realm beginWriteTransaction];
+                        [_realm addObject:product];
+                        //[_realm commitWriteTransaction];
+                    }];
                 }
                 // recursively get another set
                 if (data.count > 0) [self getProductFor:type number:amount for:chunks-1];

@@ -476,6 +476,11 @@
                             <constraint firstItem="xLe-so-e3a" firstAttribute="centerX" secondItem="0bx-fY-gMN" secondAttribute="centerX" id="uAt-Cz-yBF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="uHM-Ob-i35" id="2oP-wH-uPS"/>
+                        <outlet property="priceLabel" destination="c00-3k-ODe" id="rN0-dz-Gkt"/>
+                        <outlet property="productLabel" destination="50x-Nh-kJD" id="Fwm-J9-BiR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nxz-us-acy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

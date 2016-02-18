@@ -11,4 +11,8 @@
 
 @interface DiscoverCardViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *productLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
 @end
