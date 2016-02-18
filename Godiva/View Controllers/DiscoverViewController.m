@@ -66,7 +66,7 @@
     // start the product manager for updating info
     productManager = [GodivaProductManager sharedInstance];
     
-    [productManager update];
+    [productManager updateForContextType:[userDefaults stringForKey:@"selectedObject"]];
 }
 
 - (void)didReceiveMemoryWarning {

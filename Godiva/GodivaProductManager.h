@@ -40,7 +40,7 @@
 
 -(void)getProductFor:(NSString *)type number:(int)amount for:(int)chunks;
 
--(void)update;
+-(void)updateForContextType:(NSString *)type;
 
 -(NSArray *)getCategoriesWithCompletion:(void (^)(BOOL finished))completion;
 

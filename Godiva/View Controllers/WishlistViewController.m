@@ -52,8 +52,7 @@
 
 - (void)loadCells {
     // get only the products that have been saved
-    //products = [Product objectsWhere:@"type = 'saved'"];
-    products = [Product allObjects];
+    products = [Product objectsWhere:@"type = 'saved'"];
     
 }
 
