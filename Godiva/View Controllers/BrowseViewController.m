@@ -107,6 +107,8 @@
     // set user defaults to selected object
     [userDefaults setObject:object.category forKey:@"selectedObject"];
     NSLog(@"Selected: %@", object.category);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"contextChanged" object:nil];
+    
     // move user over to card controller
     [self.tabBarController setSelectedIndex:1];
 }

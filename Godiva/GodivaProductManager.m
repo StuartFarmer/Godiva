@@ -32,7 +32,7 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
     NSDictionary *params = @{@"user_email" : [[NSUserDefaults standardUserDefaults] objectForKey:@"email"], @"user_token" : [[NSUserDefaults standardUserDefaults] objectForKey:@"authenticationToken"]};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         // get a response
             
         [manager GET:categoriesURL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -65,6 +65,12 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
     return [products objectAtIndex:0];
 }
 
+- (BOOL)productsExistForContext:(NSString *)type {
+    RLMResults<Product *> *products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", type]];
+    if (products.count > 0) return true;
+    return false;
+}
+
 - (void)updateForContextType:(NSString *)type; {
     // set the context to the current product type
     userDefaults = [NSUserDefaults standardUserDefaults];
@@ -81,6 +87,8 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
         }
     }
 }
+
+
 
 - (NSString *)URLParameterStringForArbitraryContextString:(NSString *)context {
     // Returns the URL parameter string that takes a context string and matches it to ShopStyles categories defined as GodivaCategories so that we can make calls with ease and not have to swap things over.
@@ -176,7 +184,7 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
     
     if ([Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", type]].count <= PRODUCT_CEILING) {
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             // get a response
             [manager GET:@"http://godiva.logiclabs.systems/api/v1/user_products/" parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
                 // Put JSON into Product data object and put into Realm

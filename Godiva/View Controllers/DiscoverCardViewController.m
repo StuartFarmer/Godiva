@@ -29,6 +29,7 @@
     [notificationCenter addObserver:self selector:@selector(saveProduct:) name:@"saveProduct" object:nil];
     [notificationCenter addObserver:self selector:@selector(deleteProduct:) name:@"deleteProduct" object:nil];
     [notificationCenter addObserver:self selector:@selector(resetCard:) name:@"resetCard" object:nil];
+    [notificationCenter addObserver:self selector:@selector(contextChanged:) name:@"contextChanged" object:nil];
     
     // Initiate user defaults
     [NSUserDefaults standardUserDefaults];
@@ -70,13 +71,20 @@
     [[RLMRealm defaultRealm] commitWriteTransaction];
 }
 
+- (void)contextChanged:(NSNotification *)notification {
+    [self resetView];
+}
+
 - (void)resetView {
-    NSLog(@"type: %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]);
-    product = [[GodivaProductManager sharedInstance] getAnyProductsWithType:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
-    self.imageView.image = [UIImage imageWithData:product.image];
-    self.productLabel.text = product.name;
-    self.priceLabel.text = [NSString stringWithFormat:@"$%@0", product.price];
-    [[NSUserDefaults standardUserDefaults] setURL:[NSURL URLWithString:product.clickURL] forKey:@"url"];
+    NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"];
+    if ([[GodivaProductManager sharedInstance] productsExistForContext:type]) {
+        NSLog(@"type: %@", type);
+        product = [[GodivaProductManager sharedInstance] getAnyProductsWithType:type];
+        self.imageView.image = [UIImage imageWithData:product.image];
+        self.productLabel.text = product.name;
+        self.priceLabel.text = [NSString stringWithFormat:@"$%@0", product.price];
+        [[NSUserDefaults standardUserDefaults] setURL:[NSURL URLWithString:product.clickURL] forKey:@"url"];
+    }
 }
 
 @end

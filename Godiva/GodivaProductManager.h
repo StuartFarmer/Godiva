@@ -46,5 +46,6 @@
 -(void)updateForContextType:(NSString *)type;
 -(Product *)getAnyProductsWithType:(NSString *)type;
 -(NSArray *)getCategoriesWithCompletion:(void (^)(BOOL finished))completion;
+-(BOOL)productsExistForContext:(NSString *)type;
 
 @end
