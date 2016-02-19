@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		1DF4831FBBBF4E3614BE409E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 442CF2F1A6E5AF0CDFB00C90 /* libPods.a */; };
 		5E31BF091C752F4F0050B436 /* GodivaCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E31BF081C752F4F0050B436 /* GodivaCategory.m */; };
+		5E3BE1C11C77B7F700C333CA /* browse.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E3BE1B81C77B7F700C333CA /* browse.png */; };
+		5E3BE1C21C77B7F700C333CA /* browse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E3BE1B91C77B7F700C333CA /* browse@2x.png */; };
+		5E3BE1C31C77B7F700C333CA /* browse@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E3BE1BA1C77B7F700C333CA /* browse@3x.png */; };
+		5E3BE1C41C77B7F700C333CA /* discover.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E3BE1BB1C77B7F700C333CA /* discover.png */; };
+		5E3BE1C51C77B7F700C333CA /* discover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E3BE1BC1C77B7F700C333CA /* discover@2x.png */; };
+		5E3BE1C61C77B7F700C333CA /* discover@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E3BE1BD1C77B7F700C333CA /* discover@3x.png */; };
+		5E3BE1C71C77B7F700C333CA /* wishlist.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E3BE1BE1C77B7F700C333CA /* wishlist.png */; };
+		5E3BE1C81C77B7F700C333CA /* wishlist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E3BE1BF1C77B7F700C333CA /* wishlist@2x.png */; };
+		5E3BE1C91C77B7F700C333CA /* wishlist@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E3BE1C01C77B7F700C333CA /* wishlist@3x.png */; };
 		5E3D7A6C1C39CA990054BCEF /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3D7A6B1C39CA990054BCEF /* Product.m */; };
 		5E3D7A741C39CCB00054BCEF /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3D7A711C39CCB00054BCEF /* libc++.1.tbd */; };
 		5E3D7A751C39CCB00054BCEF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3D7A721C39CCB00054BCEF /* libc++.tbd */; };
@@ -119,6 +128,15 @@
 		442CF2F1A6E5AF0CDFB00C90 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E31BF071C752F4F0050B436 /* GodivaCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GodivaCategory.h; sourceTree = "<group>"; };
 		5E31BF081C752F4F0050B436 /* GodivaCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GodivaCategory.m; sourceTree = "<group>"; };
+		5E3BE1B81C77B7F700C333CA /* browse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = browse.png; path = "Image Assets/browse.png"; sourceTree = "<group>"; };
+		5E3BE1B91C77B7F700C333CA /* browse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "browse@2x.png"; path = "Image Assets/browse@2x.png"; sourceTree = "<group>"; };
+		5E3BE1BA1C77B7F700C333CA /* browse@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "browse@3x.png"; path = "Image Assets/browse@3x.png"; sourceTree = "<group>"; };
+		5E3BE1BB1C77B7F700C333CA /* discover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = discover.png; path = "Image Assets/discover.png"; sourceTree = "<group>"; };
+		5E3BE1BC1C77B7F700C333CA /* discover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "discover@2x.png"; path = "Image Assets/discover@2x.png"; sourceTree = "<group>"; };
+		5E3BE1BD1C77B7F700C333CA /* discover@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "discover@3x.png"; path = "Image Assets/discover@3x.png"; sourceTree = "<group>"; };
+		5E3BE1BE1C77B7F700C333CA /* wishlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wishlist.png; path = "Image Assets/wishlist.png"; sourceTree = "<group>"; };
+		5E3BE1BF1C77B7F700C333CA /* wishlist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wishlist@2x.png"; path = "Image Assets/wishlist@2x.png"; sourceTree = "<group>"; };
+		5E3BE1C01C77B7F700C333CA /* wishlist@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wishlist@3x.png"; path = "Image Assets/wishlist@3x.png"; sourceTree = "<group>"; };
 		5E3D7A6A1C39CA990054BCEF /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = Realm/Product.h; sourceTree = "<group>"; };
 		5E3D7A6B1C39CA990054BCEF /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = Realm/Product.m; sourceTree = "<group>"; };
 		5E3D7A711C39CCB00054BCEF /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
@@ -425,6 +443,15 @@
 		B6B095351C0BCDC200C1DEC9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5E3BE1B81C77B7F700C333CA /* browse.png */,
+				5E3BE1B91C77B7F700C333CA /* browse@2x.png */,
+				5E3BE1BA1C77B7F700C333CA /* browse@3x.png */,
+				5E3BE1BB1C77B7F700C333CA /* discover.png */,
+				5E3BE1BC1C77B7F700C333CA /* discover@2x.png */,
+				5E3BE1BD1C77B7F700C333CA /* discover@3x.png */,
+				5E3BE1BE1C77B7F700C333CA /* wishlist.png */,
+				5E3BE1BF1C77B7F700C333CA /* wishlist@2x.png */,
+				5E3BE1C01C77B7F700C333CA /* wishlist@3x.png */,
 				5E5C4ED71C5EAD1300E74027 /* like.png */,
 				5E5C4ED81C5EAD1300E74027 /* like@2x.png */,
 				5E5C4ED91C5EAD1300E74027 /* like@3x.png */,
@@ -634,6 +661,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E3BE1C81C77B7F700C333CA /* wishlist@2x.png in Resources */,
 				B65DA8F11C16154D000D72AA /* accessories@3x.jpg in Resources */,
 				B65DA9151C161730000D72AA /* dresses@3x.jpg in Resources */,
 				B65DA9201C161810000D72AA /* sweaters@2x.jpg in Resources */,
@@ -643,16 +671,20 @@
 				B65DA90B1C16154D000D72AA /* test@2x.jpg in Resources */,
 				B65DA90E1C16154D000D72AA /* tops@2x.jpg in Resources */,
 				B6B095171C0BB4B400C1DEC9 /* LaunchScreen.storyboard in Resources */,
+				5E3BE1C41C77B7F700C333CA /* discover.png in Resources */,
 				B65DA90F1C16154D000D72AA /* tops@3x.jpg in Resources */,
 				B65DA91F1C161810000D72AA /* sweaters.jpg in Resources */,
 				B65DA8FF1C16154D000D72AA /* outerwear@2x.jpg in Resources */,
 				B65DA9031C16154D000D72AA /* pants@3x.jpg in Resources */,
 				E478BDCF1C18D20E00BEBACD /* pinIt@2x.png in Resources */,
 				B65DA91E1C161810000D72AA /* sportswear@3x.jpg in Resources */,
+				5E3BE1C11C77B7F700C333CA /* browse.png in Resources */,
 				5EC6D8381C5DB171007FB783 /* pass@2x.png in Resources */,
 				B65DA8FE1C16154D000D72AA /* outerwear.jpg in Resources */,
+				5E3BE1C51C77B7F700C333CA /* discover@2x.png in Resources */,
 				B65DA8F91C16154D000D72AA /* intimates@2x.jpg in Resources */,
 				B65DA8FC1C16154D000D72AA /* jewelry@2x.jpg in Resources */,
+				5E3BE1C71C77B7F700C333CA /* wishlist.png in Resources */,
 				B65DA9051C16154D000D72AA /* shoes@2x.jpg in Resources */,
 				5EC6D82C1C5DAF9A007FB783 /* like@2x.png in Resources */,
 				B6B095141C0BB4B400C1DEC9 /* Assets.xcassets in Resources */,
@@ -663,6 +695,7 @@
 				B65DA9021C16154D000D72AA /* pants@2x.jpg in Resources */,
 				E478BDD01C18D20E00BEBACD /* pinIt@3x.png in Resources */,
 				B65DA8EF1C16154D000D72AA /* accessories.jpg in Resources */,
+				5E3BE1C61C77B7F700C333CA /* discover@3x.png in Resources */,
 				5EC6D82B1C5DAF9A007FB783 /* like.png in Resources */,
 				B65DA8F21C16154D000D72AA /* bags.jpg in Resources */,
 				E478BDCE1C18D20E00BEBACD /* pinIt.png in Resources */,
@@ -672,6 +705,8 @@
 				B65DA9211C161810000D72AA /* sweaters@3x.jpg in Resources */,
 				5E5C4EDD1C5EAD1300E74027 /* like.png in Resources */,
 				B65DA90C1C16154D000D72AA /* test@3x.jpg in Resources */,
+				5E3BE1C91C77B7F700C333CA /* wishlist@3x.png in Resources */,
+				5E3BE1C31C77B7F700C333CA /* browse@3x.png in Resources */,
 				5EC6D82D1C5DAF9A007FB783 /* like@3x.png in Resources */,
 				5EB791751C559C340024F4EF /* login@3x.jpg in Resources */,
 				B65DA90A1C16154D000D72AA /* test.jpg in Resources */,
@@ -695,6 +730,7 @@
 				B65DA8F81C16154D000D72AA /* intimates.jpg in Resources */,
 				5EB791741C559C340024F4EF /* login@2x.jpg in Resources */,
 				B65DA9041C16154D000D72AA /* shoes.jpg in Resources */,
+				5E3BE1C21C77B7F700C333CA /* browse@2x.png in Resources */,
 				5E5C4EE21C5EAD1300E74027 /* login@3x.jpg in Resources */,
 				5E5C4EDE1C5EAD1300E74027 /* like@2x.png in Resources */,
 			);

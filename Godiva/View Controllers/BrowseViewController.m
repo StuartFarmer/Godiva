@@ -10,6 +10,7 @@
 #import "GodivaProductManager.h"
 #import "LoginViewController.h"
 #import "GodivaCategory.h"
+#import "UIColor+Godiva.h"
 
 #define M_PHI 1.61803398874989484820
 #define M_RATIO 1.3
@@ -48,10 +49,13 @@
     
     [self setTitle:@"Browse"];
     
+    // set up tab bar stuff
     [[self.tabBarController.tabBar.items objectAtIndex:0] setTitle:@"Browse"];
     if ([[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]) [[self.tabBarController.tabBar.items objectAtIndex:1] setTitle:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
     else [[self.tabBarController.tabBar.items objectAtIndex:1] setTitle:@"Discover"];
     [[self.tabBarController.tabBar.items objectAtIndex:2] setTitle:@"Wishlist"];
+    [[UITabBar appearance] setTintColor:[UIColor godivaBlue]];
+    [[UITabBar appearance] setAlpha:1];
 }
 
 - (void)getCategories {

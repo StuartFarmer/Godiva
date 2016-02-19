@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Discover-->
         <scene sceneID="ve9-SD-nS5">
             <objects>
                 <viewController id="4rs-ft-7Px" customClass="DiscoverViewController" sceneMemberID="viewController">
@@ -52,7 +52,7 @@
                             <constraint firstAttribute="trailing" secondItem="6fJ-XS-9we" secondAttribute="trailing" id="xh0-su-0VA"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="VnB-s5-2Me"/>
+                    <tabBarItem key="tabBarItem" title="Discover" image="discover.png" id="VnB-s5-2Me"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
@@ -64,7 +64,7 @@
             </objects>
             <point key="canvasLocation" x="941.5" y="63.5"/>
         </scene>
-        <!--Item-->
+        <!--Wishlist-->
         <scene sceneID="hrr-zE-hyy">
             <objects>
                 <viewController id="nHT-mu-9Vr" customClass="WishlistViewController" sceneMemberID="viewController">
@@ -108,13 +108,13 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fYt-cN-YbG">
                                                             <rect key="frame" x="167" y="0.0" width="159" height="183"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="H &amp; M Super Duper Black Scarf" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="zAG-VC-NV7">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H &amp; M Super Duper Black Scarf" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="zAG-VC-NV7">
                                                                     <rect key="frame" x="0.0" y="0.0" width="159" height="109"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="28"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Some brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="Wf2-A2-k0J">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="Wf2-A2-k0J">
                                                                     <rect key="frame" x="0.0" y="117" width="159" height="23"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -176,7 +176,7 @@
                             <constraint firstItem="iza-Tn-YYs" firstAttribute="bottom" secondItem="8Gn-C3-0s9" secondAttribute="top" id="zbV-H6-YCD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="pGv-Y9-gKv"/>
+                    <tabBarItem key="tabBarItem" title="Wishlist" image="wishlist.png" id="pGv-Y9-gKv"/>
                     <connections>
                         <outlet property="initialWishListView" destination="qUU-un-diO" id="Xpo-5j-T8t"/>
                         <outlet property="tableView" destination="eb1-wH-HPr" id="uco-hR-k9u"/>
@@ -315,7 +315,7 @@
             </objects>
             <point key="canvasLocation" x="1765.5" y="63.5"/>
         </scene>
-        <!--Item 1-->
+        <!--Browse-->
         <scene sceneID="lmg-Wj-juT">
             <objects>
                 <viewController id="gKV-Vy-ebI" customClass="BrowseViewController" sceneMemberID="viewController">
@@ -397,7 +397,7 @@
                             <constraint firstItem="2LX-HG-Ycv" firstAttribute="bottom" secondItem="Uw9-Tl-Ove" secondAttribute="top" id="mwV-0r-uVu"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="eQs-fM-IWH"/>
+                    <tabBarItem key="tabBarItem" title="Browse" image="browse.png" id="eQs-fM-IWH"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
@@ -649,11 +649,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="browse.png" width="30" height="30"/>
+        <image name="discover.png" width="30" height="30"/>
         <image name="dresses.jpg" width="100" height="167"/>
         <image name="like.png" width="200" height="200"/>
         <image name="login.jpg" width="628" height="421"/>
         <image name="pass.png" width="200" height="200"/>
         <image name="question.png" width="200" height="200"/>
         <image name="test.jpg" width="52" height="52"/>
+        <image name="wishlist.png" width="30" height="30"/>
     </resources>
 </document>
