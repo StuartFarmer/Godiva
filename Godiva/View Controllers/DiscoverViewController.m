@@ -58,6 +58,7 @@
     [notificationCenter addObserver:self selector:@selector(likeButtonPressed:) name:@"likeButtonPressed" object:nil];
     [notificationCenter addObserver:self selector:@selector(questionButtonPressed:) name:@"questionButtonPressed" object:nil];
     [notificationCenter addObserver:self selector:@selector(passButtonPressed:) name:@"passButtonPressed" object:nil];
+    [notificationCenter addObserver:self selector:@selector(contextChanged:) name:@"contextChanged" object:nil];
     
     userDefaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"Auth Token: %@", [userDefaults stringForKey:@"authenticationToken"]);
@@ -67,6 +68,8 @@
     
     // start the product manager for updating info
     productManager = [GodivaProductManager sharedInstance];
+    
+    [self setTitle:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -255,6 +258,10 @@
             [self.view setUserInteractionEnabled:YES];
         }];
     }
+}
+
+- (void)contextChanged:(NSNotification *)notification {
+    [self setTitle:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
 }
 
 @end

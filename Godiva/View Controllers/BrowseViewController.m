@@ -45,6 +45,13 @@
         LoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [self presentViewController:loginViewController animated:YES completion:nil];
     } else [self getCategories];
+    
+    [self setTitle:@"Browse"];
+    
+    [[self.tabBarController.tabBar.items objectAtIndex:0] setTitle:@"Browse"];
+    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]) [[self.tabBarController.tabBar.items objectAtIndex:1] setTitle:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
+    else [[self.tabBarController.tabBar.items objectAtIndex:1] setTitle:@"Discover"];
+    [[self.tabBarController.tabBar.items objectAtIndex:2] setTitle:@"Wishlist"];
 }
 
 - (void)getCategories {
@@ -102,6 +109,7 @@
     // set user defaults to selected object
     [userDefaults setObject:object.category forKey:@"selectedObject"];
     NSLog(@"Selected: %@", [userDefaults stringForKey:@"selectedObject"]);
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"contextChanged" object:nil];
     
     // move user over to card controller

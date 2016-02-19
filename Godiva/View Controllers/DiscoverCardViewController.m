@@ -52,7 +52,8 @@
     // Load the first card
     [self resetView];
     
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"loading"];
+    if ([[GodivaProductManager sharedInstance] productsExistForContext:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]]) [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"loading"];
+    else [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"loading"];
 }
 
 - (void)didReceiveMemoryWarning {
