@@ -39,6 +39,12 @@
     NSLog(@"%@", [userDefaults stringForKey:@"email"]);
     // set up product manager
     productManager = [GodivaProductManager sharedInstance];
+    
+    if (![userDefaults stringForKey:@"authenticationToken"]) {
+        // Log in
+        LoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        [self presentViewController:loginViewController animated:YES completion:nil];
+    } else [self getCategories];
 }
 
 - (void)getCategories {
@@ -67,14 +73,6 @@
         }
     }];
 
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    if (![userDefaults stringForKey:@"authenticationToken"]) {
-        // Log in
-        LoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        [self presentViewController:loginViewController animated:YES completion:nil];
-    } else [self getCategories];
 }
 
 - (void)didReceiveMemoryWarning {
