@@ -25,9 +25,9 @@
 @property (strong, nonatomic) RLMRealm *realm;
 @property (strong, nonatomic) RLMResults<Product *> *products;
 
-+(GodivaProductManager *)sharedInstance;
+@property (nonatomic) dispatch_queue_t realmQueue;
 
-+(Product *)currentProduct;
++(GodivaProductManager *)sharedInstance;
 
 +(NSString *)idForTops;
 +(NSString *)idForPants;
@@ -41,11 +41,14 @@
 +(NSString *)idForJewelry;
 +(NSString *)idForIntimates;
 +(NSString *)idForAccessories;
++(dispatch_queue_t)dispatchQueue;
 
 -(void)getProductFor:(NSString *)type number:(int)amount for:(int)chunks;
 -(void)updateForContextType:(NSString *)type;
 -(Product *)getAnyProductsWithType:(NSString *)type;
 -(NSArray *)getCategoriesWithCompletion:(void (^)(BOOL finished))completion;
 -(BOOL)productsExistForContext:(NSString *)type;
+-(NSUInteger)productCountForContext:(NSString *)type;
+-(NSArray *)getProductsWithType:(NSString *)type;
 
 @end

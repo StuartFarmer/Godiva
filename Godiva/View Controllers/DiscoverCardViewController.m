@@ -15,6 +15,7 @@
     NSUserDefaults *userDefaults;
     CGPoint initialPoint;
     Product *product;
+    NSMutableArray *productArray;
 }
 
 @end
@@ -34,8 +35,15 @@
     // Initiate user defaults
     [NSUserDefaults standardUserDefaults];
     
+    productArray = (NSMutableArray *)[[GodivaProductManager sharedInstance] getProductsWithType:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
+    
+    if ([[GodivaProductManager sharedInstance] productsExistForContext:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]]) product = [productArray objectAtIndex:0];
+    
     self.view.layer.cornerRadius = 8.0f;
     initialPoint = self.view.center;
+    
+    //Set up as if there are no cards present
+    [self hideUIElements];
     
     // Load the first card
     [self resetView];
@@ -56,34 +64,73 @@
 
 - (void)saveProduct:(NSNotification *)notification {
     NSLog(@"Saving Card.");
+    // Remove card from product array
+    [productArray removeObject:product];
     
-    [[RLMRealm defaultRealm] beginWriteTransaction];
-    product.type = @"saved";
-    [[RLMRealm defaultRealm] addOrUpdateObject:product];
-    [[RLMRealm defaultRealm] commitWriteTransaction];
+    // Update card in realm
+    if ([[GodivaProductManager sharedInstance] productsExistForContext:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]]) {
+        dispatch_async(dispatch_queue_create("db", DISPATCH_QUEUE_SERIAL), ^{
+            [[RLMRealm defaultRealm] beginWriteTransaction];
+            product.type = @"saved";
+            [[RLMRealm defaultRealm] addOrUpdateObject:product];
+            [[RLMRealm defaultRealm] commitWriteTransaction];
+        });
+    } else {
+        NSLog(@"Woohoo.");
+    }
 }
 
 - (void)deleteProduct:(NSNotification *)notification {
     NSLog(@"Deleting Card.");
+    // Remove card from product array
+    [productArray removeObject:product];
     
-    [[RLMRealm defaultRealm] beginWriteTransaction];
-    [[RLMRealm defaultRealm] deleteObject:product];
-    [[RLMRealm defaultRealm] commitWriteTransaction];
+    // Update card in realm
+    if ([[GodivaProductManager sharedInstance] productsExistForContext:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]]) {
+        dispatch_async(dispatch_queue_create("db", DISPATCH_QUEUE_SERIAL), ^{
+            [[RLMRealm defaultRealm] beginWriteTransaction];
+            [[RLMRealm defaultRealm] deleteObject:product];
+            [[RLMRealm defaultRealm] commitWriteTransaction];
+        });
+    } else {
+        NSLog(@"Woohoo.");
+    }
 }
 
 - (void)contextChanged:(NSNotification *)notification {
+    // get new objects and update view
+    productArray = (NSMutableArray *)[[GodivaProductManager sharedInstance] getProductsWithType:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
     [self resetView];
+}
+
+- (void)hideUIElements {
+    self.outOfCardsLabel.hidden = NO;
+    self.imageView.hidden = YES;
+    self.productLabel.hidden = YES;
+    self.priceLabel.hidden = YES;
+}
+
+- (void)showUIElements {
+    self.outOfCardsLabel.hidden = YES;
+    self.imageView.hidden = NO;
+    self.productLabel.hidden = NO;
+    self.priceLabel.hidden = NO;
 }
 
 - (void)resetView {
     NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"];
     if ([[GodivaProductManager sharedInstance] productsExistForContext:type]) {
+        [self showUIElements];
         NSLog(@"type: %@", type);
-        product = [[GodivaProductManager sharedInstance] getAnyProductsWithType:type];
+        product = [productArray objectAtIndex:0];
         self.imageView.image = [UIImage imageWithData:product.image];
         self.productLabel.text = product.name;
         self.priceLabel.text = [NSString stringWithFormat:@"$%@0", product.price];
         [[NSUserDefaults standardUserDefaults] setURL:[NSURL URLWithString:product.clickURL] forKey:@"url"];
+    } else {
+        NSLog(@"No cards to show...");
+        [[GodivaProductManager sharedInstance] updateForContextType:[userDefaults stringForKey:@"selectedObject"]];
+        [self hideUIElements];
     }
 }
 

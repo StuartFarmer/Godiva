@@ -48,9 +48,6 @@
             // Cool, we're good to go.
             NSLog(@"This works! Continue!!");
             self.view.userInteractionEnabled = YES;
-            for (GodivaCategory *category in [[GodivaProductManager sharedInstance] categories]) {
-                NSLog(@"%@", category.name);
-            }
         } else {
             // Alert that there was an error
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error Getting Category Data"

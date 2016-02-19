@@ -68,9 +68,6 @@
     // start the product manager for updating info
     productManager = [GodivaProductManager sharedInstance];
     
-    NSLog(@"Hey...");
-    [productManager updateForContextType:[userDefaults stringForKey:@"selectedObject"]];
-    
     // load first card
     //products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", [userDefaults stringForKey:@"selectedObject"]]];
 }

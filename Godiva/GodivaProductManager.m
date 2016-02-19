@@ -32,7 +32,7 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
     NSDictionary *params = @{@"user_email" : [[NSUserDefaults standardUserDefaults] objectForKey:@"email"], @"user_token" : [[NSUserDefaults standardUserDefaults] objectForKey:@"authenticationToken"]};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    dispatch_async(dispatch_queue_create("db", DISPATCH_QUEUE_SERIAL), ^{
         // get a response
             
         [manager GET:categoriesURL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -59,9 +59,17 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
     return (NSArray *)categories;
 }
 
+- (NSArray *)getProductsWithType:(NSString *)type {
+    RLMResults<Product *> *products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", type]];
+    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
+    for (Product *product in products) {
+        [returnArray addObject:product];
+    }
+    return (NSArray *)returnArray;
+}
+
 - (Product *)getAnyProductsWithType:(NSString *)type {
     RLMResults<Product *> *products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", type]];
-    NSLog(@"Number of objects for type %@: %lu", type, products.count);
     return [products objectAtIndex:0];
 }
 
@@ -69,6 +77,11 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
     RLMResults<Product *> *products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", type]];
     if (products.count > 0) return true;
     return false;
+}
+
+- (NSUInteger)productCountForContext:(NSString *)type {
+    RLMResults<Product *> *products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", type]];
+    return products.count;
 }
 
 - (void)updateForContextType:(NSString *)type; {
@@ -82,13 +95,12 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
         NSLog(@"%lu", _products.count);
         // if not, update
         NSLog(@"%i", (int)(PRODUCT_CEILING-_products.count)/PRODUCT_CHUNK);
-        for (int i = 0; i < (int)PRODUCT_CEILING/PRODUCT_CHUNK; i++) {
-            [self getProductFor:type number:PRODUCT_CHUNK for:1];
-        }
+//        for (int i = 0; i < (int)PRODUCT_CEILING/PRODUCT_CHUNK; i++) {
+//            [self getProductFor:type number:PRODUCT_CHUNK for:1];
+//        }
+        [self getProductFor:type number:PRODUCT_CHUNK for:(int)PRODUCT_CEILING/PRODUCT_CHUNK];
     }
 }
-
-
 
 - (NSString *)URLParameterStringForArbitraryContextString:(NSString *)context {
     // Returns the URL parameter string that takes a context string and matches it to ShopStyles categories defined as GodivaCategories so that we can make calls with ease and not have to swap things over.
@@ -184,31 +196,31 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
     
     if ([Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", type]].count <= PRODUCT_CEILING) {
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             // get a response
             [manager GET:@"http://godiva.logiclabs.systems/api/v1/user_products/" parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
                 // Put JSON into Product data object and put into Realm
                 NSLog(@"JSON: %@", responseObject);
                 NSArray *data = responseObject[@"data"];
                 for (NSDictionary *item in data) {
-                    // create an object and fill it with the pulled data
-                    Product *product = [[Product alloc] init];
-                    product.brandName = item[@"attributes"][@"brand_name"];
-                    product.clickURL = item[@"attributes"][@"click_url"];
-                    product.image = [NSData dataWithContentsOfURL:[NSURL URLWithString:item[@"attributes"][@"image_url"]]];
-                    product.name = item[@"attributes"][@"name"];
-                    product.price = item[@"attributes"][@"price"];
-                    product.userID = [NSString stringWithFormat:@"%@", item[@"attributes"][@"user_id"]];
-                    product.productID = [NSString stringWithFormat:@"%@", item[@"attributes"][@"product_id"]];
-                    product.identifier = item[@"id"];
-                    product.type = type;
-                    
-                    // add it to the database
-                    [_realm transactionWithBlock:^{
-                        //[_realm beginWriteTransaction];
-                        [_realm addObject:product];
-                        //[_realm commitWriteTransaction];
-                    }];
+                    dispatch_async(dispatch_queue_create("db", DISPATCH_QUEUE_SERIAL), ^{
+                        // create an object and fill it with the pulled data
+                        Product *product = [[Product alloc] init];
+                        product.brandName = item[@"attributes"][@"brand_name"];
+                        product.clickURL = item[@"attributes"][@"click_url"];
+                        product.image = [NSData dataWithContentsOfURL:[NSURL URLWithString:item[@"attributes"][@"image_url"]]];
+                        product.name = item[@"attributes"][@"name"];
+                        product.price = item[@"attributes"][@"price"];
+                        product.userID = [NSString stringWithFormat:@"%@", item[@"attributes"][@"user_id"]];
+                        product.productID = [NSString stringWithFormat:@"%@", item[@"attributes"][@"product_id"]];
+                        product.identifier = item[@"id"];
+                        product.type = type;
+                        
+                        // add it to the database
+                        [[RLMRealm defaultRealm] beginWriteTransaction];
+                        [[RLMRealm defaultRealm]addObject:product];
+                        [[RLMRealm defaultRealm] commitWriteTransaction];
+                    });
                 }
                 // recursively get another set
                 if (data.count > 0) [self getProductFor:type number:amount for:chunks-1];
@@ -267,6 +279,10 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
 
 +(NSString *)idForTops {
     return @"Tops";
+}
+
++(dispatch_queue_t)dispatchQueue {
+    return dispatch_queue_create("com.godiva.queue", NULL);
 }
 
 @end
