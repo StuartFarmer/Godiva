@@ -239,7 +239,21 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
     }
 }
 
+#pragma Background Fetch Method
+-(void)updateCategoriesWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"This is working too!");
+    [self getCategoriesWithCompletion:^(BOOL finished) {
+        for (NSString *type in [GodivaProductManager ids]) {
+            [self updateForContextType:type];
+        }
+    }];
+}
+
 #pragma Identifiers for different types of categories
++(NSArray *)ids {
+    return @[[GodivaProductManager idForAccessories], [GodivaProductManager idForBags], [GodivaProductManager idForDresses], [GodivaProductManager idForIntimates], [GodivaProductManager idForJewelry], [GodivaProductManager idForOuterwear], [GodivaProductManager idForPants], [GodivaProductManager idForShoes], [GodivaProductManager idForSkirtsAndShorts], [GodivaProductManager idForSportswear], [GodivaProductManager idForSweaters], [GodivaProductManager idForTops]];
+}
+
 +(NSString *)idForAccessories {
     return @"Accessories";
 }

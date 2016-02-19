@@ -50,5 +50,6 @@
 -(BOOL)productsExistForContext:(NSString *)type;
 -(NSUInteger)productCountForContext:(NSString *)type;
 -(NSArray *)getProductsWithType:(NSString *)type;
+-(void)updateCategoriesWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 
 @end

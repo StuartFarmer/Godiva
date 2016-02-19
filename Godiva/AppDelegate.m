@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GodivaProductManager.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,15 @@
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
     return YES;
+}
+
+-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+    NSLog(@"This is working.");
+    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"authenticationToken"]) {
+        [[GodivaProductManager sharedInstance] updateCategoriesWithCompletionHandler:^(UIBackgroundFetchResult results) {
+            completionHandler(results);
+        }];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
