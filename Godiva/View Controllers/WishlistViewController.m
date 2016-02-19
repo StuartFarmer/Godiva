@@ -70,20 +70,11 @@
     // Load cell assets
     cell.productLabel.text = product.name;
     cell.brandLabel.text = product.brandName;
-    cell.priceLabel.text = [NSString stringWithFormat:@"$%@0", product.price];
-    cell.imageView.image = [UIImage imageWithData:product.image];
+    cell.priceLabel.text = [NSString stringWithFormat:@"$%.2f", [product.price floatValue]];
+    UIImage *image = [UIImage imageWithData:product.image];
+    cell.imageView.image = image;
     
     return cell;
-}
-
--(UIImage*)resizeImage:(UIImage *)image imageSize:(CGSize)size
-{
-    UIGraphicsBeginImageContext(size);
-    [image drawInRect:CGRectMake(0,0,size.width,size.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    //here is the scaled image which has been changed to the size specified
-    UIGraphicsEndImageContext();
-    return newImage;
 }
 
 // present the affiliate link when tapped

@@ -147,7 +147,7 @@
         product = [productArray objectAtIndex:0];
         self.imageView.image = [UIImage imageWithData:product.image];
         self.productLabel.text = product.name;
-        self.priceLabel.text = [NSString stringWithFormat:@"$%@0", product.price];
+        self.priceLabel.text = [NSString stringWithFormat:@"$%.2f", [product.price floatValue]];
         [[NSUserDefaults standardUserDefaults] setURL:[NSURL URLWithString:product.clickURL] forKey:@"url"];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"loading"];
     } else {
