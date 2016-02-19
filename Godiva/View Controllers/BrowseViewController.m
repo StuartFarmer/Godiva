@@ -46,7 +46,7 @@
     [[GodivaProductManager sharedInstance] getCategoriesWithCompletion:^(BOOL finished) {
         if (finished) {
             // Cool, we're good to go.
-            NSLog(@"This works! Continue!!");
+            NSLog(@"Loaded Categories.");
             self.view.userInteractionEnabled = YES;
         } else {
             // Alert that there was an error
@@ -103,7 +103,7 @@
     
     // set user defaults to selected object
     [userDefaults setObject:object.category forKey:@"selectedObject"];
-    NSLog(@"Selected: %@", object.category);
+    NSLog(@"Selected: %@", [userDefaults stringForKey:@"selectedObject"]);
     [[NSNotificationCenter defaultCenter] postNotificationName:@"contextChanged" object:nil];
     
     // move user over to card controller

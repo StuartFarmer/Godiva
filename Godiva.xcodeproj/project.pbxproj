@@ -203,7 +203,7 @@
 		B680162E1C1B8F9D00B372B2 /* PassOrSaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PassOrSaveViewController.m; path = "View Controllers/PassOrSaveViewController.m"; sourceTree = "<group>"; };
 		B68016301C1B8FCF00B372B2 /* DiscoverCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoverCardViewController.h; path = "View Controllers/DiscoverCardViewController.h"; sourceTree = "<group>"; };
 		B68016311C1B8FCF00B372B2 /* DiscoverCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoverCardViewController.m; path = "View Controllers/DiscoverCardViewController.m"; sourceTree = "<group>"; };
-		B6B095011C0BB4B300C1DEC9 /* Godiva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Godiva.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6B095011C0BB4B300C1DEC9 /* Athena.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Athena.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6B095051C0BB4B300C1DEC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B6B095071C0BB4B300C1DEC9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B6B095081C0BB4B300C1DEC9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -331,7 +331,7 @@
 		B6B095021C0BB4B300C1DEC9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B6B095011C0BB4B300C1DEC9 /* Godiva.app */,
+				B6B095011C0BB4B300C1DEC9 /* Athena.app */,
 				5E6C197F1C5139460018301A /* GodivaTests.xctest */,
 				5E6C198D1C5139690018301A /* GodivaUITests.xctest */,
 			);
@@ -564,7 +564,7 @@
 			);
 			name = Godiva;
 			productName = Godiva;
-			productReference = B6B095011C0BB4B300C1DEC9 /* Godiva.app */;
+			productReference = B6B095011C0BB4B300C1DEC9 /* Athena.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -587,6 +587,11 @@
 					B6B095001C0BB4B300C1DEC9 = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = 966MLVXTL7;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -966,7 +971,7 @@
 				INFOPLIST_FILE = Godiva/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) /";
 				PRODUCT_BUNDLE_IDENTIFIER = app.kitchen.Godiva;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Athena;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -982,7 +987,7 @@
 				INFOPLIST_FILE = Godiva/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) /";
 				PRODUCT_BUNDLE_IDENTIFIER = app.kitchen.Godiva;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Athena;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;

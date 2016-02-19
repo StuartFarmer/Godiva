@@ -9,6 +9,7 @@
 #import "DiscoverCardViewController.h"
 #import "CGPoint+Vector.h"
 #import "GodivaProductManager.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface DiscoverCardViewController () {
     NSNotificationCenter *notificationCenter;
@@ -16,6 +17,7 @@
     CGPoint initialPoint;
     Product *product;
     NSMutableArray *productArray;
+    MBProgressHUD *hud;
 }
 
 @end
@@ -31,6 +33,8 @@
     [notificationCenter addObserver:self selector:@selector(deleteProduct:) name:@"deleteProduct" object:nil];
     [notificationCenter addObserver:self selector:@selector(resetCard:) name:@"resetCard" object:nil];
     [notificationCenter addObserver:self selector:@selector(contextChanged:) name:@"contextChanged" object:nil];
+    [notificationCenter addObserver:self selector:@selector(productsAtProductFloor:) name:@"productsAtProductFloor" object:nil];
+    [notificationCenter addObserver:self selector:@selector(productsAtProductCeiling:) name:@"productsAtProductCeiling" object:nil];
     
     // Initiate user defaults
     [NSUserDefaults standardUserDefaults];
@@ -47,6 +51,8 @@
     
     // Load the first card
     [self resetView];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"loading"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,12 +75,12 @@
     
     // Update card in realm
     if ([[GodivaProductManager sharedInstance] productsExistForContext:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]]) {
-        dispatch_async(dispatch_queue_create("db", DISPATCH_QUEUE_SERIAL), ^{
-            [[RLMRealm defaultRealm] beginWriteTransaction];
-            product.type = @"saved";
-            [[RLMRealm defaultRealm] addOrUpdateObject:product];
-            [[RLMRealm defaultRealm] commitWriteTransaction];
-        });
+        Product *update = [Product objectForPrimaryKey:product.uuid];
+        [[RLMRealm defaultRealm] beginWriteTransaction];
+        product.type = @"saved";
+        [[RLMRealm defaultRealm] addOrUpdateObject:update];
+        [[RLMRealm defaultRealm] commitWriteTransaction];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"productSaved" object:nil];
     } else {
         NSLog(@"Woohoo.");
     }
@@ -87,11 +93,12 @@
     
     // Update card in realm
     if ([[GodivaProductManager sharedInstance] productsExistForContext:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]]) {
-        dispatch_async(dispatch_queue_create("db", DISPATCH_QUEUE_SERIAL), ^{
+        //dispatch_async(dispatch_queue_create("db", DISPATCH_QUEUE_SERIAL), ^{
+            Product *update = [Product objectForPrimaryKey:product.uuid];
             [[RLMRealm defaultRealm] beginWriteTransaction];
-            [[RLMRealm defaultRealm] deleteObject:product];
+            [[RLMRealm defaultRealm] deleteObject:update];
             [[RLMRealm defaultRealm] commitWriteTransaction];
-        });
+        //});
     } else {
         NSLog(@"Woohoo.");
     }
@@ -99,8 +106,21 @@
 
 - (void)contextChanged:(NSNotification *)notification {
     // get new objects and update view
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"url"];
     productArray = (NSMutableArray *)[[GodivaProductManager sharedInstance] getProductsWithType:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
     [self resetView];
+}
+
+- (void)productsAtProductFloor:(NSNotification *)notification {
+    
+}
+
+- (void)productsAtProductCeiling:(NSNotification *)notification {
+    [self resetView];
+    
+    // remove hud
+    [hud hide:YES];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"loading"];
 }
 
 - (void)hideUIElements {
@@ -118,6 +138,7 @@
 }
 
 - (void)resetView {
+    productArray = (NSMutableArray *)[[GodivaProductManager sharedInstance] getProductsWithType:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
     NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"];
     if ([[GodivaProductManager sharedInstance] productsExistForContext:type]) {
         [self showUIElements];
@@ -127,9 +148,16 @@
         self.productLabel.text = product.name;
         self.priceLabel.text = [NSString stringWithFormat:@"$%@0", product.price];
         [[NSUserDefaults standardUserDefaults] setURL:[NSURL URLWithString:product.clickURL] forKey:@"url"];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"loading"];
     } else {
         NSLog(@"No cards to show...");
-        [[GodivaProductManager sharedInstance] updateForContextType:[userDefaults stringForKey:@"selectedObject"]];
+        [[GodivaProductManager sharedInstance] updateForContextType:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
+        // show hud
+        hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"Loading";
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"loading"];
+        
         [self hideUIElements];
     }
 }

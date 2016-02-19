@@ -11,6 +11,7 @@
 #import "Product.h"
 
 @import SafariServices;
+@import QuartzCore;
 
 @interface WishlistViewController () {
     RLMRealm *realm;
@@ -28,32 +29,21 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-//    // Set up Realm
-//    realm = [RLMRealm defaultRealm];
-//    
-//    Product *something = [[Product alloc] init];
-//    
-//    [realm beginWriteTransaction];
-//    something.productName = @"Super Duper Scarf Deluxe";
-//    something.productType = @"accessories";
-//    something.price = 20.00f;
-//    something.image = (UIImagePNGRepresentation([UIImage imageNamed:@"accessories.jpg"]));
-//    something.type = @"saved";
-//    something.brandName = @"H&M";
-//    something.affiliateURL = @"http://hm.com";
-//    something.timeSaved = [NSDate date];
-//    [realm addObject:something];
-//    [realm commitWriteTransaction];
-    
     self.initialWishListView.alpha = 0;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productSaved:) name:@"productSaved" object:nil]
+    ;
     [self loadCells];
 }
 
 - (void)loadCells {
     // get only the products that have been saved
     products = [Product objectsWhere:@"type = 'saved'"];
-    
+}
+
+- (void)productSaved:(NSNotification *)notification {
+    [self loadCells];
+    [_tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,7 +66,7 @@
     }
     
     Product *product = [products objectAtIndex:indexPath.row];
-    
+
     // Load cell assets
     cell.productLabel.text = product.name;
     cell.brandLabel.text = product.brandName;
@@ -84,6 +74,16 @@
     cell.imageView.image = [UIImage imageWithData:product.image];
     
     return cell;
+}
+
+-(UIImage*)resizeImage:(UIImage *)image imageSize:(CGSize)size
+{
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0,0,size.width,size.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    //here is the scaled image which has been changed to the size specified
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 // present the affiliate link when tapped

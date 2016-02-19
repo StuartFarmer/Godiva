@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *productLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *outOfCardsLabel;
+@property (nonatomic) BOOL loading;
 
 @end

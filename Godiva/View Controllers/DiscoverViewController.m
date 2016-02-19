@@ -67,9 +67,6 @@
     
     // start the product manager for updating info
     productManager = [GodivaProductManager sharedInstance];
-    
-    // load first card
-    //products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", [userDefaults stringForKey:@"selectedObject"]]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,27 +83,30 @@
     
     // Reset the total distance
     totalDistance = 0;
+    
 }
 
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     // Move the view (or view in this case) to the amount dragged on the screen
-    CGPoint newPoint = [[touches anyObject] locationInView:self.view];
-    CGPoint difference = CGPointSubtract(newPoint, currentPoint);
-    swipeView.center = CGPointAdd(swipeView.center, difference);
-    
-    // Color UI elements if view is within valid zone
-    UIColor *backgroundColor = [UIColor godivaWhite];
-    
-    if ([self view:swipeView IsPointingTowards:[GodivaCardHelper passVector]]) backgroundColor = [UIColor godivaRed];
-    else if ([self view:swipeView IsPointingTowards:[GodivaCardHelper questionVector]]) backgroundColor = [UIColor godivaBlue];
-    else if ([self view:swipeView IsPointingTowards:[GodivaCardHelper likeVector]]) backgroundColor = [UIColor godivaGreen];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"loading"]) {
+        CGPoint newPoint = [[touches anyObject] locationInView:self.view];
+        CGPoint difference = CGPointSubtract(newPoint, currentPoint);
+        swipeView.center = CGPointAdd(swipeView.center, difference);
+        
+        // Color UI elements if view is within valid zone
+        UIColor *backgroundColor = [UIColor godivaWhite];
+        
+        if ([self view:swipeView IsPointingTowards:[GodivaCardHelper passVector]]) backgroundColor = [UIColor godivaRed];
+        else if ([self view:swipeView IsPointingTowards:[GodivaCardHelper questionVector]]) backgroundColor = [UIColor godivaBlue];
+        else if ([self view:swipeView IsPointingTowards:[GodivaCardHelper likeVector]]) backgroundColor = [UIColor godivaGreen];
 
-    [UIView animateWithDuration:ANIMATION_TIME animations:^{
-        self.view.backgroundColor = backgroundColor;
-    }];
-    
-    // Set current point to new point
-    currentPoint = newPoint;
+        [UIView animateWithDuration:ANIMATION_TIME animations:^{
+            self.view.backgroundColor = backgroundColor;
+        }];
+        
+        // Set current point to new point
+        currentPoint = newPoint;
+    }
 }
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -142,6 +142,7 @@
     } else {
         if ([self view:swipeView IsPointingTowards:[GodivaCardHelper questionVector]]) {
             // show the URL in a safari modal
+            NSLog(@"Showing...");
             SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[[NSUserDefaults standardUserDefaults] URLForKey:@"url"]];
             [self presentViewController:safariViewController animated:YES completion:nil];
         }
@@ -176,76 +177,84 @@
 }
 
 - (void)likeButtonPressed:(NSNotification *)notification {
-    [self.view setUserInteractionEnabled:NO];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-    [UIView animateWithDuration:ANIMATION_TIME animations:^{
-        swipeView.center = CGPointMake(swipeView.center.x+DEFAULT_DISCARD_DISTANCE, swipeView.center.y);
-        self.view.backgroundColor = [UIColor godivaGreen];
-        swipeView.alpha = 0;
-    } completion:^(BOOL finished) {
-        // Reset the view
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"loading"]) {
+        [self.view setUserInteractionEnabled:NO];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
         [UIView animateWithDuration:ANIMATION_TIME animations:^{
-            self.view.backgroundColor = [UIColor godivaWhite];
+            swipeView.center = CGPointMake(swipeView.center.x+DEFAULT_DISCARD_DISTANCE, swipeView.center.y);
+            self.view.backgroundColor = [UIColor godivaGreen];
+            swipeView.alpha = 0;
+        } completion:^(BOOL finished) {
+            // Reset the view
+            [UIView animateWithDuration:ANIMATION_TIME animations:^{
+                self.view.backgroundColor = [UIColor godivaWhite];
+            }];
+            swipeView.center = CGPointMake(swipeView.center.x-DEFAULT_DISCARD_DISTANCE, swipeView.center.y);
+            swipeView.backgroundColor = [UIColor whiteColor];
+            
+            swipeView.layer.cornerRadius = 8.0f;
+            
+            // change product type to 'saved' on card's end and then remove it from play
+            [notificationCenter postNotificationName:@"saveProduct" object:nil];
+            [notificationCenter postNotificationName:@"resetCard" object:nil];
+            
+            swipeView.alpha = 1;
+            [self.view setUserInteractionEnabled:YES];
         }];
-        swipeView.center = CGPointMake(swipeView.center.x-DEFAULT_DISCARD_DISTANCE, swipeView.center.y);
-        swipeView.backgroundColor = [UIColor whiteColor];
-        
-        swipeView.layer.cornerRadius = 8.0f;
-        
-        // change product type to 'saved' on card's end and then remove it from play
-        [notificationCenter postNotificationName:@"saveProduct" object:nil];
-        [notificationCenter postNotificationName:@"resetCard" object:nil];
-        
-        swipeView.alpha = 1;
-        [self.view setUserInteractionEnabled:YES];
-    }];
+    }
 }
 
 - (void)questionButtonPressed:(NSNotification *)notification {
-    [self.view setUserInteractionEnabled:NO];
-    [UIView animateWithDuration:ANIMATION_TIME animations:^{
-        // push view up and color
-        swipeView.center = CGPointMake(swipeView.center.x, swipeView.center.y-200);
-        self.view.backgroundColor = [UIColor godivaBlue];
-
-    } completion:^(BOOL finished) {
-        // Reset the view
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"loading"]) {
+        [self.view setUserInteractionEnabled:NO];
         [UIView animateWithDuration:ANIMATION_TIME animations:^{
-            // push view down and decolor
-            swipeView.center = CGPointMake(swipeView.center.x, swipeView.center.y+200);
-            self.view.backgroundColor = [UIColor godivaWhite];
+            // push view up and color
+            swipeView.center = CGPointMake(swipeView.center.x, swipeView.center.y-200);
+            self.view.backgroundColor = [UIColor godivaBlue];
+
+        } completion:^(BOOL finished) {
+            // Reset the view
+            [UIView animateWithDuration:ANIMATION_TIME animations:^{
+                // push view down and decolor
+                swipeView.center = CGPointMake(swipeView.center.x, swipeView.center.y+200);
+                self.view.backgroundColor = [UIColor godivaWhite];
+            }];
+            // show the URL in a safari modal
+
+            SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[[NSUserDefaults standardUserDefaults] URLForKey:@"url"]];
+            [self presentViewController:safariViewController animated:YES completion:nil];
+            
+            [self.view setUserInteractionEnabled:YES];
         }];
-        // show the URL in a safari modal
-        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[[NSUserDefaults standardUserDefaults] URLForKey:@"url"]];
-        [self presentViewController:safariViewController animated:YES completion:nil];
-        
-        [self.view setUserInteractionEnabled:YES];
-    }];
+    }
 }
 
 - (void)passButtonPressed:(NSNotification *)notification {
-    [self.view setUserInteractionEnabled:NO];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-    [UIView animateWithDuration:ANIMATION_TIME animations:^{
-        swipeView.center = CGPointMake(swipeView.center.x-DEFAULT_DISCARD_DISTANCE, swipeView.center.y);
-        self.view.backgroundColor = [UIColor godivaRed];
-        swipeView.alpha = 0;
-    } completion:^(BOOL finished) {
-        // Reset the view
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"loading"]) {
+        [self.view setUserInteractionEnabled:NO];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
         [UIView animateWithDuration:ANIMATION_TIME animations:^{
-            self.view.backgroundColor = [UIColor godivaWhite];
+            swipeView.center = CGPointMake(swipeView.center.x-DEFAULT_DISCARD_DISTANCE, swipeView.center.y);
+            self.view.backgroundColor = [UIColor godivaRed];
+            swipeView.alpha = 0;
+        } completion:^(BOOL finished) {
+            // Reset the view
+            [UIView animateWithDuration:ANIMATION_TIME animations:^{
+                self.view.backgroundColor = [UIColor godivaWhite];
+            }];
+            swipeView.center = CGPointMake(swipeView.center.x+DEFAULT_DISCARD_DISTANCE, swipeView.center.y);
+            swipeView.backgroundColor = [UIColor whiteColor];
+
+            [notificationCenter postNotificationName:@"deleteProduct" object:nil];
+            [notificationCenter postNotificationName:@"resetCard" object:nil];
+            
+            swipeView.alpha = 1;
+            
+            swipeView.layer.cornerRadius = 8.0f;
+            
+            [self.view setUserInteractionEnabled:YES];
         }];
-        swipeView.center = CGPointMake(swipeView.center.x+DEFAULT_DISCARD_DISTANCE, swipeView.center.y);
-        swipeView.backgroundColor = [UIColor whiteColor];
-        
-        [notificationCenter postNotificationName:@"deleteProduct" object:nil];
-        [notificationCenter postNotificationName:@"resetCard" object:nil];
-        swipeView.alpha = 1;
-        
-        swipeView.layer.cornerRadius = 8.0f;
-        
-        [self.view setUserInteractionEnabled:YES];
-    }];
+    }
 }
 
 @end

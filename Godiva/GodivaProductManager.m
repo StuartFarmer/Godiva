@@ -88,7 +88,7 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
     // set the context to the current product type
     userDefaults = [NSUserDefaults standardUserDefaults];
     _realm = [RLMRealm defaultRealm];
-    
+    _isUpdating = YES;
     // check if there are enough products in the current context
     _products = [Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", type]];
     if (_products.count <= PRODUCT_FLOOR) {
@@ -224,6 +224,13 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
                 }
                 // recursively get another set
                 if (data.count > 0) [self getProductFor:type number:amount for:chunks-1];
+                
+                // post notifications if there are enough objects in the database so that other parts of the application can pull in data
+                if ([self productCountForContext:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]] > PRODUCT_FLOOR) [[NSNotificationCenter defaultCenter] postNotificationName:@"productsAtProductFloor" object:nil];
+                if ([self productCountForContext:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]] >= PRODUCT_CEILING) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"productsAtProductCeiling" object:nil];
+                    _isUpdating = NO;
+                }
                 
             } failure:^(NSURLSessionTask *operation, NSError *error) {
                 NSLog(@"Error: %@", error);
