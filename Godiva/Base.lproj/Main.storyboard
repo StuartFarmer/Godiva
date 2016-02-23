@@ -273,10 +273,28 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="hYz-eF-Pzs" firstAttribute="leading" secondItem="BWd-eN-T6g" secondAttribute="leading" id="5sa-bs-nws"/>
+                                            <constraint firstAttribute="trailing" secondItem="hYz-eF-Pzs" secondAttribute="trailing" constant="16" id="GPe-kN-B0a"/>
+                                            <constraint firstItem="uDt-7h-I0F" firstAttribute="leading" secondItem="BWd-eN-T6g" secondAttribute="leading" id="M2Q-tz-Hq2"/>
+                                            <constraint firstAttribute="trailing" secondItem="Pm5-iF-26c" secondAttribute="trailing" constant="16" id="S5G-5o-7gu"/>
+                                            <constraint firstItem="Pm5-iF-26c" firstAttribute="leading" secondItem="BWd-eN-T6g" secondAttribute="leading" constant="16" id="WxF-9U-jh9"/>
+                                            <constraint firstItem="t27-Nt-wLM" firstAttribute="leading" secondItem="BWd-eN-T6g" secondAttribute="leading" constant="16" id="hZl-Db-tgr"/>
+                                            <constraint firstItem="Pm5-iF-26c" firstAttribute="leading" secondItem="BWd-eN-T6g" secondAttribute="leading" id="mJB-7G-EET"/>
+                                            <constraint firstAttribute="trailing" secondItem="t27-Nt-wLM" secondAttribute="trailing" constant="16" id="o02-wR-83T"/>
+                                            <constraint firstItem="hYz-eF-Pzs" firstAttribute="leading" secondItem="BWd-eN-T6g" secondAttribute="leading" id="pWm-Jx-o7M"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="5sa-bs-nws"/>
+                                                <exclude reference="pWm-Jx-o7M"/>
+                                                <exclude reference="mJB-7G-EET"/>
+                                            </mask>
+                                        </variation>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="hYz-eF-Pzs" firstAttribute="leading" secondItem="x1S-46-k5T" secondAttribute="leading" id="I37-lr-faK"/>
+                                    <constraint firstItem="hYz-eF-Pzs" firstAttribute="leading" secondItem="x1S-46-k5T" secondAttribute="leading" constant="16" id="I37-lr-faK"/>
                                     <constraint firstAttribute="trailing" secondItem="BWd-eN-T6g" secondAttribute="trailing" id="WKM-IS-dxx"/>
                                     <constraint firstItem="BWd-eN-T6g" firstAttribute="leading" secondItem="x1S-46-k5T" secondAttribute="leading" id="rx3-0K-mHB"/>
                                 </constraints>
@@ -298,13 +316,14 @@
                         <outlet property="passwordTextField" destination="Pm5-iF-26c" id="D4s-9D-R92"/>
                         <outlet property="signInButton" destination="08m-9w-LPJ" id="RQB-Cn-UUG"/>
                         <outlet property="signUpButton" destination="syB-JW-WYR" id="BUH-Ae-Az6"/>
+                        <outlet property="stackView" destination="BWd-eN-T6g" id="9gk-g1-YNO"/>
                         <outlet property="subtitleLabel" destination="o5K-qo-HOE" id="zVg-Kk-J4H"/>
                         <outlet property="titleLabel" destination="u8V-Zd-HBb" id="lXa-H5-JvA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVd-1A-LeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1765" y="63"/>
+            <point key="canvasLocation" x="1868" y="64"/>
         </scene>
         <!--Browse-->
         <scene sceneID="lmg-Wj-juT">

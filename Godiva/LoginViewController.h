@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 @property (weak, nonatomic) IBOutlet UIButton *signUpButton;
+@property (weak, nonatomic) IBOutlet UIStackView *stackView;
 
 - (IBAction)signInPressed:(id)sender;
 - (IBAction)signUpPressed:(id)sender;

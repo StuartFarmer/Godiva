@@ -40,6 +40,8 @@
     //self.signInButton.layer.borderWidth = 1.0f;
     self.signInButton.layer.cornerRadius = 4.0f;
     self.signUpButton.layer.cornerRadius = 4.0f;
+    
+    self.stackView.frame = self.view.frame;
 }
 
 - (void)keyboardWillChange:(NSNotification *)notification {
