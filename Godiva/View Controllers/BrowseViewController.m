@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "GodivaCategory.h"
 #import "UIColor+Godiva.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 #define M_PHI 1.61803398874989484820
 #define M_RATIO 1.3
@@ -60,12 +61,18 @@
 
 - (void)getCategories {
     self.view.userInteractionEnabled = NO;
+    // Show HUD
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Connecting to Athena";
     [[GodivaProductManager sharedInstance] getCategoriesWithCompletion:^(BOOL finished) {
         if (finished) {
             // Cool, we're good to go.
             NSLog(@"Loaded Categories.");
+            [hud hide:YES];
             self.view.userInteractionEnabled = YES;
         } else {
+            [hud hide:YES];
             // Alert that there was an error
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error Getting Category Data"
                                                                            message:@"There was trouble getting categories over the network. Check your connection and press OK to try again."

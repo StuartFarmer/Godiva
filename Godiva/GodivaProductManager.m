@@ -34,7 +34,6 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     dispatch_async(dispatch_queue_create("db", DISPATCH_QUEUE_SERIAL), ^{
         // get a response
-            
         [manager GET:categoriesURL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSArray *data = responseObject[@"data"];
             for (NSDictionary *item in data) {
