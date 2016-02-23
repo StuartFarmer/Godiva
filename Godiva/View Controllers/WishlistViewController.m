@@ -30,8 +30,6 @@
     self.tableView.dataSource = self;
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     
-    self.initialWishListView.alpha = 0;
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productSaved:) name:@"productSaved" object:nil]
     ;
     [self loadCells];
@@ -58,8 +56,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // load wishlist cells
-    //if (products.count > 1) {
-    if (products.count < 1) self.initialWishListView.alpha = 1;
     ProductTableViewCell *cell = (ProductTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if (cell == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ProductTableViewCell" owner:self options:nil];

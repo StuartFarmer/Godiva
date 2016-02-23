@@ -42,12 +42,6 @@
     // set up product manager
     productManager = [GodivaProductManager sharedInstance];
     
-    if (![userDefaults stringForKey:@"authenticationToken"]) {
-        // Log in
-        LoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        [self presentViewController:loginViewController animated:YES completion:nil];
-    } else [self getCategories];
-    
     [self setTitle:@"Browse"];
     
     // set up tab bar stuff
@@ -91,6 +85,14 @@
         }
     }];
 
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    if (![userDefaults stringForKey:@"authenticationToken"]) {
+        // Log in
+        LoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        [self presentViewController:loginViewController animated:YES completion:nil];
+    } else [self getCategories];
 }
 
 - (void)didReceiveMemoryWarning {

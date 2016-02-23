@@ -11,9 +11,9 @@
 #import <AFNetworking/AFNetworking.h>
 #import "Product.h"
 
-#define PRODUCT_CEILING 100
-#define PRODUCT_FLOOR 40
-#define PRODUCT_CHUNK 20
+#define PRODUCT_CEILING 10
+#define PRODUCT_FLOOR 5
+#define PRODUCT_CHUNK 1
 
 @interface GodivaProductManager : NSObject
 

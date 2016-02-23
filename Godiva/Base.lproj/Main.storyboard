@@ -185,13 +185,13 @@
                         <viewControllerLayoutGuide type="bottom" id="Z5e-A7-jtL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xkN-72-a7d">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x1S-46-k5T" customClass="TPKeyboardAvoidingScrollView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BWd-eN-T6g">
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BWd-eN-T6g">
                                         <rect key="frame" x="0.0" y="0.0" width="628" height="698"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Athena" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8V-Zd-HBb">
@@ -277,6 +277,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="hYz-eF-Pzs" firstAttribute="leading" secondItem="x1S-46-k5T" secondAttribute="leading" id="I37-lr-faK"/>
+                                    <constraint firstAttribute="trailing" secondItem="BWd-eN-T6g" secondAttribute="trailing" id="WKM-IS-dxx"/>
+                                    <constraint firstItem="BWd-eN-T6g" firstAttribute="leading" secondItem="x1S-46-k5T" secondAttribute="leading" id="rx3-0K-mHB"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -289,7 +291,7 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
+                    <size key="freeformSize" width="600" height="800"/>
                     <connections>
                         <outlet property="emailAddressTextField" destination="hYz-eF-Pzs" id="g2j-9N-RYg"/>
                         <outlet property="imageView" destination="uDt-7h-I0F" id="9S9-9Y-kcD"/>
@@ -302,7 +304,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVd-1A-LeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1765.5" y="63.5"/>
+            <point key="canvasLocation" x="1765" y="63"/>
         </scene>
         <!--Browse-->
         <scene sceneID="lmg-Wj-juT">

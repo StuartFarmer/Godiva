@@ -113,7 +113,7 @@
 }
 
 - (void)productsAtProductFloor:(NSNotification *)notification {
-    
+    [hud hide:YES];
 }
 
 - (void)productsAtProductCeiling:(NSNotification *)notification {
@@ -139,10 +139,16 @@
 }
 
 - (void)resetView {
+    [hud hide:YES];
+    
+    if ([[GodivaProductManager sharedInstance] productCountForContext:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]] <= PRODUCT_FLOOR) [[GodivaProductManager sharedInstance] updateForContextType:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
+    
     productArray = (NSMutableArray *)[[GodivaProductManager sharedInstance] getProductsWithType:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
     NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"];
+    
     if ([[GodivaProductManager sharedInstance] productsExistForContext:type]) {
         [self showUIElements];
+        [hud hide:YES];
         NSLog(@"type: %@", type);
         product = [productArray objectAtIndex:0];
         self.imageView.image = [UIImage imageWithData:product.image];
