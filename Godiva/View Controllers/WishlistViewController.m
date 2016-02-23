@@ -72,8 +72,8 @@
     cell.productLabel.text = product.name;
     cell.brandLabel.text = product.brandName;
     cell.priceLabel.text = [NSString stringWithFormat:@"$%.2f", [product.price floatValue]];
-    UIImage *image = [UIImage imageWithData:product.image];
-    cell.imageView.image = image;
+    cell.productImageView.contentMode = UIViewContentModeScaleAspectFit;
+    cell.productImageView.image = [UIImage imageWithData:product.image];
     
     return cell;
 }
@@ -99,15 +99,5 @@
     SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:product.clickURL]];
     [self presentViewController:safariViewController animated:YES completion:nil];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -13,6 +13,5 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *wishListView;
-@property (weak, nonatomic) IBOutlet UIView *initialWishListView;
 
 @end
