@@ -47,6 +47,7 @@
 		5EC6D8391C5DB171007FB783 /* pass@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6D8361C5DB171007FB783 /* pass@3x.png */; };
 		5EC6D83C1C5E4A2D007FB783 /* UIColor+Godiva.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC6D83B1C5E4A2D007FB783 /* UIColor+Godiva.m */; };
 		5EC6D84A1C5E5122007FB783 /* GodivaCardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC6D8491C5E5122007FB783 /* GodivaCardHelper.m */; };
+		5EF4D1F11C7F52D500C23FDF /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EF4D1F01C7F52D500C23FDF /* NSData+Base64.m */; };
 		B65DA8EF1C16154D000D72AA /* accessories.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8CE1C16154D000D72AA /* accessories.jpg */; };
 		B65DA8F01C16154D000D72AA /* accessories@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */; };
 		B65DA8F11C16154D000D72AA /* accessories@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B65DA8D01C16154D000D72AA /* accessories@3x.jpg */; };
@@ -176,6 +177,8 @@
 		5EC6D83B1C5E4A2D007FB783 /* UIColor+Godiva.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Godiva.m"; sourceTree = "<group>"; };
 		5EC6D8481C5E5122007FB783 /* GodivaCardHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GodivaCardHelper.h; sourceTree = "<group>"; };
 		5EC6D8491C5E5122007FB783 /* GodivaCardHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GodivaCardHelper.m; sourceTree = "<group>"; };
+		5EF4D1EF1C7F52D500C23FDF /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		5EF4D1F01C7F52D500C23FDF /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		B65DA8CE1C16154D000D72AA /* accessories.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = accessories.jpg; path = "Image Assets/accessories.jpg"; sourceTree = "<group>"; };
 		B65DA8CF1C16154D000D72AA /* accessories@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "accessories@2x.jpg"; path = "Image Assets/accessories@2x.jpg"; sourceTree = "<group>"; };
 		B65DA8D01C16154D000D72AA /* accessories@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "accessories@3x.jpg"; path = "Image Assets/accessories@3x.jpg"; sourceTree = "<group>"; };
@@ -309,6 +312,8 @@
 				5EC6D83B1C5E4A2D007FB783 /* UIColor+Godiva.m */,
 				5E31BF071C752F4F0050B436 /* GodivaCategory.h */,
 				5E31BF081C752F4F0050B436 /* GodivaCategory.m */,
+				5EF4D1EF1C7F52D500C23FDF /* NSData+Base64.h */,
+				5EF4D1F01C7F52D500C23FDF /* NSData+Base64.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -811,6 +816,7 @@
 				5EC6D84A1C5E5122007FB783 /* GodivaCardHelper.m in Sources */,
 				B6B0952D1C0BC18300C1DEC9 /* ClothingTypeCollectionViewCell.m in Sources */,
 				B6B095341C0BCC9D00C1DEC9 /* BrowseCollectionViewObject.m in Sources */,
+				5EF4D1F11C7F52D500C23FDF /* NSData+Base64.m in Sources */,
 				B680162F1C1B8F9D00B372B2 /* PassOrSaveViewController.m in Sources */,
 				B6B095311C0BCA3C00C1DEC9 /* BrowseCollectionCellDataSourceBuilder.m in Sources */,
 				B68016321C1B8FCF00B372B2 /* DiscoverCardViewController.m in Sources */,
@@ -952,10 +958,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -989,9 +997,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

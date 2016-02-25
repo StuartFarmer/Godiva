@@ -9,6 +9,7 @@
 #import "DiscoverCardViewController.h"
 #import "CGPoint+Vector.h"
 #import "GodivaProductManager.h"
+#import "NSData+Base64.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
 @interface DiscoverCardViewController () {
@@ -71,6 +72,12 @@
 
 - (void)saveProduct:(NSNotification *)notification {
     NSLog(@"Saving Card.");
+    
+    Product *copy = [[Product alloc] init];
+    copy.identifier = product.identifier;
+    copy.userID = product.userID;
+    copy.productID = product.productID;
+    
     // Remove card from product array
     [productArray removeObject:product];
     
@@ -85,10 +92,20 @@
     } else {
         NSLog(@"Woohoo.");
     }
+    
+    // send back POST
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [self sendBackPOSTRequest:YES ForObject:copy];
+    });
 }
 
 - (void)deleteProduct:(NSNotification *)notification {
     NSLog(@"Deleting Card.");
+    Product *copy = [[Product alloc] init];
+    copy.identifier = product.identifier;
+    copy.userID = product.userID;
+    copy.productID = product.productID;
+    
     // Remove card from product array
     [productArray removeObject:product];
     
@@ -103,6 +120,49 @@
     } else {
         NSLog(@"Woohoo.");
     }
+    
+    // send back POST
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [self sendBackPOSTRequest:NO ForObject:copy];
+    });
+    
+}
+
+- (void)sendBackPOSTRequest:(BOOL)saved ForObject:(Product *)AProduct {
+    // 3.0
+    NSDictionary *params = @{@"data" : @{
+                                     @"id" : AProduct.identifier,
+                                     @"type" : @"user_products",
+                                     @"attributes" : @{
+                                             @"user_id" : AProduct.userID,
+                                             @"interaction_type" : saved ? @"r" : @"l",
+                                             @"product_id" : AProduct.productID
+                                             }
+                                     }
+                             };
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"http://godiva.logiclabs.systems/api/v1/user_products/?user_email=%@&user_token=%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"email"], [[NSUserDefaults standardUserDefaults] stringForKey:@"authenticationToken"]] parameters:nil error:nil];
+    
+    req.timeoutInterval= [[[NSUserDefaults standardUserDefaults] valueForKey:@"timeoutInterval"] longValue];
+    [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSLog(@"%@", jsonString);
+    
+    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (!error) {
+            NSLog(@"Succeeded in sending back product to server.");
+        } else {
+            NSLog(@"%@", error);
+        }
+    }] resume];
 }
 
 - (void)contextChanged:(NSNotification *)notification {

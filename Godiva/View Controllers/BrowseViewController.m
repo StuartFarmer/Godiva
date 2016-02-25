@@ -51,6 +51,8 @@
     [[self.tabBarController.tabBar.items objectAtIndex:2] setTitle:@"Wishlist"];
     [[UITabBar appearance] setTintColor:[UIColor godivaBlue]];
     [[UITabBar appearance] setAlpha:1];
+    
+    [self getCategories];
 }
 
 - (void)getCategories {
@@ -92,7 +94,7 @@
         // Log in
         LoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [self presentViewController:loginViewController animated:YES completion:nil];
-    } else [self getCategories];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
