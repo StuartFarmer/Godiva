@@ -135,7 +135,7 @@
                                      @"type" : @"user_products",
                                      @"attributes" : @{
                                              @"user_id" : AProduct.userID,
-                                             @"interaction_type" : saved ? @"r" : @"l",
+                                             @"interaction" : saved ? @"r" : @"l",
                                              @"product_id" : AProduct.productID
                                              }
                                      }

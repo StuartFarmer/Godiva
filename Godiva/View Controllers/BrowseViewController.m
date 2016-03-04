@@ -39,6 +39,8 @@
     userDefaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"%@", [userDefaults stringForKey:@"authenticationToken"]);
     NSLog(@"%@", [userDefaults stringForKey:@"email"]);
+    [userDefaults setBool:NO forKey:@"gotCategories"];
+    
     // set up product manager
     productManager = [GodivaProductManager sharedInstance];
     
@@ -51,8 +53,6 @@
     [[self.tabBarController.tabBar.items objectAtIndex:2] setTitle:@"Wishlist"];
     [[UITabBar appearance] setTintColor:[UIColor godivaBlue]];
     [[UITabBar appearance] setAlpha:1];
-    
-    [self getCategories];
 }
 
 - (void)getCategories {
@@ -67,6 +67,7 @@
             NSLog(@"Loaded Categories.");
             [hud hide:YES];
             self.view.userInteractionEnabled = YES;
+            [userDefaults setBool:YES forKey:@"gotCategories"];
         } else {
             [hud hide:YES];
             // Alert that there was an error
@@ -94,7 +95,7 @@
         // Log in
         LoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [self presentViewController:loginViewController animated:YES completion:nil];
-    }
+    } else if (![userDefaults boolForKey:@"gotCategories"]) [self getCategories];
 }
 
 - (void)didReceiveMemoryWarning {

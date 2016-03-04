@@ -89,8 +89,10 @@
     }
 }
 
+
 // present the affiliate link when tapped
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     Product *product = [products objectAtIndex:indexPath.row];
     SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:product.clickURL]];
     [self presentViewController:safariViewController animated:YES completion:nil];

@@ -454,13 +454,13 @@
                                 <rect key="frame" x="20" y="20" width="315" height="456"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dresses.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="uHM-Ob-i35">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="316"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="262"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="316" id="MDD-ID-byJ"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="316" id="MDD-ID-byJ"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H&amp;M White Dress And Skirt Etc. etc etc etc etc etc etc etc etc etc etc etc" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="50x-Nh-kJD">
-                                        <rect key="frame" x="0.0" y="324" width="315" height="64"/>
+                                        <rect key="frame" x="0.0" y="270" width="315" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="kvC-DS-IGa"/>
                                         </constraints>
@@ -469,7 +469,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c00-3k-ODe">
-                                        <rect key="frame" x="0.0" y="396" width="315" height="60"/>
+                                        <rect key="frame" x="0.0" y="342" width="315" height="114"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="ukj-aL-WJj"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="36"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
