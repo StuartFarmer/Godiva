@@ -96,6 +96,9 @@
         LoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [self presentViewController:loginViewController animated:YES completion:nil];
     } else if (![userDefaults boolForKey:@"gotCategories"]) [self getCategories];
+    
+    if (![userDefaults stringForKey:@"selectedObject"]) [[self.tabBarController.tabBar.items objectAtIndex:1] setEnabled:NO];
+    else [[self.tabBarController.tabBar.items objectAtIndex:1] setEnabled:YES];
 }
 
 - (void)didReceiveMemoryWarning {

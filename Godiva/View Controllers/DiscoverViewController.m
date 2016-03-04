@@ -72,6 +72,11 @@
     [self setTitle:[[NSUserDefaults standardUserDefaults] stringForKey:@"selectedObject"]];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    if (![userDefaults stringForKey:@"selectedObject"]) [[self.tabBarController.tabBar.items objectAtIndex:1] setEnabled:NO];
+    else [[self.tabBarController.tabBar.items objectAtIndex:1] setEnabled:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
