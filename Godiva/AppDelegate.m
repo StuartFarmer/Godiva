@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "GodivaProductManager.h"
+#import <Realm/Realm.h>
+#import "Product.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +21,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    
+    // Spit out the loaded products so that we can see if there are any in the initial database
+    RLMResults<Product *> *products = [Product allObjects];
+    NSLog(@"%i", products.count);
     
     return YES;
 }

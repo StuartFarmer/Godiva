@@ -13,7 +13,7 @@
 
 #define PRODUCT_CEILING 10
 #define PRODUCT_FLOOR 5
-#define PRODUCT_CHUNK 1
+#define PRODUCT_CHUNK 5
 
 @interface GodivaProductManager : NSObject
 

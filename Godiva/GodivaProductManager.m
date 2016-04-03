@@ -36,6 +36,7 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
         // get a response
         [manager GET:categoriesURL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSArray *data = responseObject[@"data"];
+            NSLog(@"%@", responseObject);
             for (NSDictionary *item in data) {
                 GodivaCategory *category = [[GodivaCategory alloc] init];
                 category.identifier = [item[@"id"] integerValue];
@@ -118,7 +119,6 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
             if ([category.name isEqualToString:@"Satchels"]) [returnArray addObject:category];
             if ([category.name isEqualToString:@"Shoulder Bags"]) [returnArray addObject:category];
             if ([category.name isEqualToString:@"Duffels & Totes"]) [returnArray addObject:category];
-            if ([category.name isEqualToString:@"Accessories"]) [returnArray addObject:category];
             if ([category.name isEqualToString:@"Wallets"]) [returnArray addObject:category];
         }
         else if ([context isEqualToString:[GodivaProductManager idForDresses]]) {
@@ -144,7 +144,6 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
             if ([category.name isEqualToString:@"Boots"]) [returnArray addObject:category];
             if ([category.name isEqualToString:@"Evening Shoes"]) [returnArray addObject:category];
             if ([category.name isEqualToString:@"Flats"]) [returnArray addObject:category];
-            if ([category.name isEqualToString:@"Accessories"]) [returnArray addObject:category];
             if ([category.name isEqualToString:@"Mules & Clogs"]) [returnArray addObject:category];
             if ([category.name isEqualToString:@"Platforms"]) [returnArray addObject:category];
             if ([category.name isEqualToString:@"Pumps"]) [returnArray addObject:category];
@@ -178,6 +177,8 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
         // append string with id
         returnString = [returnString stringByAppendingString:[NSString stringWithFormat:@"%lu", category.identifier]];
     }
+    
+    NSLog(@"return string for %@ is: %@", context, returnString);
     
     return returnString;
 }
