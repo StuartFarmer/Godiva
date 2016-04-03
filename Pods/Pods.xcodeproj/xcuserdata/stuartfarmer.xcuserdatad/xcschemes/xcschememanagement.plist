@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>JSONAPI.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,7 +32,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5EC664856B534852361F1EA0B2C530B9</key>
+		<key>68709A5BE930409A915584B595F303B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,17 +42,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>969433157D8498349E658ECB9F03D3B5</key>
+		<key>AD9C96B97B976C09F463133DE4493477</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B299F3D97DF4E493E41810F384A556A9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D5DF82BFD37BCC69B2C159B8B655AA3F</key>
+		<key>F39099F8A1491C41CE0F507DB1809AA7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

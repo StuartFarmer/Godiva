@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 #define KEYBOARD_HEIGHT 120
 // 220 for iPhone 4
@@ -91,8 +92,12 @@
     [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Loading";
+    
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-        
+        [hud hide:YES];
         if (!error) {
             NSLog(@"Reply JSON: %@", responseObject);
             // set the authentication token to keep the user logged in and save the user email
@@ -147,7 +152,13 @@
     [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Loading";
+    
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        [hud hide:YES];
         
         if (!error) {
             NSLog(@"Reply JSON: %@", responseObject);

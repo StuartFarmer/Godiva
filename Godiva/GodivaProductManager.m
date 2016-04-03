@@ -194,6 +194,8 @@ NSString * const categoriesURL = @"http://godiva.logiclabs.systems/api/v1/catego
     // set up query parameters
     NSDictionary *params = @{@"user_email" : [userDefaults objectForKey:@"email"], @"user_token" : [userDefaults objectForKey:@"authenticationToken"], @"number_records" : [NSString stringWithFormat:@"%i", amount], @"category" : categoryString, @"max_price" : @"200"};
     
+    NSLog(@"GET URL params: %@", params);
+    
     if ([Product objectsWhere:[NSString stringWithFormat:@"type = '%@'", type]].count <= PRODUCT_CEILING) {
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
